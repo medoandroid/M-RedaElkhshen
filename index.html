@@ -26,8 +26,8 @@
         :root {
             --bg-void: #030611;
             --bg-surface: #070c1a;
-            --bg-panel: rgba(11, 18, 36, 0.7);
-            --bg-panel-hover: rgba(16, 26, 52, 0.9);
+            --bg-panel: rgba(11, 18, 36, 0.72);
+            --bg-panel-hover: rgba(16, 26, 52, 0.92);
             --gold-accent: #f5c469;
             --gold-sheen: #ffe6a3;
             --gold-metallic: linear-gradient(135deg, #fff3c4 0%, #f5c469 50%, #ba892e 100%);
@@ -35,7 +35,7 @@
             --blue-vivid: #3b82f6;
             --blue-neon: #38bdf8;
             --border-subtle: rgba(245, 196, 105, 0.18);
-            --border-active: rgba(245, 196, 105, 0.55);
+            --border-active: rgba(245, 196, 105, 0.6);
             --border-glass: rgba(255, 255, 255, 0.08);
             --text-pure: #ffffff;
             --text-lead: #e2e8f0;
@@ -79,6 +79,17 @@
             color: #030611;
         }
 
+        .scroll-progress-line {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(90deg, #2563eb, #38bdf8, #f5c469);
+            z-index: 10000;
+            transition: width 0.1s ease-out;
+        }
+
         .ambient-canvas-wrapper {
             position: fixed;
             inset: 0;
@@ -96,14 +107,14 @@
 
         .cursor-glow {
             position: fixed;
-            width: 450px;
-            height: 450px;
+            width: 480px;
+            height: 480px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(245, 196, 105, 0.06) 40%, transparent 70%);
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(245, 196, 105, 0.08) 40%, transparent 70%);
             transform: translate(-50%, -50%);
             pointer-events: none;
             z-index: 1;
-            transition: transform 0.12s ease-out;
+            transition: transform 0.1s ease-out, background 0.3s ease;
             filter: blur(50px);
         }
 
@@ -117,7 +128,7 @@
 
         header.navbar-dock {
             position: fixed;
-            top: 20px;
+            top: 18px;
             left: 50%;
             transform: translateX(-50%);
             width: calc(100% - 48px);
@@ -128,29 +139,42 @@
             -webkit-backdrop-filter: blur(30px);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-pill);
-            padding: 10px 24px;
+            padding: 8px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             box-shadow: var(--shadow-card);
-            transition: var(--ease-fluid);
+            transition: all 0.4s var(--ease-fluid);
+        }
+
+        header.navbar-dock.scrolled {
+            top: 10px;
+            padding: 6px 20px;
+            background: rgba(5, 9, 20, 0.94);
+            border-color: rgba(245, 196, 105, 0.35);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
         }
 
         .nav-brand-group {
             display: flex;
             align-items: center;
-            gap: 14px;
+            gap: 12px;
             text-decoration: none;
         }
 
         .brand-avatar-box {
             position: relative;
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             padding: 2px;
             background: var(--gold-metallic);
             box-shadow: 0 0 16px rgba(245, 196, 105, 0.4);
+            transition: transform 0.3s var(--ease-fluid);
+        }
+
+        .nav-brand-group:hover .brand-avatar-box {
+            transform: scale(1.06) rotate(3deg);
         }
 
         .brand-avatar-box img {
@@ -165,8 +189,8 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 12px;
-            height: 12px;
+            width: 11px;
+            height: 11px;
             background: #22c55e;
             border-radius: 50%;
             border: 2px solid #070c1a;
@@ -179,14 +203,14 @@
         }
 
         .brand-name-val {
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             font-weight: 800;
             color: #ffffff;
             letter-spacing: 0.3px;
         }
 
         .brand-sub-val {
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             color: var(--gold-accent);
             font-family: 'Playfair Display', serif;
             font-style: italic;
@@ -195,24 +219,33 @@
         .nav-links-hub {
             display: flex;
             align-items: center;
-            gap: 22px;
+            gap: 10px;
             list-style: none;
+            position: relative;
         }
 
         .nav-links-hub a {
             text-decoration: none;
             color: var(--text-lead);
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            padding: 6px 12px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+            padding: 8px 14px;
+            border-radius: var(--radius-pill);
+            transition: all 0.3s var(--ease-fluid);
             position: relative;
+            display: inline-block;
         }
 
         .nav-links-hub a:hover {
             color: var(--gold-sheen);
             background: rgba(245, 196, 105, 0.08);
+        }
+
+        .nav-links-hub a.nav-active {
+            color: #030611;
+            background: var(--gold-metallic);
+            font-weight: 700;
+            box-shadow: 0 2px 14px rgba(245, 196, 105, 0.4);
         }
 
         .nav-cta-cluster {
@@ -224,10 +257,10 @@
         .btn-top-wa {
             background: var(--gold-metallic);
             color: #030611;
-            padding: 10px 22px;
+            padding: 9px 20px;
             border-radius: var(--radius-pill);
             font-weight: 800;
-            font-size: 0.86rem;
+            font-size: 0.85rem;
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -237,7 +270,7 @@
         }
 
         .btn-top-wa:hover {
-            transform: translateY(-2px) scale(1.02);
+            transform: translateY(-2px) scale(1.03);
             box-shadow: 0 8px 25px rgba(245, 196, 105, 0.55);
         }
 
@@ -247,12 +280,13 @@
             border: 1px solid var(--border-glass);
             color: #ffffff;
             font-size: 1.25rem;
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             border-radius: 12px;
             cursor: pointer;
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
         }
 
         .hero-stage {
@@ -387,6 +421,15 @@
             transform: translateY(-2px);
         }
 
+        .btn-french-audio.playing {
+            animation: pulseWave 1s infinite alternate;
+        }
+
+        @keyframes pulseWave {
+            0% { border-color: var(--gold-accent); box-shadow: 0 0 15px rgba(245, 196, 105, 0.3); }
+            100% { border-color: var(--blue-neon); box-shadow: 0 0 25px rgba(56, 189, 248, 0.5); }
+        }
+
         .hero-portrait-wrap {
             position: relative;
             perspective: 1000px;
@@ -404,7 +447,7 @@
             background: linear-gradient(145deg, rgba(245, 196, 105, 0.35) 0%, rgba(37, 99, 235, 0.2) 50%, rgba(11, 18, 36, 0.9) 100%);
             box-shadow: var(--shadow-card), var(--shadow-gold);
             transform-style: preserve-3d;
-            transition: transform 0.4s var(--ease-fluid);
+            transition: transform 0.25s ease-out;
         }
 
         .portrait-inner-glass {
@@ -432,7 +475,7 @@
         .holo-chip {
             position: absolute;
             z-index: 15;
-            background: rgba(7, 12, 26, 0.9);
+            background: rgba(7, 12, 26, 0.92);
             border: 1px solid var(--border-subtle);
             backdrop-filter: blur(20px);
             border-radius: var(--radius-md);
@@ -530,7 +573,7 @@
         }
 
         .content-section {
-            padding: 80px 0;
+            padding: 85px 0;
             position: relative;
         }
 
@@ -571,21 +614,22 @@
             gap: 24px;
         }
 
-        .system-lux-card {
+        .interactive-tilt-card {
             background: var(--bg-panel);
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-lg);
             padding: 36px 28px;
             backdrop-filter: blur(25px);
-            transition: var(--ease-fluid);
+            transition: transform 0.2s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             cursor: default;
+            transform-style: preserve-3d;
         }
 
-        .system-lux-card::before {
+        .interactive-tilt-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -597,14 +641,27 @@
             transition: opacity 0.4s ease;
         }
 
-        .system-lux-card:hover {
-            transform: translateY(-8px);
+        .interactive-tilt-card:hover {
             border-color: var(--border-subtle);
             background: var(--bg-panel-hover);
             box-shadow: var(--shadow-card), var(--shadow-gold);
         }
 
-        .system-lux-card:hover::before {
+        .interactive-tilt-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-glare {
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .interactive-tilt-card:hover .card-glare {
             opacity: 1;
         }
 
@@ -623,21 +680,21 @@
             transition: var(--ease-fluid);
         }
 
-        .system-lux-card:hover .card-icon-emblem {
+        .interactive-tilt-card:hover .card-icon-emblem {
             background: rgba(245, 196, 105, 0.15);
             border-color: var(--gold-accent);
             color: var(--gold-sheen);
             transform: rotate(-6deg) scale(1.08);
         }
 
-        .system-lux-card h4 {
+        .interactive-tilt-card h4 {
             font-size: 1.35rem;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 12px;
         }
 
-        .system-lux-card p {
+        .interactive-tilt-card p {
             color: var(--text-lead);
             font-size: 0.94rem;
             line-height: 1.8;
@@ -689,7 +746,7 @@
         }
 
         .method-step-card:hover {
-            background: rgba(245, 196, 105, 0.05);
+            background: rgba(245, 196, 105, 0.06);
             border-color: var(--border-subtle);
             transform: translateX(-6px);
         }
@@ -1250,6 +1307,43 @@
             opacity: 1;
         }
 
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(7, 12, 26, 0.85);
+            border: 1px solid var(--border-subtle);
+            color: var(--gold-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: var(--shadow-card);
+            backdrop-filter: blur(15px);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            transition: all 0.4s var(--ease-fluid);
+        }
+
+        .scroll-top-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .scroll-top-btn:hover {
+            background: var(--gold-metallic);
+            color: #030611;
+            transform: translateY(-4px) scale(1.08);
+            box-shadow: var(--shadow-gold);
+        }
+
         .reveal-node {
             opacity: 0;
             transform: translateY(35px);
@@ -1329,7 +1423,7 @@
                 border-radius: var(--radius-md);
                 padding: 20px;
                 flex-direction: column;
-                gap: 14px;
+                gap: 12px;
                 box-shadow: var(--shadow-card);
                 backdrop-filter: blur(28px);
             }
@@ -1372,6 +1466,13 @@
             .methodology-editorial-container {
                 padding: 30px 20px;
             }
+
+            .scroll-top-btn {
+                bottom: 20px;
+                right: 15px;
+                width: 42px;
+                height: 42px;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1388,6 +1489,8 @@
     </style>
 </head>
 <body>
+
+    <div class="scroll-progress-line" id="scrollProgress"></div>
 
     <div class="ambient-canvas-wrapper">
         <canvas id="bgCanvas"></canvas>
@@ -1408,12 +1511,12 @@
         </a>
 
         <ul class="nav-links-hub" id="mobileNavMenu">
-            <li><a href="#hero">الرئيسية</a></li>
-            <li><a href="#systems">الأنظمة التعليمية</a></li>
-            <li><a href="#methodology">المنهجية والشرح</a></li>
-            <li><a href="#instapay">كارت InstaPay</a></li>
-            <li><a href="#faq">الأسئلة الشائعة</a></li>
-            <li><a href="#contact">التواصل المباشر</a></li>
+            <li><a href="#hero" class="nav-link-item">الرئيسية</a></li>
+            <li><a href="#systems" class="nav-link-item">الأنظمة التعليمية</a></li>
+            <li><a href="#methodology" class="nav-link-item">المنهجية والشرح</a></li>
+            <li><a href="#instapay" class="nav-link-item">كارت InstaPay</a></li>
+            <li><a href="#faq" class="nav-link-item">الأسئلة الشائعة</a></li>
+            <li><a href="#contact" class="nav-link-item">تواصل معايا</a></li>
         </ul>
 
         <div class="nav-cta-cluster">
@@ -1454,7 +1557,7 @@
                     <div class="hero-actions-dock">
                         <a href="https://wa.me/201558186187?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%8A%D8%A7%20%D9%85%D8%B3%D9%8A%D9%88%20%D8%B1%D8%B6%D8%A7%D8%8C%20%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D9%85%D9%88%D8%A7%D8%B9%D9%8A%D8%AF%20%D8%AF%D8%B1%D9%88%D8%B3%20%D8%A7%D9%84%D9%84%D8%BA%D8%A9%20%D8%A7%D9%84%D9%81%D8%B1%D9%86%D8%B3%D9%8A%D8%A9" target="_blank" rel="noopener noreferrer" class="btn-action-primary">
                             <i class="fab fa-whatsapp"></i>
-                            <span>تواصل واحجز مكانك</span>
+                            <span>تواصل معايا واحجز مكانك</span>
                         </a>
 
                         <button class="btn-french-audio" id="btnAudioBite">
@@ -1497,15 +1600,15 @@
 
         <section class="credibility-glass-bar reveal-node">
             <div class="cred-item">
-                <div class="cred-number">+10</div>
+                <div class="cred-number" data-target="10">+10</div>
                 <div class="cred-label">سنوات خبرة تدريسية معتمدة</div>
             </div>
             <div class="cred-item">
-                <div class="cred-number">4</div>
+                <div class="cred-number" data-target="4">4</div>
                 <div class="cred-label">أنظمة ومناهج تعليمية متخصصة</div>
             </div>
             <div class="cred-item">
-                <div class="cred-number">100%</div>
+                <div class="cred-number" data-target="100">100%</div>
                 <div class="cred-label">تأسيس من الصفر وتأهيل نهائي</div>
             </div>
             <div class="cred-item">
@@ -1526,7 +1629,8 @@
 
             <div class="systems-interactive-grid">
                 
-                <div class="system-lux-card reveal-node">
+                <div class="interactive-tilt-card reveal-node">
+                    <div class="card-glare"></div>
                     <div class="card-icon-emblem">
                         <i class="fas fa-globe-europe"></i>
                     </div>
@@ -1537,7 +1641,8 @@
                     <span class="system-tag-pill">International Schools</span>
                 </div>
 
-                <div class="system-lux-card reveal-node">
+                <div class="interactive-tilt-card reveal-node">
+                    <div class="card-glare"></div>
                     <div class="card-icon-emblem">
                         <i class="fas fa-book-open"></i>
                     </div>
@@ -1548,7 +1653,8 @@
                     <span class="system-tag-pill">Language Schools</span>
                 </div>
 
-                <div class="system-lux-card reveal-node">
+                <div class="interactive-tilt-card reveal-node">
+                    <div class="card-glare"></div>
                     <div class="card-icon-emblem">
                         <i class="fas fa-school"></i>
                     </div>
@@ -1559,7 +1665,8 @@
                     <span class="system-tag-pill">Government Curricula</span>
                 </div>
 
-                <div class="system-lux-card reveal-node">
+                <div class="interactive-tilt-card reveal-node">
+                    <div class="card-glare"></div>
                     <div class="card-icon-emblem">
                         <i class="fas fa-scroll"></i>
                     </div>
@@ -1748,10 +1855,10 @@
 
         <section class="content-section" id="contact">
             <div class="section-lead-title reveal-node">
-                <span class="french-subheading">Contact Direct</span>
-                <h2 class="headline-section-h2">قنوات التواصل المباشرة والمعتمدة</h2>
+                <span class="french-subheading">Restons en Contact</span>
+                <h2 class="headline-section-h2">تواصل معايا</h2>
                 <p class="sub-description">
-                    اختر الوسيلة الأنسب ليك للاستفسار عن جداول الدروس والمواعيد المتاحة.
+                    تقدر تتواصل معايا في أي وقت للاستفسار عن جداول المواعيد أو حجز مكانك.. هرد عليك شخصياً في أسرع وقت.
                 </p>
             </div>
 
@@ -1824,7 +1931,7 @@
                         <li><a href="#methodology"><i class="fas fa-angle-left"></i> المنهجية والشرح</a></li>
                         <li><a href="#instapay"><i class="fas fa-angle-left"></i> كارت InstaPay</a></li>
                         <li><a href="#faq"><i class="fas fa-angle-left"></i> الأسئلة الشائعة</a></li>
-                        <li><a href="#contact"><i class="fas fa-angle-left"></i> قنوات التواصل</a></li>
+                        <li><a href="#contact"><i class="fas fa-angle-left"></i> تواصل معايا</a></li>
                     </ul>
                 </div>
 
@@ -1851,12 +1958,60 @@
         </div>
     </footer>
 
+    <button class="scroll-top-btn" id="scrollTopBtn" title="الرجوع للأعلى" aria-label="الرجوع للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <div class="toast-bubble" id="toastBox">
         <i class="fas fa-circle-check" style="color: var(--gold-accent); font-size: 1.25rem;"></i>
         <span id="toastMessageText">تم بنجاح</span>
     </div>
 
     <script>
+        const progressBar = document.getElementById('scrollProgress');
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('.nav-link-item');
+        const sections = document.querySelectorAll('section[id]');
+
+        window.addEventListener('scroll', () => {
+            const totalScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / totalScroll) * 100;
+            if (progressBar) progressBar.style.width = progress + '%';
+
+            if (window.scrollY > 40) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+
+            let currentSectionId = '';
+            sections.forEach(sec => {
+                const secTop = sec.offsetTop - 120;
+                const secHeight = sec.offsetHeight;
+                if (window.scrollY >= secTop && window.scrollY < secTop + secHeight) {
+                    currentSectionId = sec.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('nav-active');
+                if (link.getAttribute('href') === `#${currentSectionId}`) {
+                    link.classList.add('nav-active');
+                }
+            });
+        }, { passive: true });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
         const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
@@ -1864,7 +2019,7 @@
 
         const frenchGlyphs = ['é', 'è', 'à', 'ç', 'ô', 'î', '⚜', '«»'];
         const particles = [];
-        const particleCount = Math.min(30, Math.floor(window.innerWidth / 40));
+        const particleCount = Math.min(32, Math.floor(window.innerWidth / 38));
 
         for (let i = 0; i < particleCount; i++) {
             particles.push({
@@ -1916,7 +2071,7 @@
             window.addEventListener('mousemove', (e) => {
                 cursorGlow.style.left = e.clientX + 'px';
                 cursorGlow.style.top = e.clientY + 'px';
-            });
+            }, { passive: true });
         }
 
         const typewriterQuotes = [
@@ -1964,12 +2119,32 @@
                 const deltaX = (e.clientX - cardX) / (window.innerWidth / 2);
                 const deltaY = (e.clientY - cardY) / (window.innerHeight / 2);
                 chassis.style.transform = `rotateY(${deltaX * 12}deg) rotateX(${-deltaY * 12}deg)`;
-            });
+            }, { passive: true });
 
             chassis.addEventListener('mouseleave', () => {
                 chassis.style.transform = 'rotateY(0deg) rotateX(0deg)';
             });
         }
+
+        document.querySelectorAll('.interactive-tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -6;
+                const rotateY = ((x - centerX) / centerX) * 6;
+                card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)';
+            });
+        });
 
         const navToggle = document.getElementById('hamburgerBtn');
         const navMenu = document.getElementById('mobileNavMenu');
@@ -1997,7 +2172,7 @@
                     entry.target.classList.add('revealed');
                 }
             });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.reveal-node').forEach(node => {
             revealObserver.observe(node);
@@ -2061,12 +2236,20 @@
             "Bonjour ! Préparez-vous à réussir vos examens avec brio."
         ];
         let phraseIndex = 0;
+        const btnAudio = document.getElementById('btnAudioBite');
 
-        document.getElementById('btnAudioBite').addEventListener('click', () => {
+        btnAudio.addEventListener('click', () => {
             if ('speechSynthesis' in window) {
+                btnAudio.classList.add('playing');
                 const utterance = new SpeechSynthesisUtterance(phrases[phraseIndex]);
                 utterance.lang = 'fr-FR';
                 utterance.rate = 0.95;
+                utterance.onend = () => {
+                    btnAudio.classList.remove('playing');
+                };
+                utterance.onerror = () => {
+                    btnAudio.classList.remove('playing');
+                };
                 speechSynthesis.speak(utterance);
                 triggerToast('🔊 ' + phrases[phraseIndex]);
                 phraseIndex = (phraseIndex + 1) % phrases.length;
@@ -2084,17 +2267,6 @@
                     item.classList.add('active');
                 }
             });
-        });
-
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('navbar');
-            if (window.scrollY > 40) {
-                header.style.boxShadow = '0 20px 45px rgba(0, 0, 0, 0.92)';
-                header.style.borderColor = 'rgba(245, 196, 105, 0.45)';
-            } else {
-                header.style.boxShadow = 'var(--shadow-card)';
-                header.style.borderColor = 'var(--border-subtle)';
-            }
         });
     </script>
 </body>

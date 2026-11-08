@@ -8,7 +8,7 @@
     
     <meta name="description" content="البورتفوليو الرسمي للأستاذ رضا الخشن - معلم خبير لغة فرنسية بخبرة أكتر من 10 سنين في تدريس طلاب المدارس الدولية ومدارس اللغات والمدارس الحكومية ونظام البكالوريا.">
     <meta name="author" content="DevMeDoAnDrOiD">
-    <meta name="theme-color" content="#050811">
+    <meta name="theme-color" content="#030611">
     
     <meta property="og:type" content="website">
     <meta property="og:title" content="M : Reda Elkhshen 🇫🇷 | معلم خبير لغة فرنسية">
@@ -19,37 +19,36 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         :root {
-            --bg-deep: #050811;
-            --bg-elevated: #0a0f1d;
-            --bg-card: rgba(13, 20, 38, 0.65);
-            --bg-card-hover: rgba(18, 28, 54, 0.85);
-            --border-glow: rgba(229, 197, 120, 0.22);
-            --border-glow-active: rgba(229, 197, 120, 0.6);
-            --border-glass: rgba(255, 255, 255, 0.08);
-            --gold-light: #fef08a;
-            --gold-champagne: #e5c578;
-            --gold-metallic: linear-gradient(135deg, #fff2a3 0%, #e5c578 45%, #b8933b 100%);
-            --blue-royal: #2563eb;
+            --bg-void: #030611;
+            --bg-surface: #070c1a;
+            --bg-panel: rgba(11, 18, 36, 0.7);
+            --bg-panel-hover: rgba(16, 26, 52, 0.9);
+            --gold-accent: #f5c469;
+            --gold-sheen: #ffe6a3;
+            --gold-metallic: linear-gradient(135deg, #fff3c4 0%, #f5c469 50%, #ba892e 100%);
+            --blue-french: #2563eb;
             --blue-vivid: #3b82f6;
-            --blue-electric: #38bdf8;
-            --blue-glow: 0 0 35px rgba(37, 99, 235, 0.4);
+            --blue-neon: #38bdf8;
+            --border-subtle: rgba(245, 196, 105, 0.18);
+            --border-active: rgba(245, 196, 105, 0.55);
+            --border-glass: rgba(255, 255, 255, 0.08);
             --text-pure: #ffffff;
-            --text-silver: #cbd5e1;
-            --text-muted: #94a3b8;
-            --text-faded: #64748b;
+            --text-lead: #e2e8f0;
+            --text-dim: #94a3b8;
+            --text-muted: #64748b;
             --radius-sm: 12px;
             --radius-md: 20px;
             --radius-lg: 32px;
             --radius-pill: 9999px;
-            --shadow-subtle: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
-            --shadow-deep: 0 25px 60px -15px rgba(0, 0, 0, 0.85);
-            --shadow-gold: 0 0 40px rgba(229, 197, 120, 0.2);
-            --cubic-bounce: cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow-card: 0 20px 50px -15px rgba(0, 0, 0, 0.85);
+            --shadow-gold: 0 0 35px rgba(245, 196, 105, 0.22);
+            --shadow-blue: 0 0 35px rgba(37, 99, 235, 0.35);
+            --ease-fluid: cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -66,87 +65,49 @@
         }
 
         body {
-            background-color: var(--bg-deep);
+            background-color: var(--bg-void);
             color: var(--text-pure);
-            font-family: 'Alexandria', 'Tajawal', sans-serif;
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
             overflow-x: hidden;
-            line-height: 1.7;
+            line-height: 1.75;
             min-height: 100vh;
             position: relative;
-            selection-background-color: var(--gold-champagne);
-            selection-color: var(--bg-deep);
         }
 
         ::selection {
-            background: var(--gold-champagne);
-            color: #050811;
+            background: var(--gold-accent);
+            color: #030611;
         }
 
-        #hero-canvas {
+        .ambient-canvas-wrapper {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .ambient-aurora {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
+            inset: 0;
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
         }
 
-        .aurora-orb {
+        #bgCanvas {
             position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            width: 450px;
+            height: 450px;
             border-radius: 50%;
-            filter: blur(140px);
-            opacity: 0.25;
-            transition: transform 0.5s ease-out;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(245, 196, 105, 0.06) 40%, transparent 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 1;
+            transition: transform 0.12s ease-out;
+            filter: blur(50px);
         }
 
-        .orb-1 {
-            width: 55vw;
-            height: 55vw;
-            top: -15%;
-            right: -10%;
-            background: radial-gradient(circle, #1e3a8a 0%, #172554 70%);
-            animation: orbFloat 20s infinite alternate ease-in-out;
-        }
-
-        .orb-2 {
-            width: 45vw;
-            height: 45vw;
-            bottom: 5%;
-            left: -10%;
-            background: radial-gradient(circle, #78350f 0%, #3b1d03 70%);
-            opacity: 0.18;
-            animation: orbFloat 25s infinite alternate-reverse ease-in-out;
-        }
-
-        .orb-3 {
-            width: 35vw;
-            height: 35vw;
-            top: 40%;
-            left: 30%;
-            background: radial-gradient(circle, #1d4ed8 0%, transparent 70%);
-            opacity: 0.15;
-            animation: orbFloat 18s infinite alternate ease-in-out;
-        }
-
-        @keyframes orbFloat {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(-40px, 30px) scale(1.08); }
-            100% { transform: translate(30px, -20px) scale(0.95); }
-        }
-
-        .layout-shell {
+        .site-shell {
             max-width: 1240px;
             margin: 0 auto;
             padding: 0 24px;
@@ -154,45 +115,45 @@
             z-index: 10;
         }
 
-        header.parisian-nav {
+        header.navbar-dock {
             position: fixed;
-            top: 18px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
             width: calc(100% - 48px);
             max-width: 1180px;
             z-index: 1000;
-            background: rgba(9, 14, 28, 0.75);
-            backdrop-filter: blur(28px);
-            -webkit-backdrop-filter: blur(28px);
-            border: 1px solid var(--border-glow);
+            background: rgba(7, 12, 26, 0.82);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-pill);
             padding: 10px 24px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: var(--shadow-deep);
-            transition: var(--cubic-bounce);
+            box-shadow: var(--shadow-card);
+            transition: var(--ease-fluid);
         }
 
-        .nav-avatar-cluster {
+        .nav-brand-group {
             display: flex;
             align-items: center;
             gap: 14px;
             text-decoration: none;
         }
 
-        .avatar-ring {
+        .brand-avatar-box {
             position: relative;
-            width: 46px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             padding: 2px;
             background: var(--gold-metallic);
-            box-shadow: 0 0 16px rgba(229, 197, 120, 0.4);
+            box-shadow: 0 0 16px rgba(245, 196, 105, 0.4);
         }
 
-        .avatar-ring img {
+        .brand-avatar-box img {
             width: 100%;
             height: 100%;
             border-radius: 50%;
@@ -200,91 +161,87 @@
             display: block;
         }
 
-        .pulse-indicator {
+        .live-dot {
             position: absolute;
-            bottom: 1px;
-            right: 1px;
-            width: 11px;
-            height: 11px;
+            bottom: 0;
+            right: 0;
+            width: 12px;
+            height: 12px;
             background: #22c55e;
             border-radius: 50%;
-            border: 2px solid #050811;
-            box-shadow: 0 0 8px #22c55e;
+            border: 2px solid #070c1a;
+            box-shadow: 0 0 10px #22c55e;
         }
 
-        .nav-brand-title {
+        .brand-text-block {
             display: flex;
             flex-direction: column;
         }
 
-        .name-label {
+        .brand-name-val {
             font-size: 1.05rem;
             font-weight: 800;
             color: #ffffff;
             letter-spacing: 0.3px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
-        .role-tagline {
-            font-size: 0.7rem;
-            color: var(--gold-champagne);
+        .brand-sub-val {
+            font-size: 0.72rem;
+            color: var(--gold-accent);
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            letter-spacing: 0.8px;
         }
 
-        .nav-menu-bar {
+        .nav-links-hub {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 22px;
             list-style: none;
         }
 
-        .nav-menu-bar a {
+        .nav-links-hub a {
             text-decoration: none;
-            color: var(--text-silver);
+            color: var(--text-lead);
             font-size: 0.92rem;
             font-weight: 500;
-            padding: 6px 10px;
+            padding: 6px 12px;
             border-radius: 8px;
             transition: all 0.3s ease;
             position: relative;
         }
 
-        .nav-menu-bar a:hover {
-            color: var(--gold-light);
-            background: rgba(229, 197, 120, 0.08);
+        .nav-links-hub a:hover {
+            color: var(--gold-sheen);
+            background: rgba(245, 196, 105, 0.08);
         }
 
-        .nav-actions-wrap {
+        .nav-cta-cluster {
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        .btn-direct-wa {
+        .btn-top-wa {
             background: var(--gold-metallic);
-            color: #050811;
-            padding: 9px 20px;
+            color: #030611;
+            padding: 10px 22px;
             border-radius: var(--radius-pill);
             font-weight: 800;
-            font-size: 0.85rem;
+            font-size: 0.86rem;
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: var(--cubic-bounce);
-            box-shadow: 0 4px 18px rgba(229, 197, 120, 0.35);
+            transition: var(--ease-fluid);
+            box-shadow: 0 4px 18px rgba(245, 196, 105, 0.35);
         }
 
-        .btn-direct-wa:hover {
+        .btn-top-wa:hover {
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(229, 197, 120, 0.55);
+            box-shadow: 0 8px 25px rgba(245, 196, 105, 0.55);
         }
 
-        .btn-menu-trigger {
+        .mobile-btn-toggle {
             display: none;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-glass);
@@ -298,7 +255,7 @@
             justify-content: center;
         }
 
-        .hero-grand-stage {
+        .hero-stage {
             padding: 160px 0 90px;
             min-height: 92vh;
             display: flex;
@@ -306,7 +263,7 @@
             position: relative;
         }
 
-        .hero-two-col {
+        .hero-grid-2col {
             display: grid;
             grid-template-columns: 1.2fr 0.8fr;
             gap: 50px;
@@ -314,51 +271,71 @@
             width: 100%;
         }
 
-        .status-pill-badge {
+        .hero-live-pill {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             padding: 6px 18px;
             border-radius: var(--radius-pill);
-            background: rgba(229, 197, 120, 0.1);
-            border: 1px solid var(--border-glow);
-            color: var(--gold-light);
-            font-size: 0.84rem;
+            background: rgba(245, 196, 105, 0.08);
+            border: 1px solid var(--border-subtle);
+            color: var(--gold-sheen);
+            font-size: 0.85rem;
             font-weight: 700;
             margin-bottom: 24px;
             backdrop-filter: blur(12px);
         }
 
-        .status-pill-badge i {
-            color: var(--gold-champagne);
-        }
-
-        .hero-headline {
+        .hero-headline-main {
             font-size: clamp(2.3rem, 4.4vw, 3.8rem);
-            font-weight: 900;
-            line-height: 1.22;
-            margin-bottom: 22px;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 20px;
             color: #ffffff;
-            letter-spacing: -0.5px;
         }
 
-        .hero-headline span.gold-glow-text {
+        .hero-headline-main span.gold-highlight {
             background: var(--gold-metallic);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
 
-        .hero-pitch {
-            font-size: clamp(1.05rem, 1.6vw, 1.22rem);
-            color: var(--text-silver);
+        .typewriter-ribbon {
+            min-height: 42px;
+            display: flex;
+            align-items: center;
+            font-size: clamp(1.1rem, 2vw, 1.35rem);
+            font-weight: 700;
+            color: var(--blue-neon);
+            margin-bottom: 24px;
+        }
+
+        .typewriter-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background-color: var(--gold-accent);
+            margin-right: 6px;
+            animation: blink 0.8s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hero-lead-text {
+            font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+            color: var(--text-lead);
             line-height: 1.9;
             margin-bottom: 38px;
             max-width: 630px;
             font-weight: 400;
         }
 
-        .hero-interactive-dock {
+        .hero-actions-dock {
             display: flex;
             align-items: center;
             gap: 16px;
@@ -366,10 +343,10 @@
             margin-bottom: 45px;
         }
 
-        .btn-hero-primary {
+        .btn-action-primary {
             background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: #ffffff;
-            padding: 16px 32px;
+            padding: 16px 34px;
             border-radius: var(--radius-md);
             font-weight: 800;
             font-size: 1.05rem;
@@ -378,229 +355,229 @@
             align-items: center;
             gap: 12px;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: var(--blue-glow);
-            transition: var(--cubic-bounce);
+            box-shadow: var(--shadow-blue);
+            transition: var(--ease-fluid);
         }
 
-        .btn-hero-primary:hover {
+        .btn-action-primary:hover {
             transform: translateY(-3px);
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
             box-shadow: 0 16px 40px rgba(37, 99, 235, 0.6);
         }
 
-        .btn-soundbite {
+        .btn-french-audio {
             background: rgba(255, 255, 255, 0.05);
-            color: var(--gold-champagne);
+            color: var(--gold-accent);
             padding: 15px 24px;
             border-radius: var(--radius-md);
             font-weight: 700;
             font-size: 0.95rem;
             cursor: pointer;
-            border: 1px solid var(--border-glow);
+            border: 1px solid var(--border-subtle);
             display: flex;
             align-items: center;
             gap: 10px;
             backdrop-filter: blur(15px);
-            transition: var(--cubic-bounce);
+            transition: var(--ease-fluid);
         }
 
-        .btn-soundbite:hover {
-            background: rgba(229, 197, 120, 0.14);
-            border-color: var(--border-glow-active);
+        .btn-french-audio:hover {
+            background: rgba(245, 196, 105, 0.12);
+            border-color: var(--border-active);
             transform: translateY(-2px);
         }
 
-        .hero-portrait-stage {
+        .hero-portrait-wrap {
             position: relative;
             perspective: 1000px;
             display: flex;
             justify-content: center;
         }
 
-        .portrait-3d-card {
+        .portrait-3d-chassis {
             position: relative;
             width: 100%;
             max-width: 420px;
             aspect-ratio: 1 / 1;
             border-radius: var(--radius-lg);
             padding: 8px;
-            background: linear-gradient(145deg, rgba(229, 197, 120, 0.3) 0%, rgba(37, 99, 235, 0.15) 50%, rgba(13, 20, 38, 0.9) 100%);
-            box-shadow: var(--shadow-deep), var(--shadow-gold);
+            background: linear-gradient(145deg, rgba(245, 196, 105, 0.35) 0%, rgba(37, 99, 235, 0.2) 50%, rgba(11, 18, 36, 0.9) 100%);
+            box-shadow: var(--shadow-card), var(--shadow-gold);
             transform-style: preserve-3d;
-            transition: transform 0.5s var(--cubic-bounce);
+            transition: transform 0.4s var(--ease-fluid);
         }
 
-        .portrait-inner-frame {
+        .portrait-inner-glass {
             width: 100%;
             height: 100%;
             border-radius: calc(var(--radius-lg) - 6px);
             overflow: hidden;
             position: relative;
-            background: #080d19;
+            background: #070c1a;
         }
 
-        .portrait-inner-frame img {
+        .portrait-inner-glass img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center 20%;
             display: block;
-            transition: transform 0.8s var(--cubic-bounce);
+            transition: transform 0.8s var(--ease-fluid);
         }
 
-        .portrait-3d-card:hover .portrait-inner-frame img {
+        .portrait-3d-chassis:hover .portrait-inner-glass img {
             transform: scale(1.05);
         }
 
-        .hologram-chip {
+        .holo-chip {
             position: absolute;
             z-index: 15;
-            background: rgba(10, 16, 32, 0.88);
-            border: 1px solid var(--border-glow);
+            background: rgba(7, 12, 26, 0.9);
+            border: 1px solid var(--border-subtle);
             backdrop-filter: blur(20px);
             border-radius: var(--radius-md);
             padding: 12px 18px;
             display: flex;
             align-items: center;
             gap: 12px;
-            box-shadow: var(--shadow-deep);
-            animation: holoDrift 6s infinite alternate ease-in-out;
+            box-shadow: var(--shadow-card);
+            animation: chipHover 6s infinite alternate ease-in-out;
             pointer-events: none;
         }
 
-        .chip-exp {
+        .chip-years {
             bottom: -20px;
             right: -15px;
         }
 
-        .chip-bac {
+        .chip-baccalaureate {
             top: 25px;
             left: -20px;
             animation-delay: -3s;
         }
 
-        @keyframes holoDrift {
+        @keyframes chipHover {
             0% { transform: translateY(0); }
             100% { transform: translateY(-8px); }
         }
 
-        .chip-icon-sq {
+        .chip-icon-box {
             width: 42px;
             height: 42px;
             border-radius: 12px;
-            background: rgba(229, 197, 120, 0.15);
-            color: var(--gold-champagne);
+            background: rgba(245, 196, 105, 0.15);
+            color: var(--gold-accent);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.25rem;
         }
 
-        .chip-details h5 {
+        .chip-info h5 {
             font-size: 1.05rem;
-            font-weight: 900;
+            font-weight: 800;
             color: #ffffff;
             line-height: 1.2;
         }
 
-        .chip-details span {
+        .chip-info span {
             font-size: 0.75rem;
-            color: var(--gold-champagne);
+            color: var(--gold-accent);
             font-weight: 600;
         }
 
-        .metrics-glass-strip {
+        .credibility-glass-bar {
             margin: 20px 0 80px;
             padding: 26px 36px;
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
+            background: var(--bg-panel);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
             backdrop-filter: blur(25px);
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
-            box-shadow: var(--shadow-subtle);
+            box-shadow: var(--shadow-card);
         }
 
-        .metric-cell {
+        .cred-item {
             text-align: center;
             position: relative;
         }
 
-        .metric-cell:not(:last-child)::after {
+        .cred-item:not(:last-child)::after {
             content: '';
             position: absolute;
             left: 0;
             top: 15%;
             height: 70%;
             width: 1px;
-            background: rgba(229, 197, 120, 0.18);
+            background: rgba(245, 196, 105, 0.18);
         }
 
-        .metric-num {
-            font-family: 'Plus Jakarta Sans', 'Alexandria', sans-serif;
+        .cred-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: clamp(1.8rem, 2.6vw, 2.4rem);
-            font-weight: 900;
-            color: var(--gold-light);
+            font-weight: 800;
+            color: var(--gold-sheen);
             line-height: 1.1;
             margin-bottom: 4px;
         }
 
-        .metric-label {
+        .cred-label {
             font-size: 0.88rem;
-            color: var(--text-silver);
+            color: var(--text-lead);
             font-weight: 600;
         }
 
-        .stage-section {
+        .content-section {
             padding: 80px 0;
             position: relative;
         }
 
-        .section-header-box {
+        .section-lead-title {
             text-align: center;
             max-width: 740px;
             margin: 0 auto 55px;
         }
 
-        .section-french-kicker {
+        .french-subheading {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-size: 0.95rem;
-            color: var(--gold-champagne);
+            color: var(--gold-accent);
             letter-spacing: 1px;
             margin-bottom: 8px;
             display: block;
         }
 
-        .section-main-title {
+        .headline-section-h2 {
             font-size: clamp(1.8rem, 3.2vw, 2.7rem);
-            font-weight: 900;
+            font-weight: 800;
             color: #ffffff;
             line-height: 1.3;
             margin-bottom: 16px;
         }
 
-        .section-sub-desc {
+        .sub-description {
             font-size: 1.05rem;
-            color: var(--text-silver);
+            color: var(--text-lead);
             line-height: 1.8;
             font-weight: 400;
         }
 
-        .systems-grid-layout {
+        .systems-interactive-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
             gap: 24px;
         }
 
-        .system-interactive-card {
-            background: var(--bg-card);
+        .system-lux-card {
+            background: var(--bg-panel);
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-lg);
             padding: 36px 28px;
             backdrop-filter: blur(25px);
-            transition: var(--cubic-bounce);
+            transition: var(--ease-fluid);
             position: relative;
             overflow: hidden;
             display: flex;
@@ -608,7 +585,7 @@
             cursor: default;
         }
 
-        .system-interactive-card::before {
+        .system-lux-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -620,18 +597,18 @@
             transition: opacity 0.4s ease;
         }
 
-        .system-interactive-card:hover {
+        .system-lux-card:hover {
             transform: translateY(-8px);
-            border-color: var(--border-glow);
-            background: var(--bg-card-hover);
-            box-shadow: var(--shadow-deep), var(--shadow-gold);
+            border-color: var(--border-subtle);
+            background: var(--bg-panel-hover);
+            box-shadow: var(--shadow-card), var(--shadow-gold);
         }
 
-        .system-interactive-card:hover::before {
+        .system-lux-card:hover::before {
             opacity: 1;
         }
 
-        .system-badge-icon {
+        .card-icon-emblem {
             width: 58px;
             height: 58px;
             border-radius: 18px;
@@ -640,67 +617,67 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--blue-electric);
+            color: var(--blue-neon);
             font-size: 1.6rem;
             margin-bottom: 24px;
-            transition: var(--cubic-bounce);
+            transition: var(--ease-fluid);
         }
 
-        .system-interactive-card:hover .system-badge-icon {
-            background: rgba(229, 197, 120, 0.15);
-            border-color: var(--gold-champagne);
-            color: var(--gold-light);
+        .system-lux-card:hover .card-icon-emblem {
+            background: rgba(245, 196, 105, 0.15);
+            border-color: var(--gold-accent);
+            color: var(--gold-sheen);
             transform: rotate(-6deg) scale(1.08);
         }
 
-        .system-interactive-card h4 {
+        .system-lux-card h4 {
             font-size: 1.35rem;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 12px;
         }
 
-        .system-interactive-card p {
-            color: var(--text-silver);
+        .system-lux-card p {
+            color: var(--text-lead);
             font-size: 0.94rem;
             line-height: 1.8;
             margin-bottom: 22px;
             flex-grow: 1;
         }
 
-        .system-slug-tag {
+        .system-tag-pill {
             align-self: flex-start;
             font-size: 0.78rem;
             font-weight: 700;
             padding: 5px 14px;
             border-radius: var(--radius-pill);
             background: rgba(255, 255, 255, 0.05);
-            color: var(--gold-champagne);
-            border: 1px solid rgba(229, 197, 120, 0.15);
+            color: var(--gold-accent);
+            border: 1px solid rgba(245, 196, 105, 0.15);
             font-family: 'Plus Jakarta Sans', sans-serif;
             letter-spacing: 0.5px;
         }
 
-        .method-editorial-wrap {
+        .methodology-editorial-container {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
             gap: 40px;
             align-items: center;
-            background: var(--bg-card);
-            border: 1px solid var(--border-glow);
+            background: var(--bg-panel);
+            border: 1px solid var(--border-subtle);
             border-radius: 36px;
             padding: 48px;
             backdrop-filter: blur(30px);
-            box-shadow: var(--shadow-deep);
+            box-shadow: var(--shadow-card);
         }
 
-        .method-cards-list {
+        .method-steps-column {
             display: flex;
             flex-direction: column;
             gap: 18px;
         }
 
-        .method-row-item {
+        .method-step-card {
             display: flex;
             align-items: flex-start;
             gap: 18px;
@@ -708,97 +685,97 @@
             border-radius: var(--radius-md);
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: var(--cubic-bounce);
+            transition: var(--ease-fluid);
         }
 
-        .method-row-item:hover {
-            background: rgba(229, 197, 120, 0.05);
-            border-color: var(--border-glow);
+        .method-step-card:hover {
+            background: rgba(245, 196, 105, 0.05);
+            border-color: var(--border-subtle);
             transform: translateX(-6px);
         }
 
-        .method-step-sq {
+        .step-icon-badge {
             width: 46px;
             height: 46px;
             min-width: 46px;
             border-radius: 14px;
-            background: rgba(229, 197, 120, 0.12);
-            color: var(--gold-champagne);
+            background: rgba(245, 196, 105, 0.12);
+            color: var(--gold-accent);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.25rem;
         }
 
-        .method-text h5 {
+        .step-text-wrap h5 {
             font-size: 1.1rem;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 4px;
         }
 
-        .method-text p {
+        .step-text-wrap p {
             font-size: 0.92rem;
-            color: var(--text-silver);
+            color: var(--text-lead);
             line-height: 1.7;
         }
 
-        .method-paris-showcase {
-            background: linear-gradient(150deg, #0c1429 0%, #060914 100%);
-            border: 1px solid var(--border-glow);
+        .paris-prestige-card {
+            background: linear-gradient(150deg, #090e1f 0%, #040711 100%);
+            border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
             padding: 42px 32px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow-subtle);
+            box-shadow: var(--shadow-card);
         }
 
-        .fleur-de-lis {
+        .fleur-symbol {
             font-size: 3.4rem;
             margin-bottom: 16px;
             display: inline-block;
         }
 
-        .showcase-quote {
+        .prestige-quote {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             font-size: 1.35rem;
-            color: var(--gold-light);
+            color: var(--gold-sheen);
             line-height: 1.6;
             margin-bottom: 14px;
         }
 
-        .showcase-author {
-            color: var(--text-silver);
+        .prestige-commentary {
+            color: var(--text-lead);
             font-size: 0.95rem;
             line-height: 1.8;
             margin-bottom: 26px;
         }
 
-        .gold-seal-pill {
+        .educator-seal-pill {
             display: inline-block;
             padding: 9px 24px;
             border-radius: var(--radius-pill);
-            background: rgba(229, 197, 120, 0.12);
-            border: 1px solid var(--border-glow);
-            color: var(--gold-champagne);
+            background: rgba(245, 196, 105, 0.12);
+            border: 1px solid var(--border-subtle);
+            color: var(--gold-accent);
             font-weight: 800;
             font-size: 0.9rem;
         }
 
-        .instapay-exclusive-block {
-            background: linear-gradient(145deg, rgba(22, 12, 38, 0.8) 0%, rgba(9, 14, 28, 0.9) 100%);
-            border: 1px solid var(--border-glow);
+        .instapay-section-wrapper {
+            background: linear-gradient(145deg, rgba(20, 10, 36, 0.8) 0%, rgba(7, 12, 26, 0.9) 100%);
+            border: 1px solid var(--border-subtle);
             border-radius: 36px;
             padding: 48px;
             backdrop-filter: blur(35px);
             position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow-deep);
+            box-shadow: var(--shadow-card);
         }
 
-        .instapay-two-col {
+        .instapay-grid-2col {
             display: grid;
             grid-template-columns: 1.15fr 0.85fr;
             gap: 40px;
@@ -807,7 +784,7 @@
             z-index: 2;
         }
 
-        .instapay-ribbon {
+        .instapay-tag-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -821,25 +798,25 @@
             margin-bottom: 20px;
         }
 
-        .instapay-header-title {
+        .instapay-title-h2 {
             font-size: clamp(1.7rem, 2.5vw, 2.3rem);
-            font-weight: 900;
+            font-weight: 800;
             color: #ffffff;
             margin-bottom: 16px;
         }
 
-        .instapay-egyptian-alert {
-            background: rgba(229, 197, 120, 0.08);
-            border-right: 4px solid var(--gold-champagne);
+        .instapay-disclaimer-box {
+            background: rgba(245, 196, 105, 0.08);
+            border-right: 4px solid var(--gold-accent);
             padding: 14px 20px;
             border-radius: 8px;
             margin: 20px 0 24px;
             font-size: 0.92rem;
-            color: #fef08a;
+            color: #ffe6a3;
             line-height: 1.7;
         }
 
-        .instapay-glass-card {
+        .instapay-card-visual {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
             border: 1px solid rgba(255, 255, 255, 0.25);
             border-radius: 24px;
@@ -851,43 +828,43 @@
             gap: 22px;
             position: relative;
             transform-style: preserve-3d;
-            transition: var(--cubic-bounce);
+            transition: var(--ease-fluid);
         }
 
-        .instapay-glass-card:hover {
+        .instapay-card-visual:hover {
             transform: translateY(-4px) rotateX(4deg);
-            border-color: var(--gold-champagne);
+            border-color: var(--gold-accent);
         }
 
-        .card-brand-row {
+        .card-header-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .gold-chip {
+        .chip-emblem {
             width: 44px;
             height: 32px;
-            background: linear-gradient(135deg, #fef08a 0%, #d4af37 100%);
+            background: linear-gradient(135deg, #ffe6a3 0%, #d4af37 100%);
             border-radius: 6px;
             box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
         }
 
-        .instapay-logo-text {
+        .instapay-brand-styled {
             font-family: 'Plus Jakarta Sans', sans-serif;
             font-size: 1.3rem;
-            font-weight: 900;
+            font-weight: 800;
             color: #ffffff;
             letter-spacing: 0.5px;
         }
 
-        .instapay-logo-text span {
+        .instapay-brand-styled span {
             color: #c084fc;
         }
 
-        .handle-display-box {
-            background: rgba(5, 8, 17, 0.65);
-            border: 1px dashed rgba(229, 197, 120, 0.45);
+        .handle-interactive-card {
+            background: rgba(3, 6, 17, 0.65);
+            border: 1px dashed rgba(245, 196, 105, 0.45);
             padding: 14px 18px;
             border-radius: 14px;
             display: flex;
@@ -896,22 +873,22 @@
             direction: ltr;
         }
 
-        .handle-text-val {
+        .handle-string-text {
             font-family: 'Plus Jakarta Sans', monospace;
             font-size: 1.1rem;
             color: #ffffff;
-            font-weight: 800;
+            font-weight: 700;
             letter-spacing: 0.5px;
         }
 
-        .btn-copy-action {
-            background: rgba(229, 197, 120, 0.18);
-            border: 1px solid var(--gold-champagne);
-            color: var(--gold-light);
+        .btn-copy-instant {
+            background: rgba(245, 196, 105, 0.18);
+            border: 1px solid var(--gold-accent);
+            color: var(--gold-sheen);
             padding: 6px 14px;
             border-radius: 8px;
             font-size: 0.85rem;
-            font-weight: 800;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
@@ -919,18 +896,18 @@
             gap: 6px;
         }
 
-        .btn-copy-action:hover {
-            background: var(--gold-champagne);
-            color: #050811;
+        .btn-copy-instant:hover {
+            background: var(--gold-accent);
+            color: #030611;
         }
 
-        .card-bottom-row {
+        .card-bottom-flex {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .btn-trigger-pay {
+        .btn-launch-instapay {
             background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
             color: #ffffff;
             text-decoration: none;
@@ -942,22 +919,22 @@
             align-items: center;
             gap: 8px;
             box-shadow: 0 4px 16px rgba(168, 85, 247, 0.45);
-            transition: var(--cubic-bounce);
+            transition: var(--ease-fluid);
         }
 
-        .btn-trigger-pay:hover {
+        .btn-launch-instapay:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(168, 85, 247, 0.65);
         }
 
-        .contacts-triad {
+        .contact-channels-trio {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
         }
 
-        .contact-action-cell {
-            background: var(--bg-card);
+        .contact-channel-brick {
+            background: var(--bg-panel);
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-lg);
             padding: 38px 26px;
@@ -966,17 +943,17 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
-            transition: var(--cubic-bounce);
+            transition: var(--ease-fluid);
             position: relative;
         }
 
-        .contact-action-cell.primary-spotlight {
+        .contact-channel-brick.spotlight-channel {
             border-color: rgba(37, 99, 235, 0.5);
-            background: linear-gradient(150deg, rgba(37, 99, 235, 0.1) 0%, rgba(13, 20, 38, 0.85) 100%);
-            box-shadow: var(--blue-glow);
+            background: linear-gradient(150deg, rgba(37, 99, 235, 0.1) 0%, rgba(11, 18, 36, 0.85) 100%);
+            box-shadow: var(--shadow-blue);
         }
 
-        .spotlight-crown {
+        .spotlight-pill-crown {
             position: absolute;
             top: -12px;
             background: linear-gradient(90deg, #2563eb, #38bdf8);
@@ -988,13 +965,13 @@
             letter-spacing: 0.5px;
         }
 
-        .contact-action-cell:hover {
+        .contact-channel-brick:hover {
             transform: translateY(-6px);
-            box-shadow: var(--shadow-deep);
-            border-color: var(--border-glow);
+            box-shadow: var(--shadow-card);
+            border-color: var(--border-subtle);
         }
 
-        .channel-halo-icon {
+        .channel-bubble-icon {
             width: 72px;
             height: 72px;
             border-radius: 50%;
@@ -1003,55 +980,55 @@
             justify-content: center;
             font-size: 2.1rem;
             margin-bottom: 20px;
-            transition: var(--cubic-bounce);
+            transition: var(--ease-fluid);
         }
 
-        .icon-wa-bus {
+        .icon-wa-business-style {
             background: rgba(37, 211, 102, 0.12);
             color: #25d366;
             border: 1px solid rgba(37, 211, 102, 0.3);
         }
 
-        .icon-wa-per {
+        .icon-wa-personal-style {
             background: rgba(56, 189, 248, 0.12);
             color: #38bdf8;
             border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
-        .icon-fb-main {
+        .icon-facebook-style {
             background: rgba(24, 119, 242, 0.12);
             color: #1877f2;
             border: 1px solid rgba(24, 119, 242, 0.3);
         }
 
-        .contact-action-cell:hover .channel-halo-icon {
+        .contact-channel-brick:hover .channel-bubble-icon {
             transform: scale(1.1);
         }
 
-        .channel-main-name {
+        .channel-name-h3 {
             font-size: 1.3rem;
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 8px;
         }
 
-        .channel-egyptian-desc {
+        .channel-egyptian-caption {
             font-size: 0.88rem;
-            color: var(--text-silver);
+            color: var(--text-lead);
             margin-bottom: 18px;
             line-height: 1.6;
         }
 
-        .channel-tele-val {
+        .channel-dial-string {
             font-family: 'Plus Jakarta Sans', monospace;
             font-size: 1.15rem;
             font-weight: 800;
-            color: var(--gold-light);
+            color: var(--gold-sheen);
             direction: ltr;
             margin-bottom: 22px;
         }
 
-        .btn-channel-tap {
+        .btn-channel-direct {
             width: 100%;
             padding: 14px;
             border-radius: var(--radius-md);
@@ -1062,41 +1039,41 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            transition: var(--cubic-bounce);
+            transition: var(--ease-fluid);
         }
 
-        .btn-green-wa {
+        .btn-wa-theme {
             background: #25d366;
             color: #032b12;
         }
 
-        .btn-green-wa:hover {
+        .btn-wa-theme:hover {
             background: #22c55e;
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }
 
-        .btn-alt-wa {
+        .btn-wa-secondary {
             background: rgba(255, 255, 255, 0.05);
             color: #ffffff;
             border: 1px solid var(--border-glass);
         }
 
-        .btn-alt-wa:hover {
+        .btn-wa-secondary:hover {
             background: rgba(255, 255, 255, 0.1);
-            border-color: var(--border-glow);
+            border-color: var(--border-subtle);
         }
 
-        .btn-blue-fb {
+        .btn-fb-theme {
             background: #1877f2;
             color: #ffffff;
         }
 
-        .btn-blue-fb:hover {
+        .btn-fb-theme:hover {
             background: #1d4ed8;
             box-shadow: 0 10px 25px rgba(24, 119, 242, 0.4);
         }
 
-        .faq-accordion-box {
+        .faq-accordion-container {
             max-width: 820px;
             margin: 0 auto;
             display: flex;
@@ -1104,19 +1081,19 @@
             gap: 16px;
         }
 
-        .faq-card-item {
-            background: var(--bg-card);
+        .faq-unit-card {
+            background: var(--bg-panel);
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-md);
             overflow: hidden;
-            transition: var(--cubic-bounce);
+            transition: var(--ease-fluid);
         }
 
-        .faq-card-item:hover {
-            border-color: var(--border-glow);
+        .faq-unit-card:hover {
+            border-color: var(--border-subtle);
         }
 
-        .faq-question-btn {
+        .faq-trigger-btn {
             width: 100%;
             padding: 22px 24px;
             background: none;
@@ -1132,83 +1109,83 @@
             font-family: inherit;
         }
 
-        .faq-toggle-ico {
+        .faq-indicator-ico {
             font-size: 0.9rem;
-            color: var(--gold-champagne);
+            color: var(--gold-accent);
             transition: transform 0.3s ease;
         }
 
-        .faq-card-item.expanded .faq-toggle-ico {
+        .faq-unit-card.active .faq-indicator-ico {
             transform: rotate(180deg);
         }
 
-        .faq-answer-pane {
+        .faq-drawer-pane {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s var(--cubic-bounce), padding 0.3s ease;
+            transition: max-height 0.4s var(--ease-fluid), padding 0.3s ease;
             padding: 0 24px;
-            color: var(--text-silver);
+            color: var(--text-lead);
             font-size: 0.95rem;
             line-height: 1.8;
         }
 
-        .faq-card-item.expanded .faq-answer-pane {
+        .faq-unit-card.active .faq-drawer-pane {
             max-height: 200px;
             padding-bottom: 22px;
         }
 
-        footer.haute-footer {
+        footer.site-footer-lux {
             margin-top: 100px;
             padding: 70px 0 35px;
-            border-top: 1px solid var(--border-glow);
-            background: rgba(5, 8, 17, 0.95);
+            border-top: 1px solid var(--border-subtle);
+            background: rgba(3, 6, 17, 0.95);
             backdrop-filter: blur(25px);
             position: relative;
         }
 
-        .footer-tri-grid {
+        .footer-3col-grid {
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr;
             gap: 50px;
             margin-bottom: 50px;
         }
 
-        .footer-bio-col p {
-            color: var(--text-silver);
+        .footer-bio-summary p {
+            color: var(--text-lead);
             font-size: 0.94rem;
             line-height: 1.85;
             margin-top: 14px;
             max-width: 440px;
         }
 
-        .footer-col-head {
+        .footer-col-headline {
             font-size: 1.1rem;
             font-weight: 800;
-            color: var(--gold-champagne);
+            color: var(--gold-accent);
             margin-bottom: 22px;
             position: relative;
             padding-bottom: 8px;
         }
 
-        .footer-col-head::after {
+        .footer-col-headline::after {
             content: '';
             position: absolute;
             bottom: 0;
             right: 0;
             width: 35px;
             height: 2px;
-            background: var(--gold-champagne);
+            background: var(--gold-accent);
         }
 
-        .footer-links-col {
+        .footer-menu-list {
             list-style: none;
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        .footer-links-col a {
-            color: var(--text-silver);
+        .footer-menu-list a {
+            color: var(--text-lead);
             text-decoration: none;
             font-size: 0.94rem;
             transition: all 0.3s ease;
@@ -1217,12 +1194,12 @@
             gap: 8px;
         }
 
-        .footer-links-col a:hover {
-            color: var(--gold-light);
+        .footer-menu-list a:hover {
+            color: var(--gold-sheen);
             transform: translateX(-4px);
         }
 
-        .footer-bottom-tier {
+        .footer-base-row {
             padding-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
@@ -1231,27 +1208,27 @@
             flex-wrap: wrap;
             gap: 15px;
             font-size: 0.88rem;
-            color: var(--text-faded);
-        }
-
-        .syndicate-signature {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            letter-spacing: 0.5px;
             color: var(--text-muted);
         }
 
-        .syndicate-signature strong {
-            color: var(--gold-champagne);
+        .devmedo-watermark {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: 0.5px;
+            color: var(--text-dim);
+        }
+
+        .devmedo-watermark strong {
+            color: var(--gold-accent);
             font-weight: 700;
         }
 
-        .popup-toast-box {
+        .toast-bubble {
             position: fixed;
             bottom: 30px;
             left: 50%;
             transform: translate(-50%, 100px);
-            background: rgba(10, 16, 32, 0.98);
-            border: 1px solid var(--gold-champagne);
+            background: rgba(7, 12, 26, 0.98);
+            border: 1px solid var(--gold-accent);
             color: #ffffff;
             padding: 14px 28px;
             border-radius: var(--radius-pill);
@@ -1264,11 +1241,11 @@
             font-size: 0.95rem;
             font-weight: 700;
             opacity: 0;
-            transition: all 0.4s var(--cubic-bounce);
+            transition: all 0.4s var(--ease-fluid);
             pointer-events: none;
         }
 
-        .popup-toast-box.active {
+        .toast-bubble.active {
             transform: translate(-50%, 0);
             opacity: 1;
         }
@@ -1276,7 +1253,7 @@
         .reveal-node {
             opacity: 0;
             transform: translateY(35px);
-            transition: opacity 0.85s ease, transform 0.85s var(--cubic-bounce);
+            transition: opacity 0.85s ease, transform 0.85s var(--ease-fluid);
         }
 
         .reveal-node.revealed {
@@ -1285,110 +1262,114 @@
         }
 
         @media (max-width: 992px) {
-            .hero-two-col {
+            .hero-grid-2col {
                 grid-template-columns: 1fr;
                 gap: 50px;
                 text-align: center;
             }
 
-            .hero-pitch {
+            .hero-lead-text {
                 margin: 0 auto 38px;
             }
 
-            .hero-interactive-dock {
+            .typewriter-ribbon {
                 justify-content: center;
             }
 
-            .portrait-3d-card {
+            .hero-actions-dock {
+                justify-content: center;
+            }
+
+            .portrait-3d-chassis {
                 max-width: 380px;
             }
 
-            .method-editorial-wrap {
+            .methodology-editorial-container {
                 grid-template-columns: 1fr;
             }
 
-            .instapay-two-col {
+            .instapay-grid-2col {
                 grid-template-columns: 1fr;
             }
 
-            .contacts-triad {
+            .contact-channels-trio {
                 grid-template-columns: 1fr;
             }
 
-            .metrics-glass-strip {
+            .credibility-glass-bar {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 25px;
             }
 
-            .metric-cell:nth-child(2)::after {
+            .cred-item:nth-child(2)::after {
                 display: none;
             }
 
-            .footer-tri-grid {
+            .footer-3col-grid {
                 grid-template-columns: 1fr;
                 gap: 35px;
             }
         }
 
         @media (max-width: 768px) {
-            header.parisian-nav {
+            header.navbar-dock {
                 top: 12px;
                 width: calc(100% - 24px);
                 padding: 8px 16px;
             }
 
-            .nav-menu-bar {
+            .nav-links-hub {
                 display: none;
                 position: absolute;
                 top: calc(100% + 12px);
                 left: 0;
                 width: 100%;
-                background: rgba(9, 14, 28, 0.98);
-                border: 1px solid var(--border-glow);
+                background: rgba(7, 12, 26, 0.98);
+                border: 1px solid var(--border-subtle);
                 border-radius: var(--radius-md);
                 padding: 20px;
                 flex-direction: column;
                 gap: 14px;
-                box-shadow: var(--shadow-deep);
+                box-shadow: var(--shadow-card);
                 backdrop-filter: blur(28px);
             }
 
-            .nav-menu-bar.open {
+            .nav-links-hub.open {
                 display: flex;
             }
 
-            .btn-menu-trigger {
+            .mobile-btn-toggle {
                 display: flex;
             }
 
-            .hero-grand-stage {
+            .hero-stage {
                 padding: 130px 0 60px;
             }
 
-            .chip-bac {
+            .chip-baccalaureate {
                 top: 10px;
                 left: -10px;
             }
 
-            .chip-exp {
+            .chip-years {
                 bottom: -15px;
                 right: -10px;
             }
 
-            .metrics-glass-strip {
+            .credibility-glass-bar {
                 grid-template-columns: 1fr;
                 padding: 20px;
             }
 
-            .metric-cell::after {
+            .cred-item::after {
                 display: none !important;
             }
 
-            .instapay-exclusive-block {
+            .instapay-section-wrapper {
                 padding: 30px 20px;
             }
 
-            .method-editorial-wrap {
+            .methodology-editorial-container {
                 padding: 30px 20px;
             }
         }
@@ -1400,10 +1381,7 @@
                 transition-duration: 0.001ms !important;
                 scroll-behavior: auto !important;
             }
-            .aurora-orb {
-                animation: none !important;
-            }
-            #hero-canvas {
+            .cursor-glow {
                 display: none;
             }
         }
@@ -1411,27 +1389,25 @@
 </head>
 <body>
 
-    <canvas id="hero-canvas"></canvas>
-
-    <div class="ambient-aurora">
-        <div class="aurora-orb orb-1"></div>
-        <div class="aurora-orb orb-2"></div>
-        <div class="aurora-orb orb-3"></div>
+    <div class="ambient-canvas-wrapper">
+        <canvas id="bgCanvas"></canvas>
     </div>
 
-    <header class="parisian-nav" id="navbar">
-        <a href="#hero" class="nav-avatar-cluster">
-            <div class="avatar-ring">
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <header class="navbar-dock" id="navbar">
+        <a href="#hero" class="nav-brand-group">
+            <div class="brand-avatar-box">
                 <img src="assets/images/reda_profile.jpg" onerror="this.src='https://h.top4top.io/p_396318akg1.jpg'" alt="M : Reda Elkhshen">
-                <span class="pulse-indicator" title="متاح للتسجيل والاستفسارات"></span>
+                <span class="live-dot" title="متاح حالياً للحجز والاستفسار"></span>
             </div>
-            <div class="nav-brand-title">
-                <span class="name-label">M : Reda Elkhshen 🇫🇷</span>
-                <span class="role-tagline">Professeur de Français</span>
+            <div class="brand-text-block">
+                <span class="brand-name-val">M : Reda Elkhshen 🇫🇷</span>
+                <span class="brand-sub-val">Professeur de Français</span>
             </div>
         </a>
 
-        <ul class="nav-menu-bar" id="mobileNavMenu">
+        <ul class="nav-links-hub" id="mobileNavMenu">
             <li><a href="#hero">الرئيسية</a></li>
             <li><a href="#systems">الأنظمة التعليمية</a></li>
             <li><a href="#methodology">المنهجية والشرح</a></li>
@@ -1440,71 +1416,75 @@
             <li><a href="#contact">التواصل المباشر</a></li>
         </ul>
 
-        <div class="nav-actions-wrap">
-            <a href="https://wa.me/201558186187?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%8A%D8%A7%20%D9%85%D8%B3%D9%8A%D9%88%20%D8%B1%D8%B6%D8%A7%D8%8C%20%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D9%85%D9%88%D8%A7%D8%B9%D9%8A%D8%AF%20%D8%AF%D8%B1%D9%88%D8%B3%20%D8%A7%D9%84%D9%84%D8%BA%D8%A9%20%D8%A7%D9%84%D9%81%D8%B1%D9%86%D8%B3%D9%8A%D8%A9" target="_blank" rel="noopener noreferrer" class="btn-direct-wa">
+        <div class="nav-cta-cluster">
+            <a href="https://wa.me/201558186187?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%8A%D8%A7%20%D9%85%D8%B3%D9%8A%D9%88%20%D8%B1%D8%B6%D8%A7%D8%8C%20%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D9%85%D9%88%D8%A7%D8%B9%D9%8A%D8%AF%20%D8%AF%D8%B1%D9%88%D8%B3%20%D8%A7%D9%84%D9%84%D8%BA%D8%A9%20%D8%A7%D9%84%D9%81%D8%B1%D9%86%D8%B3%D9%8A%D8%A9" target="_blank" rel="noopener noreferrer" class="btn-top-wa">
                 <i class="fab fa-whatsapp"></i>
                 <span>استفسار واتساب</span>
             </a>
-            <button class="btn-menu-trigger" id="hamburgerBtn" aria-label="تبديل القائمة">
+            <button class="mobile-btn-toggle" id="hamburgerBtn" aria-label="تبديل القائمة">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </header>
 
-    <div class="layout-shell">
+    <div class="site-shell">
 
-        <section class="hero-grand-stage" id="hero">
-            <div class="hero-two-col">
+        <section class="hero-stage" id="hero">
+            <div class="hero-grid-2col">
                 
-                <div class="hero-text-stage reveal-node">
-                    <div class="status-pill-badge">
+                <div class="hero-copy-block reveal-node">
+                    <div class="hero-live-pill">
                         <i class="fas fa-crown"></i>
-                        <span>التميز الأكاديمي واللغوي | Excellence & Passion</span>
+                        <span>التميز الأكاديمي واللغوي | Pédagogie de Haute Couture</span>
                     </div>
 
-                    <h1 class="hero-headline">
+                    <h1 class="hero-headline-main">
                         الفرنساوي بفهم وشياكة مع<br>
-                        <span class="gold-glow-text">M : Reda Elkhshen 🇫🇷</span>
+                        <span class="gold-highlight">M : Reda Elkhshen 🇫🇷</span>
                     </h1>
 
-                    <p class="hero-pitch">
+                    <div class="typewriter-ribbon">
+                        <span id="typewriterText"></span><span class="typewriter-cursor"></span>
+                    </div>
+
+                    <p class="hero-lead-text">
                         معلم خبير لغة فرنسية بخبرة معتمدة تتجاوز 10 سنين في تدريس طلاب المدارس الدولية، مدارس اللغات، والمدارس الحكومية، مع التخصص والتمكن التام في متطلبات نظام البكالوريا الفرنسي (Baccalauréat). بنفكلك عقدة الجرامير وبنوصلك لأعلى سكور بكل ثقة وسهولة.
                     </p>
 
-                    <div class="hero-interactive-dock">
-                        <a href="https://wa.me/201558186187?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%8A%D8%A7%20%D9%85%D8%B3%D9%8A%D9%88%20%D8%B1%D8%B6%D8%A7%D8%8C%20%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D9%85%D9%88%D8%A7%D8%B9%D9%8A%D8%AF%20%D8%AF%D8%B1%D9%88%D8%B3%20%D8%A7%D9%84%D9%84%D8%BA%D8%A9%20%D8%A7%D9%84%D9%81%D8%B1%D9%86%D8%B3%D9%8A%D8%A9" target="_blank" rel="noopener noreferrer" class="btn-hero-primary">
+                    <div class="hero-actions-dock">
+                        <a href="https://wa.me/201558186187?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%8A%D8%A7%20%D9%85%D8%B3%D9%8A%D9%88%20%D8%B1%D8%B6%D8%A7%D8%8C%20%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D9%85%D9%88%D8%A7%D8%B9%D9%8A%D8%AF%20%D8%AF%D8%B1%D9%88%D8%B3%20%D8%A7%D9%84%D9%84%D8%BA%D8%A9%20%D8%A7%D9%84%D9%81%D8%B1%D9%86%D8%B3%D9%8A%D8%A9" target="_blank" rel="noopener noreferrer" class="btn-action-primary">
                             <i class="fab fa-whatsapp"></i>
                             <span>تواصل واحجز مكانك</span>
                         </a>
 
-                        <button class="btn-soundbite" id="btnAudioBite">
+                        <button class="btn-french-audio" id="btnAudioBite">
                             <i class="fas fa-volume-high"></i>
                             <span>اسمع نطق فرنسي 🔊</span>
                         </button>
                     </div>
                 </div>
 
-                <div class="hero-portrait-stage reveal-node">
-                    <div class="portrait-3d-card" id="portraitCard">
-                        <div class="portrait-inner-frame">
+                <div class="hero-portrait-wrap reveal-node">
+                    <div class="portrait-3d-chassis" id="portraitChassis">
+                        <div class="portrait-inner-glass">
                             <img src="assets/images/reda_profile.jpg" onerror="this.src='https://h.top4top.io/p_396318akg1.jpg'" alt="الأستاذ رضا الخشن معلم خبير لغة فرنسية">
                         </div>
 
-                        <div class="hologram-chip chip-exp">
-                            <div class="chip-icon-sq">
+                        <div class="holo-chip chip-years">
+                            <div class="chip-icon-box">
                                 <i class="fas fa-medal"></i>
                             </div>
-                            <div class="chip-details">
+                            <div class="chip-info">
                                 <h5>+10 سنين</h5>
                                 <span>خبرة تدريسية حقيقية</span>
                             </div>
                         </div>
 
-                        <div class="hologram-chip chip-bac">
-                            <div class="chip-icon-sq" style="background: rgba(37, 99, 235, 0.18); color: #38bdf8;">
+                        <div class="holo-chip chip-baccalaureate">
+                            <div class="chip-icon-box" style="background: rgba(37, 99, 235, 0.18); color: #38bdf8;">
                                 <i class="fas fa-graduation-cap"></i>
                             </div>
-                            <div class="chip-details">
+                            <div class="chip-info">
                                 <h5>نظام البكالوريا</h5>
                                 <span>Baccalauréat Français</span>
                             </div>
@@ -1515,128 +1495,128 @@
             </div>
         </section>
 
-        <section class="metrics-glass-strip reveal-node">
-            <div class="metric-cell">
-                <div class="metric-num">+10</div>
-                <div class="metric-label">سنوات خبرة تدريسية معتمدة</div>
+        <section class="credibility-glass-bar reveal-node">
+            <div class="cred-item">
+                <div class="cred-number">+10</div>
+                <div class="cred-label">سنوات خبرة تدريسية معتمدة</div>
             </div>
-            <div class="metric-cell">
-                <div class="metric-num">4</div>
-                <div class="metric-label">أنظمة ومناهج تعليمية متخصصة</div>
+            <div class="cred-item">
+                <div class="cred-number">4</div>
+                <div class="cred-label">أنظمة ومناهج تعليمية متخصصة</div>
             </div>
-            <div class="metric-cell">
-                <div class="metric-num">100%</div>
-                <div class="metric-label">تأسيس من الصفر وتأهيل نهائي</div>
+            <div class="cred-item">
+                <div class="cred-number">100%</div>
+                <div class="cred-label">تأسيس من الصفر وتأهيل نهائي</div>
             </div>
-            <div class="metric-cell">
-                <div class="metric-num">Direct</div>
-                <div class="metric-label">متابعة شخصية مستمرة وتواصل فوري</div>
+            <div class="cred-item">
+                <div class="cred-number">Direct</div>
+                <div class="cred-label">متابعة شخصية مستمرة وتواصل فوري</div>
             </div>
         </section>
 
-        <section class="stage-section" id="systems">
+        <section class="content-section" id="systems">
             <span id="audiences" style="position: absolute; top: -80px;"></span>
-            <div class="section-header-box reveal-node">
-                <span class="section-french-kicker">Parcours & Systèmes Éducatifs</span>
-                <h2 class="section-main-title">خبرة ممتدة عبر أقوى الأنظمة التعليمية</h2>
-                <p class="section-sub-desc">
+            <div class="section-lead-title reveal-node">
+                <span class="french-subheading">Parcours & Systèmes Éducatifs</span>
+                <h2 class="headline-section-h2">خبرة ممتدة عبر أقوى الأنظمة التعليمية</h2>
+                <p class="sub-description">
                     كل نظام دراسي وليه طريقته ومفاتيحه.. بنقدم خطة تدريس مخصصة ومحكمة تناسب متطلبات كل مدرسة لضمان التفوق الحقيقي.
                 </p>
             </div>
 
-            <div class="systems-grid-layout">
+            <div class="systems-interactive-grid">
                 
-                <div class="system-interactive-card reveal-node">
-                    <div class="system-badge-icon">
+                <div class="system-lux-card reveal-node">
+                    <div class="card-icon-emblem">
                         <i class="fas fa-globe-europe"></i>
                     </div>
                     <h4>المدارس الدولية (International)</h4>
                     <p>
                         شرح مخصص يتماشى مع مناهج الـ IGCSE والـ IB والـ French Sections، مع تركيز استثنائي على طلاقة النطق، الاستيعاب السمعي، وتطوير التفكير والتحليل باللغة الفرنسية.
                     </p>
-                    <span class="system-slug-tag">International Schools</span>
+                    <span class="system-tag-pill">International Schools</span>
                 </div>
 
-                <div class="system-interactive-card reveal-node">
-                    <div class="system-badge-icon">
+                <div class="system-lux-card reveal-node">
+                    <div class="card-icon-emblem">
                         <i class="fas fa-book-open"></i>
                     </div>
                     <h4>مدارس اللغات (Language)</h4>
                     <p>
                         تبسيط وتعمق في المناهج المتقدمة (Niveau Avancé) للمدارس الرسمية والخاصة لغات، وتمكين الطالب من حل أعقد أسئلة الجرامير والمفردات التخصصية بثقة تامة.
                     </p>
-                    <span class="system-slug-tag">Language Schools</span>
+                    <span class="system-tag-pill">Language Schools</span>
                 </div>
 
-                <div class="system-interactive-card reveal-node">
-                    <div class="system-badge-icon">
+                <div class="system-lux-card reveal-node">
+                    <div class="card-icon-emblem">
                         <i class="fas fa-school"></i>
                     </div>
                     <h4>المدارس الحكومية والثانوية</h4>
                     <p>
                         تأصيل شامل ومباشر لمنهج الثانوية العامة والورقة الامتحانية، مع تدريب مكثف على نمط أسئلة الوزارة ونماذج الامتحانات الرسمية لضمان الدرجة النهائية.
                     </p>
-                    <span class="system-slug-tag">Government Curricula</span>
+                    <span class="system-tag-pill">Government Curricula</span>
                 </div>
 
-                <div class="system-interactive-card reveal-node">
-                    <div class="system-badge-icon">
+                <div class="system-lux-card reveal-node">
+                    <div class="card-icon-emblem">
                         <i class="fas fa-scroll"></i>
                     </div>
                     <h4>نظام البكالوريا (Baccalauréat)</h4>
                     <p>
                         إعداد أكاديمي مكثف لطلاب البكالوريا، يشمل التدريب على صياغة الموضوعات المقالية (Production Écrite)، تحليل النصوص الفرنسية، وتقنيات الإجابة النموذجية.
                     </p>
-                    <span class="system-slug-tag">Système Baccalauréat</span>
+                    <span class="system-tag-pill">Système Baccalauréat</span>
                 </div>
 
             </div>
         </section>
 
-        <section class="stage-section" id="methodology">
-            <div class="method-editorial-wrap reveal-node">
+        <section class="content-section" id="methodology">
+            <div class="methodology-editorial-container reveal-node">
                 
-                <div class="method-content-col">
-                    <span class="section-french-kicker" style="text-align: right; display: block;">L'Art et la Manière</span>
-                    <h2 class="section-main-title" style="text-align: right; margin-bottom: 24px;">ركائز المنهجية وطريقتنا في الشرح</h2>
+                <div>
+                    <span class="french-subheading" style="text-align: right; display: block;">L'Art et la Manière</span>
+                    <h2 class="headline-section-h2" style="text-align: right; margin-bottom: 24px;">ركائز المنهجية وطريقتنا في الشرح</h2>
                     
-                    <div class="method-cards-list">
+                    <div class="method-steps-column">
                         
-                        <div class="method-row-item">
-                            <div class="method-step-sq">
+                        <div class="method-step-card">
+                            <div class="step-icon-badge">
                                 <i class="fas fa-puzzle-piece"></i>
                             </div>
-                            <div class="method-text">
+                            <div class="step-text-wrap">
                                 <h5>الجرامير فهم مش حفظ (Grammaire & Logique)</h5>
                                 <p>بنفكلك القواعد لخطوات منطقية وجداول عقلية واضحة، عشان تحل أي سؤال في ثواني وإنت فاهم سببه.</p>
                             </div>
                         </div>
 
-                        <div class="method-row-item">
-                            <div class="method-step-sq">
+                        <div class="method-step-card">
+                            <div class="step-icon-badge">
                                 <i class="fas fa-microphone-lines"></i>
                             </div>
-                            <div class="method-text">
+                            <div class="step-text-wrap">
                                 <h5>النطق الباريسي والسمعيات (Phonétique & Écoute)</h5>
                                 <p>تدريب عملي على مخارج الحروف الصوتية الفرنسية، عشان تتكلم وتنطق صح وتفهم نصوص الاستماع بسهولة.</p>
                             </div>
                         </div>
 
-                        <div class="method-row-item">
-                            <div class="method-step-sq">
+                        <div class="method-step-card">
+                            <div class="step-icon-badge">
                                 <i class="fas fa-feather-pointed"></i>
                             </div>
-                            <div class="method-text">
+                            <div class="step-text-wrap">
                                 <h5>الكتابة والتعبير الإنشائي (Production Écrite)</h5>
                                 <p>هنديك قوالب ذكية وروابط لغوية قوية تضمنلك أعلى تقييم في سؤال المقال والموضوعات التعبيرية.</p>
                             </div>
                         </div>
 
-                        <div class="method-row-item">
-                            <div class="method-step-sq">
+                        <div class="method-step-card">
+                            <div class="step-icon-badge">
                                 <i class="fas fa-bullseye"></i>
                             </div>
-                            <div class="method-text">
+                            <div class="step-text-wrap">
                                 <h5>محاكاة الامتحانات وتثبيت المستوى (Exam Simulation)</h5>
                                 <p>ورش مراجعة مستمرة وحل امتحانات حقيقية سابقة بتخليك تدخل امتحانك وإنت هادي وضامن تفوقك.</p>
                             </div>
@@ -1645,71 +1625,71 @@
                     </div>
                 </div>
 
-                <div class="method-paris-showcase">
-                    <div class="fleur-de-lis">⚜️</div>
-                    <div class="showcase-quote">« La langue française est une musique de la pensée »</div>
-                    <p class="showcase-author">
+                <div class="paris-prestige-card">
+                    <div class="fleur-symbol">⚜️</div>
+                    <div class="prestige-quote">« La langue française est une musique de la pensée »</div>
+                    <p class="prestige-commentary">
                         اللغة الفرنسية أسلوب حياة وثقافة شياكة.. لما تفهمها صح هتحبها وتتميز بيها، وده بالظبط اللي بنعمله مع كل طالب من أول حصة.
                     </p>
-                    <div class="gold-seal-pill">M : Reda Elkhshen 🇫🇷</div>
+                    <div class="educator-seal-pill">M : Reda Elkhshen 🇫🇷</div>
                 </div>
 
             </div>
         </section>
 
-        <section class="stage-section" id="instapay">
-            <div class="instapay-exclusive-block reveal-node">
-                <div class="instapay-two-col">
+        <section class="content-section" id="instapay">
+            <div class="instapay-section-wrapper reveal-node">
+                <div class="instapay-grid-2col">
                     
                     <div>
-                        <div class="instapay-ribbon">
+                        <div class="instapay-tag-badge">
                             <i class="fas fa-bolt"></i>
                             <span>الدفع اللحظي الرسمي | InstaPay Egypt</span>
                         </div>
                         
-                        <h2 class="instapay-header-title">كارت التحويل المالي عبر تطبيق InstaPay</h2>
+                        <h2 class="instapay-title-h2">كارت التحويل المالي عبر تطبيق InstaPay</h2>
                         
-                        <p style="color: var(--text-silver); font-size: 1.05rem; line-height: 1.8;">
+                        <p style="color: var(--text-lead); font-size: 1.05rem; line-height: 1.8;">
                             تسهيلاً على أولياء الأمور والطلاب، نوفر وسيلة الدفع والتحويل الإلكتروني المباشر عبر شبكة المدفوعات اللحظية المصرية (InstaPay).
                         </p>
 
-                        <div class="instapay-egyptian-alert">
+                        <div class="instapay-disclaimer-box">
                             <i class="fas fa-circle-exclamation" style="margin-left: 6px;"></i>
                             <strong>تنبيه توضيحي:</strong> الرابط والكارت مخصصان فقط للتحويل المالي المباشر عبر تطبيق إنستاباي، ولا يمثلان حجزاً تلقائياً. يرجى التواصل عبر الواتساب لتأكيد الحجز ومواعيد المجموعات أولاً.
                         </div>
 
-                        <a href="https://ipn.eg/S/redaelkhshen/instapay/6Jcs4X" target="_blank" rel="noopener noreferrer" class="btn-hero-primary" style="display: inline-flex; background: linear-gradient(135deg, #9333ea, #6b21a8); box-shadow: 0 10px 25px rgba(147, 51, 234, 0.4);">
+                        <a href="https://ipn.eg/S/redaelkhshen/instapay/6Jcs4X" target="_blank" rel="noopener noreferrer" class="btn-action-primary" style="display: inline-flex; background: linear-gradient(135deg, #9333ea, #6b21a8); box-shadow: 0 10px 25px rgba(147, 51, 234, 0.4);">
                             <i class="fas fa-arrow-up-right-from-square"></i>
                             <span>فتح رابط التحويل في تطبيق InstaPay</span>
                         </a>
                     </div>
 
                     <div>
-                        <div class="instapay-glass-card">
+                        <div class="instapay-card-visual">
                             
-                            <div class="card-brand-row">
-                                <div class="gold-chip"></div>
-                                <div class="instapay-logo-text">Insta<span>Pay</span></div>
+                            <div class="card-header-flex">
+                                <div class="chip-emblem"></div>
+                                <div class="instapay-brand-styled">Insta<span>Pay</span></div>
                             </div>
 
                             <div style="display: flex; flex-direction: column; gap: 8px;">
-                                <span style="font-size: 0.8rem; color: var(--gold-champagne); font-weight: 700; text-transform: uppercase;">عنوان الدفع اللحظي (IPA Handle)</span>
+                                <span style="font-size: 0.8rem; color: var(--gold-accent); font-weight: 700; text-transform: uppercase;">عنوان الدفع اللحظي (IPA Handle)</span>
                                 
-                                <div class="handle-display-box">
-                                    <span class="handle-text-val" id="instaHandle">redaelkhshen@instapay</span>
-                                    <button class="btn-copy-action" id="copyHandleBtn" title="نسخ المعرف">
+                                <div class="handle-interactive-card">
+                                    <span class="handle-string-text" id="instaHandle">redaelkhshen@instapay</span>
+                                    <button class="btn-copy-instant" id="copyHandleBtn" title="نسخ المعرف">
                                         <i class="fas fa-copy"></i>
                                         <span id="copyBtnText">نسخ</span>
                                     </button>
                                 </div>
                             </div>
 
-                            <div class="card-bottom-row">
+                            <div class="card-bottom-flex">
                                 <div>
-                                    <span style="display: block; font-size: 0.75rem; color: var(--text-faded);">المستفيد المعتمد</span>
+                                    <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">المستفيد المعتمد</span>
                                     <span style="font-size: 0.95rem; font-weight: 800; color: #ffffff;">M : Reda Elkhshen</span>
                                 </div>
-                                <a href="https://ipn.eg/S/redaelkhshen/instapay/6Jcs4X" target="_blank" rel="noopener noreferrer" class="btn-trigger-pay">
+                                <a href="https://ipn.eg/S/redaelkhshen/instapay/6Jcs4X" target="_blank" rel="noopener noreferrer" class="btn-launch-instapay">
                                     <span>تحويل فوري</span>
                                     <i class="fas fa-bolt"></i>
                                 </a>
@@ -1722,43 +1702,43 @@
             </div>
         </section>
 
-        <section class="stage-section" id="faq">
-            <div class="section-header-box reveal-node">
-                <span class="section-french-kicker">Questions Fréquentes</span>
-                <h2 class="section-main-title">أسئلة شائعة تهم الطلاب وأولياء الأمور</h2>
-                <p class="section-sub-desc">
+        <section class="content-section" id="faq">
+            <div class="section-lead-title reveal-node">
+                <span class="french-subheading">Questions Fréquentes</span>
+                <h2 class="headline-section-h2">أسئلة شائعة تهم الطلاب وأولياء الأمور</h2>
+                <p class="sub-description">
                     إجابات واضحة ومباشرة عن طريقة التدريس والأنظمة والمتابعة المستمرة.
                 </p>
             </div>
 
-            <div class="faq-accordion-box">
+            <div class="faq-accordion-container">
                 
-                <div class="faq-card-item reveal-node">
-                    <button class="faq-question-btn">
+                <div class="faq-unit-card reveal-node">
+                    <button class="faq-trigger-btn">
                         <span>هل المتابعة مناسبة للطلاب اللي مستواهم ضعيف في الفرنساوي؟</span>
-                        <i class="fas fa-chevron-down faq-toggle-ico"></i>
+                        <i class="fas fa-chevron-down faq-indicator-ico"></i>
                     </button>
-                    <div class="faq-answer-pane">
+                    <div class="faq-drawer-pane">
                         بالتأكيد! بنبدأ مع الطالب من تقييم مستواه الفعلي وتأسيسه في نطق الحروف وقواعد الجرامير الأساسية خطوة بخطوة، مع متابعة شخصية مستمرة لحد ما يستعيد ثقته ويتفوق في المادة.
                     </div>
                 </div>
 
-                <div class="faq-card-item reveal-node">
-                    <button class="faq-question-btn">
+                <div class="faq-unit-card reveal-node">
+                    <button class="faq-trigger-btn">
                         <span>إزاي بيتم التعامل مع مناهج المدارس الدولية واللغات الخاصة؟</span>
-                        <i class="fas fa-chevron-down faq-toggle-ico"></i>
+                        <i class="fas fa-chevron-down faq-indicator-ico"></i>
                     </button>
-                    <div class="faq-answer-pane">
+                    <div class="faq-drawer-pane">
                         كل نظام تعليمي (International / Language / Baccalauréat) ليه خطة تدريس مستقلة بتغطي كتاب المدرسة والمفردات المتقدمة والتدريبات المكثفة على نمط امتحاناته الخاصة.
                     </div>
                 </div>
 
-                <div class="faq-card-item reveal-node">
-                    <button class="faq-question-btn">
+                <div class="faq-unit-card reveal-node">
+                    <button class="faq-trigger-btn">
                         <span>ما هي أسرع وسيلة للاستفسار وحجز المواعيد؟</span>
-                        <i class="fas fa-chevron-down faq-toggle-ico"></i>
+                        <i class="fas fa-chevron-down faq-indicator-ico"></i>
                     </button>
-                    <div class="faq-answer-pane">
+                    <div class="faq-drawer-pane">
                         التواصل المباشر عبر واتساب الأعمال (01558186187) هو القناة الأسرع والمعتمدة للرد على كافة الاستفسارات بخصوص جداول المجموعات والمواعيد الشاغرة.
                     </div>
                 </div>
@@ -1766,52 +1746,52 @@
             </div>
         </section>
 
-        <section class="stage-section" id="contact">
-            <div class="section-header-box reveal-node">
-                <span class="section-french-kicker">Contact Direct</span>
-                <h2 class="section-main-title">قنوات التواصل المباشرة والمعتمدة</h2>
-                <p class="section-sub-desc">
+        <section class="content-section" id="contact">
+            <div class="section-lead-title reveal-node">
+                <span class="french-subheading">Contact Direct</span>
+                <h2 class="headline-section-h2">قنوات التواصل المباشرة والمعتمدة</h2>
+                <p class="sub-description">
                     اختر الوسيلة الأنسب ليك للاستفسار عن جداول الدروس والمواعيد المتاحة.
                 </p>
             </div>
 
-            <div class="contacts-triad">
+            <div class="contact-channels-trio">
                 
-                <div class="contact-action-cell primary-spotlight reveal-node">
-                    <div class="spotlight-crown">القناة الرئيسية للاستفسارات والحجز</div>
-                    <div class="channel-halo-icon icon-wa-bus">
+                <div class="contact-channel-brick spotlight-channel reveal-node">
+                    <div class="spotlight-pill-crown">القناة الرئيسية للاستفسارات والحجز</div>
+                    <div class="channel-bubble-icon icon-wa-business-style">
                         <i class="fab fa-whatsapp"></i>
                     </div>
-                    <h3 class="channel-main-name">واتساب الأعمال</h3>
-                    <p class="channel-egyptian-desc">القناة الرسمية المعتمدة لاستقبال استفسارات أولياء الأمور والطلاب وتنسيق المواعيد.</p>
-                    <div class="channel-tele-val">01558186187</div>
-                    <a href="https://wa.me/201558186187?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%8A%D8%A7%20%D9%85%D8%B3%D9%8A%D9%88%20%D8%B1%D8%B6%D8%A7%D8%8C%20%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D9%85%D9%88%D8%A7%D8%B9%D9%8A%D8%AF%20%D8%AF%D8%B1%D9%88%D8%B3%20%D8%A7%D9%84%D9%84%D8%BA%D8%A9%20%D8%A7%D9%84%D9%81%D8%B1%D9%86%D8%B3%D9%8A%D8%A9" target="_blank" rel="noopener noreferrer" class="btn-channel-tap btn-green-wa">
+                    <h3 class="channel-name-h3">واتساب الأعمال</h3>
+                    <p class="channel-egyptian-caption">القناة الرسمية المعتمدة لاستقبال استفسارات أولياء الأمور والطلاب وتنسيق المواعيد.</p>
+                    <div class="channel-dial-string">01558186187</div>
+                    <a href="https://wa.me/201558186187?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%8A%D8%A7%20%D9%85%D8%B3%D9%8A%D9%88%20%D8%B1%D8%B6%D8%A7%D8%8C%20%D8%AD%D8%A7%D8%A8%D8%A8%20%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D9%85%D9%88%D8%A7%D8%B9%D9%8A%D8%AF%20%D8%AF%D8%B1%D9%88%D8%B3%20%D8%A7%D9%84%D9%84%D8%BA%D8%A9%20%D8%A7%D9%84%D9%81%D8%B1%D9%86%D8%B3%D9%8A%D8%A9" target="_blank" rel="noopener noreferrer" class="btn-channel-direct btn-wa-theme">
                         <i class="fab fa-whatsapp"></i>
                         <span>محادثة واتساب أعمال</span>
                     </a>
                 </div>
 
-                <div class="contact-action-cell reveal-node">
-                    <div class="channel-halo-icon icon-wa-per">
+                <div class="contact-channel-brick reveal-node">
+                    <div class="channel-bubble-icon icon-wa-personal-style">
                         <i class="fas fa-mobile-screen"></i>
                     </div>
-                    <h3 class="channel-main-name">واتساب الشخصي</h3>
-                    <p class="channel-egyptian-desc">وسيلة بديلة للمتابعات المباشرة والتواصل التكميلي للحالات الخاصة.</p>
-                    <div class="channel-tele-val">01005664564</div>
-                    <a href="https://wa.me/201005664564?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%8A%D8%A7%20%D9%85%D8%B3%D9%8A%D9%88%20%D8%B1%D8%B6%D8%A7%D8%8C%20%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%B4%D8%AE%D8%B5%D9%8A" target="_blank" rel="noopener noreferrer" class="btn-channel-tap btn-alt-wa">
+                    <h3 class="channel-name-h3">واتساب الشخصي</h3>
+                    <p class="channel-egyptian-caption">وسيلة بديلة للمتابعات المباشرة والتواصل التكميلي للحالات الخاصة.</p>
+                    <div class="channel-dial-string">01005664564</div>
+                    <a href="https://wa.me/201005664564?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%20%D9%8A%D8%A7%20%D9%85%D8%B3%D9%8A%D9%88%20%D8%B1%D8%B6%D8%A7%D8%8C%20%D8%AA%D9%88%D8%A7%D8%B5%D9%84%20%D8%B4%D8%AE%D8%B5%D9%8A" target="_blank" rel="noopener noreferrer" class="btn-channel-direct btn-wa-secondary">
                         <i class="fab fa-whatsapp"></i>
                         <span>محادثة واتساب شخصي</span>
                     </a>
                 </div>
 
-                <div class="contact-action-cell reveal-node">
-                    <div class="channel-halo-icon icon-fb-main">
+                <div class="contact-channel-brick reveal-node">
+                    <div class="channel-bubble-icon icon-facebook-style">
                         <i class="fab fa-facebook-f"></i>
                     </div>
-                    <h3 class="channel-main-name">صفحة فيسبوك</h3>
-                    <p class="channel-egyptian-desc">لمتابعة الفيديوهات التعليمية، تريكات المادة، وآخر الإعلانات والمذكرات.</p>
-                    <div class="channel-tele-val" style="font-size: 1rem;">reda.elkhshen</div>
-                    <a href="https://www.facebook.com/reda.elkhshen" target="_blank" rel="noopener noreferrer" class="btn-channel-tap btn-blue-fb">
+                    <h3 class="channel-name-h3">صفحة فيسبوك</h3>
+                    <p class="channel-egyptian-caption">لمتابعة الفيديوهات التعليمية، تريكات المادة، وآخر الإعلانات والمذكرات.</p>
+                    <div class="channel-dial-string" style="font-size: 1rem;">reda.elkhshen</div>
+                    <a href="https://www.facebook.com/reda.elkhshen" target="_blank" rel="noopener noreferrer" class="btn-channel-direct btn-fb-theme">
                         <i class="fab fa-facebook-f"></i>
                         <span>زيارة صفحة فيسبوك</span>
                     </a>
@@ -1822,23 +1802,23 @@
 
     </div>
 
-    <footer class="haute-footer">
-        <div class="layout-shell">
-            <div class="footer-tri-grid">
+    <footer class="site-footer-lux">
+        <div class="site-shell">
+            <div class="footer-3col-grid">
                 
-                <div class="footer-bio-col">
-                    <div class="name-label" style="font-size: 1.35rem; margin-bottom: 6px;">
+                <div class="footer-bio-summary">
+                    <div class="brand-name-val" style="font-size: 1.35rem; margin-bottom: 6px;">
                         M : Reda Elkhshen <span style="font-size: 1.2rem;">🇫🇷</span>
                     </div>
-                    <div class="role-tagline" style="font-size: 0.85rem;">Professeur de Langue Française</div>
+                    <div class="brand-sub-val" style="font-size: 0.85rem;">Professeur de Langue Française</div>
                     <p>
                         أكتر من 10 سنين من التميز والريادة في تدريس اللغة الفرنسية لطلاب المدارس الدولية ومدارس اللغات والمدارس الحكومية ونظام البكالوريا الفرنسي.
                     </p>
                 </div>
 
                 <div>
-                    <h4 class="footer-col-head">روابط سريعة</h4>
-                    <ul class="footer-links-col">
+                    <h4 class="footer-col-headline">روابط سريعة</h4>
+                    <ul class="footer-menu-list">
                         <li><a href="#hero"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
                         <li><a href="#systems"><i class="fas fa-angle-left"></i> الأنظمة التعليمية</a></li>
                         <li><a href="#methodology"><i class="fas fa-angle-left"></i> المنهجية والشرح</a></li>
@@ -1849,8 +1829,8 @@
                 </div>
 
                 <div>
-                    <h4 class="footer-col-head">التواصل المعتمد</h4>
-                    <ul class="footer-links-col">
+                    <h4 class="footer-col-headline">التواصل المعتمد</h4>
+                    <ul class="footer-menu-list">
                         <li><a href="https://wa.me/201558186187" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color: #25d366;"></i> واتساب الأعمال: 01558186187</a></li>
                         <li><a href="https://wa.me/201005664564" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color: #38bdf8;"></i> واتساب الشخصي: 01005664564</a></li>
                         <li><a href="https://www.facebook.com/reda.elkhshen" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" style="color: #1877f2;"></i> فيسبوك: reda.elkhshen</a></li>
@@ -1860,31 +1840,31 @@
 
             </div>
 
-            <div class="footer-bottom-tier">
+            <div class="footer-base-row">
                 <div>
                     جميع الحقوق محفوظة © 2026 M : Reda Elkhshen 🇫🇷
                 </div>
-                <div class="syndicate-signature">
+                <div class="devmedo-watermark">
                     Architected & Crafted by <strong>DevMeDoAnDrOiD</strong>
                 </div>
             </div>
         </div>
     </footer>
 
-    <div class="popup-toast-box" id="toastBox">
-        <i class="fas fa-circle-check" style="color: var(--gold-champagne); font-size: 1.25rem;"></i>
+    <div class="toast-bubble" id="toastBox">
+        <i class="fas fa-circle-check" style="color: var(--gold-accent); font-size: 1.25rem;"></i>
         <span id="toastMessageText">تم بنجاح</span>
     </div>
 
     <script>
-        const canvas = document.getElementById('hero-canvas');
+        const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
 
         const frenchGlyphs = ['é', 'è', 'à', 'ç', 'ô', 'î', '⚜', '«»'];
         const particles = [];
-        const particleCount = Math.min(28, Math.floor(window.innerWidth / 45));
+        const particleCount = Math.min(30, Math.floor(window.innerWidth / 40));
 
         for (let i = 0; i < particleCount; i++) {
             particles.push({
@@ -1892,15 +1872,15 @@
                 y: Math.random() * height,
                 glyph: frenchGlyphs[Math.floor(Math.random() * frenchGlyphs.length)],
                 size: 14 + Math.random() * 18,
-                speedY: 0.2 + Math.random() * 0.45,
+                speedY: 0.15 + Math.random() * 0.4,
                 speedX: (Math.random() - 0.5) * 0.3,
-                opacity: 0.08 + Math.random() * 0.18,
+                opacity: 0.06 + Math.random() * 0.18,
                 rot: Math.random() * Math.PI * 2,
-                rotSpeed: (Math.random() - 0.5) * 0.01
+                rotSpeed: (Math.random() - 0.5) * 0.012
             });
         }
 
-        function drawParticles() {
+        function renderCanvas() {
             ctx.clearRect(0, 0, width, height);
             for (let p of particles) {
                 p.y -= p.speedY;
@@ -1918,32 +1898,76 @@
                 ctx.translate(p.x, p.y);
                 ctx.rotate(p.rot);
                 ctx.font = `${p.size}px 'Playfair Display', serif`;
-                ctx.fillStyle = `rgba(229, 197, 120, ${p.opacity})`;
+                ctx.fillStyle = `rgba(245, 196, 105, ${p.opacity})`;
                 ctx.fillText(p.glyph, 0, 0);
                 ctx.restore();
             }
-            requestAnimationFrame(drawParticles);
+            requestAnimationFrame(renderCanvas);
         }
-        drawParticles();
+        renderCanvas();
 
         window.addEventListener('resize', () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
         });
 
-        const portrait = document.getElementById('portraitCard');
-        if (portrait && window.innerWidth > 992) {
+        const cursorGlow = document.getElementById('cursorGlow');
+        if (cursorGlow && window.innerWidth > 768) {
             window.addEventListener('mousemove', (e) => {
-                const rect = portrait.getBoundingClientRect();
+                cursorGlow.style.left = e.clientX + 'px';
+                cursorGlow.style.top = e.clientY + 'px';
+            });
+        }
+
+        const typewriterQuotes = [
+            "صاحب الـ +10 سنين خبرة حقيقية في ملاعب الفرنساوي 🇫🇷",
+            "مفتاحك السري للتفوق في المدارس الدولية واللغات 🌟",
+            "تقفيل درجات البكالوريا (Bac) مش صدفة.. دي خطة مدروسة 🎯",
+            "الفرنساوي بفهم وشياكة.. من غير تعقيد ولا حفظ أعمى ✨"
+        ];
+        let quoteIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typewriterEl = document.getElementById('typewriterText');
+
+        function runTypewriter() {
+            const currentQuote = typewriterQuotes[quoteIndex];
+            if (isDeleting) {
+                typewriterEl.textContent = currentQuote.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typewriterEl.textContent = currentQuote.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 30 : 65;
+
+            if (!isDeleting && charIndex === currentQuote.length) {
+                typeSpeed = 2200;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                quoteIndex = (quoteIndex + 1) % typewriterQuotes.length;
+                typeSpeed = 400;
+            }
+
+            setTimeout(runTypewriter, typeSpeed);
+        }
+        setTimeout(runTypewriter, 800);
+
+        const chassis = document.getElementById('portraitChassis');
+        if (chassis && window.innerWidth > 992) {
+            window.addEventListener('mousemove', (e) => {
+                const rect = chassis.getBoundingClientRect();
                 const cardX = rect.left + rect.width / 2;
                 const cardY = rect.top + rect.height / 2;
                 const deltaX = (e.clientX - cardX) / (window.innerWidth / 2);
                 const deltaY = (e.clientY - cardY) / (window.innerHeight / 2);
-                portrait.style.transform = `rotateY(${deltaX * 12}deg) rotateX(${-deltaY * 12}deg)`;
+                chassis.style.transform = `rotateY(${deltaX * 12}deg) rotateX(${-deltaY * 12}deg)`;
             });
 
-            portrait.addEventListener('mouseleave', () => {
-                portrait.style.transform = 'rotateY(0deg) rotateX(0deg)';
+            chassis.addEventListener('mouseleave', () => {
+                chassis.style.transform = 'rotateY(0deg) rotateX(0deg)';
             });
         }
 
@@ -1960,28 +1984,23 @@
             }
         });
 
-        document.querySelectorAll('.nav-menu-bar a').forEach(link => {
+        document.querySelectorAll('.nav-links-hub a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('open');
                 navToggle.querySelector('i').className = 'fas fa-bars';
             });
         });
 
-        const revealOptions = {
-            threshold: 0.12,
-            rootMargin: '0px 0px -40px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('revealed');
                 }
             });
-        }, revealOptions);
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
         document.querySelectorAll('.reveal-node').forEach(node => {
-            observer.observe(node);
+            revealObserver.observe(node);
         });
 
         const copyBtn = document.getElementById('copyHandleBtn');
@@ -2056,13 +2075,13 @@
             }
         });
 
-        document.querySelectorAll('.faq-card-item').forEach(item => {
-            const btn = item.querySelector('.faq-question-btn');
+        document.querySelectorAll('.faq-unit-card').forEach(item => {
+            const btn = item.querySelector('.faq-trigger-btn');
             btn.addEventListener('click', () => {
-                const wasExpanded = item.classList.contains('expanded');
-                document.querySelectorAll('.faq-card-item').forEach(other => other.classList.remove('expanded'));
-                if (!wasExpanded) {
-                    item.classList.add('expanded');
+                const wasActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-unit-card').forEach(other => other.classList.remove('active'));
+                if (!wasActive) {
+                    item.classList.add('active');
                 }
             });
         });
@@ -2070,11 +2089,11 @@
         window.addEventListener('scroll', () => {
             const header = document.getElementById('navbar');
             if (window.scrollY > 40) {
-                header.style.boxShadow = '0 20px 45px rgba(0, 0, 0, 0.9)';
-                header.style.borderColor = 'rgba(229, 197, 120, 0.45)';
+                header.style.boxShadow = '0 20px 45px rgba(0, 0, 0, 0.92)';
+                header.style.borderColor = 'rgba(245, 196, 105, 0.45)';
             } else {
-                header.style.boxShadow = 'var(--shadow-deep)';
-                header.style.borderColor = 'var(--border-glow)';
+                header.style.boxShadow = 'var(--shadow-card)';
+                header.style.borderColor = 'var(--border-subtle)';
             }
         });
     </script>

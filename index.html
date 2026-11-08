@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>M : Reda Elkhshen 🇫🇷 | بوابتك لإتقان اللغة الفرنسية</title>
+    <title>M : Reda Elkhshen | بوابتك لإتقان اللغة الفرنسية</title>
     
-    <meta name="description" content="البورتفوليو الرسمي للأستاذ رضا الخشن - معلم خبير لغة فرنسية بخبرة أكتر من 10 سنين في تدريس طلاب المدارس الدولية ومدارس اللغات والمدارس الحكومية ونظام البكالوريا.">
+    <meta name="description" content="البورتفوليو الرسمي للأستاذ رضا الخشن - معلم خبير لغة فرنسية بخبرة تزيد عن 10 سنوات لطلاب المدارس الدولية واللغات والحكومية ونظام البكالوريا.">
     <meta name="author" content="DevMeDoAnDrOiD">
     <meta name="theme-color" content="#030611">
     
     <meta property="og:type" content="website">
-    <meta property="og:title" content="M : Reda Elkhshen 🇫🇷 | معلم خبير لغة فرنسية">
+    <meta property="og:title" content="M : Reda Elkhshen | معلم خبير لغة فرنسية">
     <meta property="og:description" content="الفرنساوي بفهم وشياكة.. خبرة +10 سنين لطلاب المدارس الدولية واللغات والحكومية والبكالوريا.">
     <meta property="og:image" content="assets/images/reda_profile.jpg">
     
@@ -31,11 +31,12 @@
             --gold-accent: #f5c469;
             --gold-sheen: #ffe6a3;
             --gold-metallic: linear-gradient(135deg, #fff3c4 0%, #f5c469 50%, #ba892e 100%);
-            --blue-french: #2563eb;
-            --blue-vivid: #3b82f6;
+            --blue-french: #002395;
+            --blue-vivid: #2563eb;
             --blue-neon: #38bdf8;
-            --border-subtle: rgba(245, 196, 105, 0.18);
-            --border-active: rgba(245, 196, 105, 0.6);
+            --red-french: #ed2939;
+            --border-subtle: rgba(245, 196, 105, 0.2);
+            --border-active: rgba(245, 196, 105, 0.65);
             --border-glass: rgba(255, 255, 255, 0.08);
             --text-pure: #ffffff;
             --text-lead: #e2e8f0;
@@ -46,7 +47,7 @@
             --radius-lg: 32px;
             --radius-pill: 9999px;
             --shadow-card: 0 20px 50px -15px rgba(0, 0, 0, 0.85);
-            --shadow-gold: 0 0 35px rgba(245, 196, 105, 0.22);
+            --shadow-gold: 0 0 35px rgba(245, 196, 105, 0.25);
             --shadow-blue: 0 0 35px rgba(37, 99, 235, 0.35);
             --ease-fluid: cubic-bezier(0.16, 1, 0.3, 1);
         }
@@ -69,7 +70,7 @@
             color: var(--text-pure);
             font-family: 'IBM Plex Sans Arabic', sans-serif;
             overflow-x: hidden;
-            line-height: 1.75;
+            line-height: 1.8;
             min-height: 100vh;
             position: relative;
         }
@@ -79,13 +80,36 @@
             color: #030611;
         }
 
+        .fr-flag-emblem {
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            margin: 0 5px;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: transform 0.3s var(--ease-fluid);
+        }
+
+        .fr-flag-emblem:hover {
+            transform: scale(1.15) rotate(3deg);
+        }
+
+        .svg-flag {
+            display: block;
+            width: 24px;
+            height: 16px;
+            border-radius: 2px;
+        }
+
         .scroll-progress-line {
             position: fixed;
             top: 0;
             left: 0;
             height: 3px;
             width: 0%;
-            background: linear-gradient(90deg, #2563eb, #38bdf8, #f5c469);
+            background: linear-gradient(90deg, #002395, #38bdf8, #f5c469, #ed2939);
             z-index: 10000;
             transition: width 0.1s ease-out;
         }
@@ -114,7 +138,7 @@
             transform: translate(-50%, -50%);
             pointer-events: none;
             z-index: 1;
-            transition: transform 0.1s ease-out, background 0.3s ease;
+            transition: transform 0.1s ease-out;
             filter: blur(50px);
         }
 
@@ -207,6 +231,8 @@
             font-weight: 800;
             color: #ffffff;
             letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
         }
 
         .brand-sub-val {
@@ -219,9 +245,8 @@
         .nav-links-hub {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             list-style: none;
-            position: relative;
         }
 
         .nav-links-hub a {
@@ -232,7 +257,6 @@
             padding: 8px 14px;
             border-radius: var(--radius-pill);
             transition: all 0.3s var(--ease-fluid);
-            position: relative;
             display: inline-block;
         }
 
@@ -811,7 +835,8 @@
         }
 
         .educator-seal-pill {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             padding: 9px 24px;
             border-radius: var(--radius-pill);
             background: rgba(245, 196, 105, 0.12);
@@ -1505,7 +1530,16 @@
                 <span class="live-dot" title="متاح حالياً للحجز والاستفسار"></span>
             </div>
             <div class="brand-text-block">
-                <span class="brand-name-val">M : Reda Elkhshen 🇫🇷</span>
+                <span class="brand-name-val">
+                    M : Reda Elkhshen 
+                    <span class="fr-flag-emblem" title="فرنسا">
+                        <svg viewBox="0 0 900 600" class="svg-flag">
+                            <rect width="300" height="600" fill="#002395"/>
+                            <rect x="300" width="300" height="600" fill="#ffffff"/>
+                            <rect x="600" width="300" height="600" fill="#ed2939"/>
+                        </svg>
+                    </span>
+                </span>
                 <span class="brand-sub-val">Professeur de Français</span>
             </div>
         </a>
@@ -1543,7 +1577,16 @@
 
                     <h1 class="hero-headline-main">
                         الفرنساوي بفهم وشياكة مع<br>
-                        <span class="gold-highlight">M : Reda Elkhshen 🇫🇷</span>
+                        <span class="gold-highlight">
+                            M : Reda Elkhshen 
+                            <span class="fr-flag-emblem" style="vertical-align: 0.1em;" title="فرنسا">
+                                <svg viewBox="0 0 900 600" class="svg-flag" style="width: 32px; height: 21px;">
+                                    <rect width="300" height="600" fill="#002395"/>
+                                    <rect x="300" width="300" height="600" fill="#ffffff"/>
+                                    <rect x="600" width="300" height="600" fill="#ed2939"/>
+                                </svg>
+                            </span>
+                        </span>
                     </h1>
 
                     <div class="typewriter-ribbon">
@@ -1738,7 +1781,16 @@
                     <p class="prestige-commentary">
                         اللغة الفرنسية أسلوب حياة وثقافة شياكة.. لما تفهمها صح هتحبها وتتميز بيها، وده بالظبط اللي بنعمله مع كل طالب من أول حصة.
                     </p>
-                    <div class="educator-seal-pill">M : Reda Elkhshen 🇫🇷</div>
+                    <div class="educator-seal-pill">
+                        M : Reda Elkhshen 
+                        <span class="fr-flag-emblem" style="margin-right: 6px;">
+                            <svg viewBox="0 0 900 600" class="svg-flag">
+                                <rect width="300" height="600" fill="#002395"/>
+                                <rect x="300" width="300" height="600" fill="#ffffff"/>
+                                <rect x="600" width="300" height="600" fill="#ed2939"/>
+                            </svg>
+                        </span>
+                    </div>
                 </div>
 
             </div>
@@ -1915,7 +1967,14 @@
                 
                 <div class="footer-bio-summary">
                     <div class="brand-name-val" style="font-size: 1.35rem; margin-bottom: 6px;">
-                        M : Reda Elkhshen <span style="font-size: 1.2rem;">🇫🇷</span>
+                        M : Reda Elkhshen 
+                        <span class="fr-flag-emblem" style="margin-right: 6px;">
+                            <svg viewBox="0 0 900 600" class="svg-flag">
+                                <rect width="300" height="600" fill="#002395"/>
+                                <rect x="300" width="300" height="600" fill="#ffffff"/>
+                                <rect x="600" width="300" height="600" fill="#ed2939"/>
+                            </svg>
+                        </span>
                     </div>
                     <div class="brand-sub-val" style="font-size: 0.85rem;">Professeur de Langue Française</div>
                     <p>
@@ -1949,7 +2008,7 @@
 
             <div class="footer-base-row">
                 <div>
-                    جميع الحقوق محفوظة © 2026 M : Reda Elkhshen 🇫🇷
+                    جميع الحقوق محفوظة © 2026 M : Reda Elkhshen
                 </div>
                 <div class="devmedo-watermark">
                     Architected & Crafted by <strong>DevMeDoAnDrOiD</strong>
@@ -2075,10 +2134,10 @@
         }
 
         const typewriterQuotes = [
-            "صاحب الـ +10 سنين خبرة حقيقية في ملاعب الفرنساوي 🇫🇷",
-            "مفتاحك السري للتفوق في المدارس الدولية واللغات 🌟",
-            "تقفيل درجات البكالوريا (Bac) مش صدفة.. دي خطة مدروسة 🎯",
-            "الفرنساوي بفهم وشياكة.. من غير تعقيد ولا حفظ أعمى ✨"
+            "صاحب الـ +10 سنين خبرة حقيقية في ملاعب الفرنساوي",
+            "مفتاحك السري للتفوق في المدارس الدولية واللغات",
+            "تقفيل درجات البكالوريا (Bac) مش صدفة.. دي خطة مدروسة",
+            "الفرنساوي بفهم وشياكة.. من غير تعقيد ولا حفظ أعمى"
         ];
         let quoteIndex = 0;
         let charIndex = 0;
@@ -2254,7 +2313,7 @@
                 triggerToast('🔊 ' + phrases[phraseIndex]);
                 phraseIndex = (phraseIndex + 1) % phrases.length;
             } else {
-                triggerToast('⚜️ Bienvenue dans le monde du français d\'excellence !');
+                triggerToast('Bienvenue dans le monde du français d\'excellence !');
             }
         });
 

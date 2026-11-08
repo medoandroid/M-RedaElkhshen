@@ -35,6 +35,8 @@
             --blue-vivid: #2563eb;
             --blue-neon: #38bdf8;
             --red-french: #ed2939;
+            --red-voda: #e60000;
+            --purple-insta: #9333ea;
             --border-subtle: rgba(245, 196, 105, 0.2);
             --border-active: rgba(245, 196, 105, 0.65);
             --border-glass: rgba(255, 255, 255, 0.08);
@@ -80,16 +82,25 @@
             color: #030611;
         }
 
+        .brand-identity-cluster {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            direction: ltr !important;
+            unicode-bidi: isolate;
+            vertical-align: middle;
+        }
+
         .fr-flag-emblem {
             display: inline-flex;
             align-items: center;
             vertical-align: middle;
-            margin: 0 5px;
             border-radius: 4px;
             overflow: hidden;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
             border: 1px solid rgba(255, 255, 255, 0.25);
             transition: transform 0.3s var(--ease-fluid);
+            flex-shrink: 0;
         }
 
         .fr-flag-emblem:hover {
@@ -101,6 +112,11 @@
             width: 24px;
             height: 16px;
             border-radius: 2px;
+        }
+
+        .flag-hero {
+            width: 30px;
+            height: 20px;
         }
 
         .scroll-progress-line {
@@ -158,7 +174,7 @@
             width: calc(100% - 48px);
             max-width: 1180px;
             z-index: 1000;
-            background: rgba(7, 12, 26, 0.82);
+            background: rgba(7, 12, 26, 0.85);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
             border: 1px solid var(--border-subtle);
@@ -174,7 +190,7 @@
         header.navbar-dock.scrolled {
             top: 10px;
             padding: 6px 20px;
-            background: rgba(5, 9, 20, 0.94);
+            background: rgba(5, 9, 20, 0.95);
             border-color: rgba(245, 196, 105, 0.35);
             box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
         }
@@ -224,6 +240,7 @@
         .brand-text-block {
             display: flex;
             flex-direction: column;
+            text-align: right;
         }
 
         .brand-name-val {
@@ -231,8 +248,6 @@
             font-weight: 800;
             color: #ffffff;
             letter-spacing: 0.3px;
-            display: flex;
-            align-items: center;
         }
 
         .brand-sub-val {
@@ -423,6 +438,10 @@
             box-shadow: 0 16px 40px rgba(37, 99, 235, 0.6);
         }
 
+        .btn-action-primary:active {
+            transform: scale(0.97);
+        }
+
         .btn-french-audio {
             background: rgba(255, 255, 255, 0.05);
             color: var(--gold-accent);
@@ -445,6 +464,10 @@
             transform: translateY(-2px);
         }
 
+        .btn-french-audio:active {
+            transform: scale(0.97);
+        }
+
         .btn-french-audio.playing {
             animation: pulseWave 1s infinite alternate;
         }
@@ -456,38 +479,72 @@
 
         .hero-portrait-wrap {
             position: relative;
-            perspective: 1000px;
+            perspective: 1200px;
             display: flex;
             justify-content: center;
+        }
+
+        .portrait-halo-ambient {
+            position: absolute;
+            inset: -25px;
+            border-radius: 40px;
+            background: radial-gradient(circle, rgba(245, 196, 105, 0.22) 0%, rgba(37, 99, 235, 0.18) 45%, transparent 75%);
+            filter: blur(35px);
+            z-index: 1;
+            pointer-events: none;
+            animation: haloPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes haloPulse {
+            0% { transform: scale(0.96); opacity: 0.7; }
+            100% { transform: scale(1.04); opacity: 1; }
         }
 
         .portrait-3d-chassis {
             position: relative;
             width: 100%;
-            max-width: 420px;
+            max-width: 410px;
             aspect-ratio: 1 / 1;
             border-radius: var(--radius-lg);
-            padding: 8px;
-            background: linear-gradient(145deg, rgba(245, 196, 105, 0.35) 0%, rgba(37, 99, 235, 0.2) 50%, rgba(11, 18, 36, 0.9) 100%);
-            box-shadow: var(--shadow-card), var(--shadow-gold);
+            padding: 10px;
+            background: linear-gradient(145deg, rgba(245, 196, 105, 0.45) 0%, rgba(37, 99, 235, 0.25) 50%, rgba(11, 18, 36, 0.95) 100%);
+            box-shadow: var(--shadow-card), 0 0 40px rgba(245, 196, 105, 0.2);
             transform-style: preserve-3d;
             transition: transform 0.25s ease-out;
+            z-index: 2;
         }
+
+        .portrait-corner-bracket {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border-color: var(--gold-accent);
+            border-style: solid;
+            pointer-events: none;
+            z-index: 20;
+            opacity: 0.85;
+        }
+
+        .bracket-tl { top: 16px; left: 16px; border-width: 3px 0 0 3px; border-top-left-radius: 8px; }
+        .bracket-tr { top: 16px; right: 16px; border-width: 3px 3px 0 0; border-top-right-radius: 8px; }
+        .bracket-bl { bottom: 16px; left: 16px; border-width: 0 0 3px 3px; border-bottom-left-radius: 8px; }
+        .bracket-br { bottom: 16px; right: 16px; border-width: 0 3px 3px 0; border-bottom-right-radius: 8px; }
 
         .portrait-inner-glass {
             width: 100%;
             height: 100%;
-            border-radius: calc(var(--radius-lg) - 6px);
+            border-radius: calc(var(--radius-lg) - 8px);
             overflow: hidden;
             position: relative;
             background: #070c1a;
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .portrait-inner-glass img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 20%;
+            object-position: center 15%;
             display: block;
             transition: transform 0.8s var(--ease-fluid);
         }
@@ -496,18 +553,32 @@
             transform: scale(1.05);
         }
 
+        .portrait-shimmer-sweep {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(125deg, transparent 30%, rgba(255, 255, 255, 0.12) 48%, rgba(255, 255, 255, 0.22) 50%, rgba(255, 255, 255, 0.12) 52%, transparent 70%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .portrait-3d-chassis:hover .portrait-shimmer-sweep {
+            opacity: 1;
+        }
+
         .holo-chip {
             position: absolute;
-            z-index: 15;
-            background: rgba(7, 12, 26, 0.92);
+            z-index: 25;
+            background: rgba(7, 12, 26, 0.94);
             border: 1px solid var(--border-subtle);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: var(--radius-md);
             padding: 12px 18px;
             display: flex;
             align-items: center;
             gap: 12px;
-            box-shadow: var(--shadow-card);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
             animation: chipHover 6s infinite alternate ease-in-out;
             pointer-events: none;
         }
@@ -644,41 +715,26 @@
             border-radius: var(--radius-lg);
             padding: 36px 28px;
             backdrop-filter: blur(25px);
-            transition: transform 0.2s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.25s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            cursor: default;
-            transform-style: preserve-3d;
-        }
-
-        .interactive-tilt-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            left: 0;
-            height: 3px;
-            background: var(--gold-metallic);
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            justify-content: space-between;
         }
 
         .interactive-tilt-card:hover {
             border-color: var(--border-subtle);
-            background: var(--bg-panel-hover);
-            box-shadow: var(--shadow-card), var(--shadow-gold);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), var(--shadow-gold);
         }
 
-        .interactive-tilt-card:hover::before {
-            opacity: 1;
+        .interactive-tilt-card:active {
+            transform: scale(0.98);
         }
 
         .card-glare {
             position: absolute;
             inset: 0;
-            border-radius: inherit;
             background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.08) 0%, transparent 60%);
             pointer-events: none;
             opacity: 0;
@@ -693,106 +749,104 @@
             width: 58px;
             height: 58px;
             border-radius: 18px;
-            background: rgba(37, 99, 235, 0.12);
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            background: rgba(245, 196, 105, 0.1);
+            border: 1px solid var(--border-subtle);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--blue-neon);
             font-size: 1.6rem;
+            color: var(--gold-accent);
             margin-bottom: 24px;
-            transition: var(--ease-fluid);
+            transition: transform 0.3s ease;
         }
 
         .interactive-tilt-card:hover .card-icon-emblem {
-            background: rgba(245, 196, 105, 0.15);
-            border-color: var(--gold-accent);
-            color: var(--gold-sheen);
-            transform: rotate(-6deg) scale(1.08);
+            transform: scale(1.1) rotate(4deg);
+            background: var(--gold-metallic);
+            color: #030611;
         }
 
         .interactive-tilt-card h4 {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 800;
             color: #ffffff;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .interactive-tilt-card p {
+            font-size: 0.95rem;
             color: var(--text-lead);
-            font-size: 0.94rem;
             line-height: 1.8;
-            margin-bottom: 22px;
-            flex-grow: 1;
+            margin-bottom: 24px;
         }
 
         .system-tag-pill {
             align-self: flex-start;
-            font-size: 0.78rem;
-            font-weight: 700;
             padding: 5px 14px;
             border-radius: var(--radius-pill);
             background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-glass);
+            font-size: 0.78rem;
+            font-weight: 600;
             color: var(--gold-accent);
-            border: 1px solid rgba(245, 196, 105, 0.15);
+            direction: ltr !important;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            letter-spacing: 0.5px;
         }
 
         .methodology-editorial-container {
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 40px;
-            align-items: center;
             background: var(--bg-panel);
             border: 1px solid var(--border-subtle);
-            border-radius: 36px;
-            padding: 48px;
-            backdrop-filter: blur(30px);
+            border-radius: var(--radius-lg);
+            padding: 55px;
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 50px;
+            backdrop-filter: blur(25px);
             box-shadow: var(--shadow-card);
         }
 
         .method-steps-column {
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 24px;
         }
 
         .method-step-card {
             display: flex;
             align-items: flex-start;
-            gap: 18px;
-            padding: 18px;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(7, 12, 26, 0.6);
+            border: 1px solid var(--border-glass);
             border-radius: var(--radius-md);
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--ease-fluid);
         }
 
         .method-step-card:hover {
-            background: rgba(245, 196, 105, 0.06);
             border-color: var(--border-subtle);
             transform: translateX(-6px);
+            background: rgba(11, 18, 36, 0.85);
         }
 
         .step-icon-badge {
-            width: 46px;
-            height: 46px;
-            min-width: 46px;
+            width: 48px;
+            height: 48px;
             border-radius: 14px;
-            background: rgba(245, 196, 105, 0.12);
-            color: var(--gold-accent);
+            background: rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            color: var(--blue-neon);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            font-size: 1.3rem;
+            flex-shrink: 0;
         }
 
         .step-text-wrap h5 {
-            font-size: 1.1rem;
+            font-size: 1.12rem;
             font-weight: 800;
             color: #ffffff;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .step-text-wrap p {
@@ -802,217 +856,335 @@
         }
 
         .paris-prestige-card {
-            background: linear-gradient(150deg, #090e1f 0%, #040711 100%);
-            border: 1px solid var(--border-subtle);
+            background: linear-gradient(160deg, rgba(16, 26, 52, 0.95) 0%, rgba(7, 12, 26, 0.98) 100%);
+            border: 1px solid rgba(245, 196, 105, 0.35);
             border-radius: var(--radius-lg);
-            padding: 42px 32px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
             position: relative;
-            overflow: hidden;
-            box-shadow: var(--shadow-card);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
         }
 
         .fleur-symbol {
-            font-size: 3.4rem;
-            margin-bottom: 16px;
-            display: inline-block;
+            font-size: 3rem;
+            color: var(--gold-accent);
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px rgba(245, 196, 105, 0.4));
         }
 
         .prestige-quote {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.35rem;
-            color: var(--gold-sheen);
-            line-height: 1.6;
-            margin-bottom: 14px;
+            font-size: 1.25rem;
+            color: #ffffff;
+            line-height: 1.7;
+            margin-bottom: 22px;
+            direction: ltr;
         }
 
         .prestige-commentary {
-            color: var(--text-lead);
             font-size: 0.95rem;
+            color: var(--text-lead);
             line-height: 1.8;
-            margin-bottom: 26px;
+            margin-bottom: 30px;
         }
 
         .educator-seal-pill {
             display: inline-flex;
             align-items: center;
-            padding: 9px 24px;
+            gap: 10px;
+            padding: 8px 22px;
             border-radius: var(--radius-pill);
             background: rgba(245, 196, 105, 0.12);
-            border: 1px solid var(--border-subtle);
-            color: var(--gold-accent);
+            border: 1px solid var(--border-active);
+            color: var(--gold-sheen);
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
-        .instapay-section-wrapper {
-            background: linear-gradient(145deg, rgba(20, 10, 36, 0.8) 0%, rgba(7, 12, 26, 0.9) 100%);
-            border: 1px solid var(--border-subtle);
-            border-radius: 36px;
-            padding: 48px;
-            backdrop-filter: blur(35px);
+        .payment-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .payment-lux-card {
+            background: var(--bg-panel);
+            border-radius: var(--radius-lg);
+            padding: 40px 32px;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--border-glass);
+            transition: all 0.35s var(--ease-fluid);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .payment-lux-card:hover {
+            transform: translateY(-8px);
             box-shadow: var(--shadow-card);
         }
 
-        .instapay-grid-2col {
-            display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 40px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
+        .payment-lux-card:active {
+            transform: scale(0.985);
         }
 
-        .instapay-tag-badge {
+        .card-voda-theme {
+            background: linear-gradient(160deg, rgba(230, 0, 0, 0.08) 0%, rgba(11, 18, 36, 0.88) 100%);
+            border-color: rgba(230, 0, 0, 0.3);
+        }
+
+        .card-voda-theme:hover {
+            border-color: rgba(230, 0, 0, 0.65);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(230, 0, 0, 0.25);
+        }
+
+        .card-insta-theme {
+            background: linear-gradient(160deg, rgba(147, 51, 234, 0.12) 0%, rgba(11, 18, 36, 0.88) 100%);
+            border-color: rgba(147, 51, 234, 0.35);
+        }
+
+        .card-insta-theme:hover {
+            border-color: rgba(147, 51, 234, 0.7);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(147, 51, 234, 0.3);
+        }
+
+        .pay-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+        }
+
+        .pay-brand-meta {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .pay-icon-circle {
+            width: 58px;
+            height: 58px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .voda-icon-box {
+            background: linear-gradient(135deg, #e60000 0%, #b30000 100%);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .insta-icon-box {
+            background: linear-gradient(135deg, #9333ea 0%, #6b21a8 100%);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .pay-title-group h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .pay-title-group span {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            font-weight: 500;
+        }
+
+        .pay-chip-badge {
+            padding: 5px 12px;
+            border-radius: var(--radius-pill);
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .chip-voda {
+            background: rgba(230, 0, 0, 0.18);
+            border: 1px solid rgba(230, 0, 0, 0.4);
+            color: #ff6666;
+        }
+
+        .chip-insta {
+            background: rgba(147, 51, 234, 0.18);
+            border: 1px solid rgba(147, 51, 234, 0.45);
+            color: #d8b4fe;
+        }
+
+        .pay-number-vault {
+            background: rgba(4, 8, 18, 0.8);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-bottom: 22px;
+            position: relative;
+        }
+
+        .pay-label-lead {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .pay-digits-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .pay-digits-string {
+            font-family: 'Plus Jakarta Sans', monospace;
+            font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 2px;
+            direction: ltr !important;
+            unicode-bidi: isolate;
+        }
+
+        .btn-copy-interactive {
+            background: var(--gold-metallic);
+            color: #030611;
+            border: none;
+            border-radius: var(--radius-pill);
+            padding: 10px 18px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(168, 85, 247, 0.15);
-            color: #d8b4fe;
-            border: 1px solid rgba(168, 85, 247, 0.35);
-            padding: 6px 16px;
-            border-radius: var(--radius-pill);
-            font-size: 0.82rem;
-            font-weight: 800;
+            transition: all 0.25s var(--ease-fluid);
+            flex-shrink: 0;
+            font-family: inherit;
+            box-shadow: 0 4px 14px rgba(245, 196, 105, 0.35);
+        }
+
+        .btn-copy-interactive:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(245, 196, 105, 0.6);
+        }
+
+        .btn-copy-interactive:active {
+            transform: scale(0.94);
+        }
+
+        .pay-secondary-handle-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px dashed rgba(147, 51, 234, 0.4);
+            border-radius: var(--radius-sm);
             margin-bottom: 20px;
+            font-size: 0.9rem;
         }
 
-        .instapay-title-h2 {
-            font-size: clamp(1.7rem, 2.5vw, 2.3rem);
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 16px;
-        }
-
-        .instapay-disclaimer-box {
-            background: rgba(245, 196, 105, 0.08);
-            border-right: 4px solid var(--gold-accent);
-            padding: 14px 20px;
-            border-radius: 8px;
-            margin: 20px 0 24px;
-            font-size: 0.92rem;
-            color: #ffe6a3;
-            line-height: 1.7;
-        }
-
-        .instapay-card-visual {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            border-radius: 24px;
-            padding: 30px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(25px);
-            display: flex;
-            flex-direction: column;
-            gap: 22px;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: var(--ease-fluid);
-        }
-
-        .instapay-card-visual:hover {
-            transform: translateY(-4px) rotateX(4deg);
-            border-color: var(--gold-accent);
-        }
-
-        .card-header-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .chip-emblem {
-            width: 44px;
-            height: 32px;
-            background: linear-gradient(135deg, #ffe6a3 0%, #d4af37 100%);
-            border-radius: 6px;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
-        }
-
-        .instapay-brand-styled {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-        }
-
-        .instapay-brand-styled span {
-            color: #c084fc;
-        }
-
-        .handle-interactive-card {
-            background: rgba(3, 6, 17, 0.65);
-            border: 1px dashed rgba(245, 196, 105, 0.45);
-            padding: 14px 18px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        .handle-text-val {
+            font-family: 'Plus Jakarta Sans', monospace;
+            font-weight: 700;
+            color: #d8b4fe;
             direction: ltr;
         }
 
-        .handle-string-text {
-            font-family: 'Plus Jakarta Sans', monospace;
-            font-size: 1.1rem;
-            color: #ffffff;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-copy-instant {
-            background: rgba(245, 196, 105, 0.18);
-            border: 1px solid var(--gold-accent);
-            color: var(--gold-sheen);
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 700;
+        .btn-copy-sub-ghost {
+            background: none;
+            border: none;
+            color: var(--gold-accent);
             cursor: pointer;
-            transition: all 0.3s ease;
+            font-size: 0.82rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 6px;
+            font-family: inherit;
+            transition: color 0.2s ease;
         }
 
-        .btn-copy-instant:hover {
-            background: var(--gold-accent);
-            color: #030611;
-        }
-
-        .card-bottom-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .btn-launch-instapay {
-            background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%);
+        .btn-copy-sub-ghost:hover {
             color: #ffffff;
-            text-decoration: none;
-            padding: 10px 22px;
-            border-radius: var(--radius-pill);
-            font-size: 0.9rem;
-            font-weight: 800;
+        }
+
+        .pay-exclusive-notice {
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: var(--radius-sm);
+            padding: 12px 14px;
+            font-size: 0.84rem;
+            color: var(--text-lead);
+            line-height: 1.6;
+            margin-bottom: 22px;
+            border-right: 3px solid var(--gold-accent);
             display: flex;
             align-items: center;
+            gap: 10px;
+        }
+
+        .pay-actions-strip {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-pay-action-link {
+            flex: 1;
+            padding: 12px 18px;
+            border-radius: var(--radius-md);
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             gap: 8px;
-            box-shadow: 0 4px 16px rgba(168, 85, 247, 0.45);
             transition: var(--ease-fluid);
         }
 
-        .btn-launch-instapay:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(168, 85, 247, 0.65);
+        .btn-pay-voda {
+            background: rgba(230, 0, 0, 0.15);
+            border: 1px solid rgba(230, 0, 0, 0.4);
+            color: #ffffff;
+        }
+
+        .btn-pay-voda:hover {
+            background: #e60000;
+            color: #ffffff;
+            box-shadow: 0 10px 25px rgba(230, 0, 0, 0.4);
+        }
+
+        .btn-pay-insta {
+            background: linear-gradient(135deg, #9333ea, #6b21a8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            box-shadow: 0 10px 25px rgba(147, 51, 234, 0.4);
+        }
+
+        .btn-pay-insta:hover {
+            background: linear-gradient(135deg, #a855f7, #7e22ce);
+            box-shadow: 0 12px 30px rgba(147, 51, 234, 0.6);
         }
 
         .contact-channels-trio {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
+            gap: 25px;
         }
 
         .contact-channel-brick {
@@ -1020,31 +1192,32 @@
             border: 1px solid var(--border-glass);
             border-radius: var(--radius-lg);
             padding: 38px 26px;
+            text-align: center;
             backdrop-filter: blur(25px);
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
+            justify-content: space-between;
             transition: var(--ease-fluid);
             position: relative;
         }
 
-        .contact-channel-brick.spotlight-channel {
-            border-color: rgba(37, 99, 235, 0.5);
-            background: linear-gradient(150deg, rgba(37, 99, 235, 0.1) 0%, rgba(11, 18, 36, 0.85) 100%);
-            box-shadow: var(--shadow-blue);
+        .spotlight-channel {
+            border-color: rgba(37, 211, 102, 0.45);
+            background: linear-gradient(160deg, rgba(37, 211, 102, 0.08) 0%, rgba(11, 18, 36, 0.88) 100%);
+            box-shadow: 0 15px 45px rgba(37, 211, 102, 0.15);
         }
 
         .spotlight-pill-crown {
             position: absolute;
-            top: -12px;
-            background: linear-gradient(90deg, #2563eb, #38bdf8);
-            color: #ffffff;
-            padding: 4px 18px;
+            top: -14px;
+            background: #25d366;
+            color: #032b12;
+            padding: 4px 16px;
             border-radius: var(--radius-pill);
-            font-size: 0.74rem;
+            font-size: 0.75rem;
             font-weight: 800;
-            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
         }
 
         .contact-channel-brick:hover {
@@ -1106,7 +1279,8 @@
             font-size: 1.15rem;
             font-weight: 800;
             color: var(--gold-sheen);
-            direction: ltr;
+            direction: ltr !important;
+            unicode-bidi: isolate;
             margin-bottom: 22px;
         }
 
@@ -1122,6 +1296,10 @@
             justify-content: center;
             gap: 10px;
             transition: var(--ease-fluid);
+        }
+
+        .btn-channel-direct:active {
+            transform: scale(0.97);
         }
 
         .btn-wa-theme {
@@ -1249,16 +1427,6 @@
             padding-bottom: 8px;
         }
 
-        .footer-col-headline::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 35px;
-            height: 2px;
-            background: var(--gold-accent);
-        }
-
         .footer-menu-list {
             list-style: none;
             display: flex;
@@ -1267,10 +1435,10 @@
         }
 
         .footer-menu-list a {
-            color: var(--text-lead);
             text-decoration: none;
-            font-size: 0.94rem;
-            transition: all 0.3s ease;
+            color: var(--text-lead);
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -1283,70 +1451,65 @@
 
         .footer-base-row {
             padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            font-size: 0.88rem;
+            justify-content: space-between;
+            font-size: 0.85rem;
             color: var(--text-muted);
-        }
-
-        .devmedo-watermark {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            letter-spacing: 0.5px;
-            color: var(--text-dim);
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
         .devmedo-watermark strong {
             color: var(--gold-accent);
-            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
         .toast-bubble {
             position: fixed;
             bottom: 30px;
             left: 50%;
-            transform: translate(-50%, 100px);
-            background: rgba(7, 12, 26, 0.98);
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(7, 12, 26, 0.96);
             border: 1px solid var(--gold-accent);
-            color: #ffffff;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.9), var(--shadow-gold);
             padding: 14px 28px;
             border-radius: var(--radius-pill);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), var(--shadow-gold);
-            backdrop-filter: blur(25px);
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 0.95rem;
             z-index: 99999;
+            backdrop-filter: blur(25px);
             display: flex;
             align-items: center;
             gap: 12px;
-            font-size: 0.95rem;
-            font-weight: 700;
             opacity: 0;
-            transition: all 0.4s var(--ease-fluid);
             pointer-events: none;
+            transition: all 0.4s var(--ease-fluid);
         }
 
         .toast-bubble.active {
-            transform: translate(-50%, 0);
+            transform: translateX(-50%) translateY(0);
             opacity: 1;
+            pointer-events: auto;
         }
 
         .scroll-top-btn {
             position: fixed;
             bottom: 30px;
-            right: 25px;
+            right: 30px;
             width: 48px;
             height: 48px;
             border-radius: 50%;
             background: rgba(7, 12, 26, 0.85);
             border: 1px solid var(--border-subtle);
             color: var(--gold-accent);
+            font-size: 1.1rem;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
-            cursor: pointer;
             z-index: 999;
             box-shadow: var(--shadow-card);
             backdrop-filter: blur(15px);
@@ -1407,8 +1570,9 @@
                 grid-template-columns: 1fr;
             }
 
-            .instapay-grid-2col {
+            .payment-methods-grid {
                 grid-template-columns: 1fr;
+                gap: 24px;
             }
 
             .contact-channels-trio {
@@ -1484,12 +1648,16 @@
                 display: none !important;
             }
 
-            .instapay-section-wrapper {
+            .methodology-editorial-container {
                 padding: 30px 20px;
             }
 
-            .methodology-editorial-container {
-                padding: 30px 20px;
+            .payment-lux-card {
+                padding: 28px 20px;
+            }
+
+            .pay-digits-string {
+                font-size: 1.4rem;
             }
 
             .scroll-top-btn {
@@ -1507,7 +1675,7 @@
                 transition-duration: 0.001ms !important;
                 scroll-behavior: auto !important;
             }
-            .cursor-glow {
+            .cursor-glow, .portrait-halo-ambient {
                 display: none;
             }
         }
@@ -1530,16 +1698,16 @@
                 <span class="live-dot" title="متاح حالياً للحجز والاستفسار"></span>
             </div>
             <div class="brand-text-block">
-                <span class="brand-name-val">
-                    M : Reda Elkhshen 
-                    <span class="fr-flag-emblem" title="فرنسا">
+                <div class="brand-identity-cluster" dir="ltr">
+                    <span class="brand-name-val">M : Reda Elkhshen</span>
+                    <span class="fr-flag-emblem" title="فرنسا" aria-label="علم فرنسا">
                         <svg viewBox="0 0 900 600" class="svg-flag">
                             <rect width="300" height="600" fill="#002395"/>
                             <rect x="300" width="300" height="600" fill="#ffffff"/>
                             <rect x="600" width="300" height="600" fill="#ed2939"/>
                         </svg>
                     </span>
-                </span>
+                </div>
                 <span class="brand-sub-val">Professeur de Français</span>
             </div>
         </a>
@@ -1548,7 +1716,7 @@
             <li><a href="#hero" class="nav-link-item">الرئيسية</a></li>
             <li><a href="#systems" class="nav-link-item">الأنظمة التعليمية</a></li>
             <li><a href="#methodology" class="nav-link-item">المنهجية والشرح</a></li>
-            <li><a href="#instapay" class="nav-link-item">كارت InstaPay</a></li>
+            <li><a href="#payment" class="nav-link-item">طرق الدفع</a></li>
             <li><a href="#faq" class="nav-link-item">الأسئلة الشائعة</a></li>
             <li><a href="#contact" class="nav-link-item">تواصل معايا</a></li>
         </ul>
@@ -1578,13 +1746,15 @@
                     <h1 class="hero-headline-main">
                         الفرنساوي بفهم وشياكة مع<br>
                         <span class="gold-highlight">
-                            M : Reda Elkhshen 
-                            <span class="fr-flag-emblem" style="vertical-align: 0.1em;" title="فرنسا">
-                                <svg viewBox="0 0 900 600" class="svg-flag" style="width: 32px; height: 21px;">
-                                    <rect width="300" height="600" fill="#002395"/>
-                                    <rect x="300" width="300" height="600" fill="#ffffff"/>
-                                    <rect x="600" width="300" height="600" fill="#ed2939"/>
-                                </svg>
+                            <span class="brand-identity-cluster" dir="ltr">
+                                <span>M : Reda Elkhshen</span>
+                                <span class="fr-flag-emblem flag-hero" title="فرنسا" aria-label="علم فرنسا">
+                                    <svg viewBox="0 0 900 600" class="svg-flag" style="width: 32px; height: 21px;">
+                                        <rect width="300" height="600" fill="#002395"/>
+                                        <rect x="300" width="300" height="600" fill="#ffffff"/>
+                                        <rect x="600" width="300" height="600" fill="#ed2939"/>
+                                    </svg>
+                                </span>
                             </span>
                         </span>
                     </h1>
@@ -1611,9 +1781,16 @@
                 </div>
 
                 <div class="hero-portrait-wrap reveal-node">
+                    <div class="portrait-halo-ambient"></div>
                     <div class="portrait-3d-chassis" id="portraitChassis">
+                        <div class="portrait-corner-bracket bracket-tl"></div>
+                        <div class="portrait-corner-bracket bracket-tr"></div>
+                        <div class="portrait-corner-bracket bracket-bl"></div>
+                        <div class="portrait-corner-bracket bracket-br"></div>
+
                         <div class="portrait-inner-glass">
                             <img src="assets/images/reda_profile.jpg" onerror="this.src='https://h.top4top.io/p_396318akg1.jpg'" alt="الأستاذ رضا الخشن معلم خبير لغة فرنسية">
+                            <div class="portrait-shimmer-sweep"></div>
                         </div>
 
                         <div class="holo-chip chip-years">
@@ -1782,13 +1959,15 @@
                         اللغة الفرنسية أسلوب حياة وثقافة شياكة.. لما تفهمها صح هتحبها وتتميز بيها، وده بالظبط اللي بنعمله مع كل طالب من أول حصة.
                     </p>
                     <div class="educator-seal-pill">
-                        M : Reda Elkhshen 
-                        <span class="fr-flag-emblem" style="margin-right: 6px;">
-                            <svg viewBox="0 0 900 600" class="svg-flag">
-                                <rect width="300" height="600" fill="#002395"/>
-                                <rect x="300" width="300" height="600" fill="#ffffff"/>
-                                <rect x="600" width="300" height="600" fill="#ed2939"/>
-                            </svg>
+                        <span class="brand-identity-cluster" dir="ltr">
+                            <span>M : Reda Elkhshen</span>
+                            <span class="fr-flag-emblem" title="فرنسا" aria-label="علم فرنسا">
+                                <svg viewBox="0 0 900 600" class="svg-flag">
+                                    <rect width="300" height="600" fill="#002395"/>
+                                    <rect x="300" width="300" height="600" fill="#ffffff"/>
+                                    <rect x="600" width="300" height="600" fill="#ed2939"/>
+                                </svg>
+                            </span>
                         </span>
                     </div>
                 </div>
@@ -1796,68 +1975,109 @@
             </div>
         </section>
 
-        <section class="content-section" id="instapay">
-            <div class="instapay-section-wrapper reveal-node">
-                <div class="instapay-grid-2col">
-                    
+        <section class="content-section" id="payment">
+            <span id="instapay" style="position: absolute; top: -80px;"></span>
+            <div class="section-lead-title reveal-node">
+                <span class="french-subheading">Modalités de Règlement</span>
+                <h2 class="headline-section-h2">طرق الدفع المتاحة</h2>
+                <p class="sub-description">
+                    تسهيلاً على أولياء الأمور والطلاب الكرام، نوفر وسائل التحويل المالي المباشر عبر المحافظ الإلكترونية المعتمدة وشبكة المدفوعات اللحظية.
+                </p>
+            </div>
+
+            <div class="payment-methods-grid">
+                
+                <div class="payment-lux-card card-voda-theme reveal-node">
                     <div>
-                        <div class="instapay-tag-badge">
-                            <i class="fas fa-bolt"></i>
-                            <span>الدفع اللحظي الرسمي | InstaPay Egypt</span>
-                        </div>
-                        
-                        <h2 class="instapay-title-h2">كارت التحويل المالي عبر تطبيق InstaPay</h2>
-                        
-                        <p style="color: var(--text-lead); font-size: 1.05rem; line-height: 1.8;">
-                            تسهيلاً على أولياء الأمور والطلاب، نوفر وسيلة الدفع والتحويل الإلكتروني المباشر عبر شبكة المدفوعات اللحظية المصرية (InstaPay).
-                        </p>
-
-                        <div class="instapay-disclaimer-box">
-                            <i class="fas fa-circle-exclamation" style="margin-left: 6px;"></i>
-                            <strong>تنبيه توضيحي:</strong> الرابط والكارت مخصصان فقط للتحويل المالي المباشر عبر تطبيق إنستاباي، ولا يمثلان حجزاً تلقائياً. يرجى التواصل عبر الواتساب لتأكيد الحجز ومواعيد المجموعات أولاً.
+                        <div class="pay-header-row">
+                            <div class="pay-brand-meta">
+                                <div class="pay-icon-circle voda-icon-box">
+                                    <i class="fas fa-wallet"></i>
+                                </div>
+                                <div class="pay-title-group">
+                                    <h3>فودافون كاش</h3>
+                                    <span>Vodafone Cash Wallet</span>
+                                </div>
+                            </div>
+                            <span class="pay-chip-badge chip-voda">محفظة إلكترونية</span>
                         </div>
 
-                        <a href="https://ipn.eg/S/redaelkhshen/instapay/6Jcs4X" target="_blank" rel="noopener noreferrer" class="btn-action-primary" style="display: inline-flex; background: linear-gradient(135deg, #9333ea, #6b21a8); box-shadow: 0 10px 25px rgba(147, 51, 234, 0.4);">
-                            <i class="fas fa-arrow-up-right-from-square"></i>
-                            <span>فتح رابط التحويل في تطبيق InstaPay</span>
+                        <div class="pay-number-vault">
+                            <span class="pay-label-lead">رقم المحفظة المخصص للتحويل المالي:</span>
+                            <div class="pay-digits-row">
+                                <span class="pay-digits-string" id="vodaNumber">01005664564</span>
+                                <button class="btn-copy-interactive" id="copyVodaBtn" aria-label="نسخ رقم فودافون كاش">
+                                    <i class="fas fa-copy"></i>
+                                    <span>نسخ الرقم</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="pay-exclusive-notice">
+                            <i class="fas fa-shield-halved" style="color: #ff6666; font-size: 1.1rem; flex-shrink: 0;"></i>
+                            <span><strong>تنبيه هام:</strong> هذا الرقم مخصص حصرياً للتحويل المالي المباشر، ولا يمثل وسيلة لحجز الدروس أو الاستفسار.</span>
+                        </div>
+                    </div>
+
+                    <div class="pay-actions-strip">
+                        <a href="tel:01005664564" class="btn-pay-action-link btn-pay-voda">
+                            <i class="fas fa-phone"></i>
+                            <span>اتصال فوري بالرقم</span>
                         </a>
                     </div>
+                </div>
 
+                <div class="payment-lux-card card-insta-theme reveal-node">
                     <div>
-                        <div class="instapay-card-visual">
-                            
-                            <div class="card-header-flex">
-                                <div class="chip-emblem"></div>
-                                <div class="instapay-brand-styled">Insta<span>Pay</span></div>
-                            </div>
-
-                            <div style="display: flex; flex-direction: column; gap: 8px;">
-                                <span style="font-size: 0.8rem; color: var(--gold-accent); font-weight: 700; text-transform: uppercase;">عنوان الدفع اللحظي (IPA Handle)</span>
-                                
-                                <div class="handle-interactive-card">
-                                    <span class="handle-string-text" id="instaHandle">redaelkhshen@instapay</span>
-                                    <button class="btn-copy-instant" id="copyHandleBtn" title="نسخ المعرف">
-                                        <i class="fas fa-copy"></i>
-                                        <span id="copyBtnText">نسخ</span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="card-bottom-flex">
-                                <div>
-                                    <span style="display: block; font-size: 0.75rem; color: var(--text-muted);">المستفيد المعتمد</span>
-                                    <span style="font-size: 0.95rem; font-weight: 800; color: #ffffff;">M : Reda Elkhshen</span>
-                                </div>
-                                <a href="https://ipn.eg/S/redaelkhshen/instapay/6Jcs4X" target="_blank" rel="noopener noreferrer" class="btn-launch-instapay">
-                                    <span>تحويل فوري</span>
+                        <div class="pay-header-row">
+                            <div class="pay-brand-meta">
+                                <div class="pay-icon-circle insta-icon-box">
                                     <i class="fas fa-bolt"></i>
-                                </a>
+                                </div>
+                                <div class="pay-title-group">
+                                    <h3>إنستاباي</h3>
+                                    <span>InstaPay Egypt (IPN)</span>
+                                </div>
                             </div>
+                            <span class="pay-chip-badge chip-insta">دفع لحظي رسمي</span>
+                        </div>
 
+                        <div class="pay-number-vault">
+                            <span class="pay-label-lead">رقم الهاتف المرتبط بالتحويل اللحظي:</span>
+                            <div class="pay-digits-row">
+                                <span class="pay-digits-string" id="instaNumber">01558186187</span>
+                                <button class="btn-copy-interactive" id="copyInstaPhoneBtn" aria-label="نسخ رقم إنستاباي">
+                                    <i class="fas fa-copy"></i>
+                                    <span>نسخ الرقم</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="pay-secondary-handle-box">
+                            <div>
+                                <span style="display: block; font-size: 0.72rem; color: var(--text-dim); margin-bottom: 2px;">عنوان الدفع اللحظي (IPA Handle)</span>
+                                <span class="handle-text-val" id="instaHandle">redaelkhshen@instapay</span>
+                            </div>
+                            <button class="btn-copy-sub-ghost" id="copyHandleBtn" title="نسخ المعرف">
+                                <i class="fas fa-copy"></i>
+                                <span id="copyBtnText">نسخ المعرف</span>
+                            </button>
+                        </div>
+
+                        <div class="pay-exclusive-notice" style="border-right-color: #c084fc;">
+                            <i class="fas fa-shield-halved" style="color: #c084fc; font-size: 1.1rem; flex-shrink: 0;"></i>
+                            <span><strong>تنبيه هام:</strong> المعرف والرقم مخصصان حصرياً للتحويل المالي اللحظي، ولا يمثلان وسيلة لحجز الدروس أو الاستفسار.</span>
                         </div>
                     </div>
 
+                    <div class="pay-actions-strip">
+                        <a href="https://ipn.eg/S/redaelkhshen/instapay/6Jcs4X" target="_blank" rel="noopener noreferrer" class="btn-pay-action-link btn-pay-insta">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                            <span>فتح تطبيق InstaPay للتحويل</span>
+                        </a>
+                    </div>
                 </div>
+
             </div>
         </section>
 
@@ -1966,9 +2186,9 @@
             <div class="footer-3col-grid">
                 
                 <div class="footer-bio-summary">
-                    <div class="brand-name-val" style="font-size: 1.35rem; margin-bottom: 6px;">
-                        M : Reda Elkhshen 
-                        <span class="fr-flag-emblem" style="margin-right: 6px;">
+                    <div class="brand-identity-cluster" dir="ltr" style="font-size: 1.35rem; margin-bottom: 6px;">
+                        <span class="brand-name-val">M : Reda Elkhshen</span>
+                        <span class="fr-flag-emblem" title="فرنسا" aria-label="علم فرنسا">
                             <svg viewBox="0 0 900 600" class="svg-flag">
                                 <rect width="300" height="600" fill="#002395"/>
                                 <rect x="300" width="300" height="600" fill="#ffffff"/>
@@ -1988,19 +2208,20 @@
                         <li><a href="#hero"><i class="fas fa-angle-left"></i> الرئيسية</a></li>
                         <li><a href="#systems"><i class="fas fa-angle-left"></i> الأنظمة التعليمية</a></li>
                         <li><a href="#methodology"><i class="fas fa-angle-left"></i> المنهجية والشرح</a></li>
-                        <li><a href="#instapay"><i class="fas fa-angle-left"></i> كارت InstaPay</a></li>
+                        <li><a href="#payment"><i class="fas fa-angle-left"></i> طرق الدفع</a></li>
                         <li><a href="#faq"><i class="fas fa-angle-left"></i> الأسئلة الشائعة</a></li>
                         <li><a href="#contact"><i class="fas fa-angle-left"></i> تواصل معايا</a></li>
                     </ul>
                 </div>
 
                 <div>
-                    <h4 class="footer-col-headline">التواصل المعتمد</h4>
+                    <h4 class="footer-col-headline">التواصل المعتمد والتحويل</h4>
                     <ul class="footer-menu-list">
                         <li><a href="https://wa.me/201558186187" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color: #25d366;"></i> واتساب الأعمال: 01558186187</a></li>
                         <li><a href="https://wa.me/201005664564" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" style="color: #38bdf8;"></i> واتساب الشخصي: 01005664564</a></li>
                         <li><a href="https://www.facebook.com/reda.elkhshen" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" style="color: #1877f2;"></i> فيسبوك: reda.elkhshen</a></li>
-                        <li><a href="https://ipn.eg/S/redaelkhshen/instapay/6Jcs4X" target="_blank" rel="noopener noreferrer"><i class="fas fa-money-bill-transfer" style="color: #c084fc;"></i> تحويل InstaPay المباشر</a></li>
+                        <li><a href="#payment"><i class="fas fa-wallet" style="color: #ff6666;"></i> فودافون كاش: 01005664564</a></li>
+                        <li><a href="https://ipn.eg/S/redaelkhshen/instapay/6Jcs4X" target="_blank" rel="noopener noreferrer"><i class="fas fa-bolt" style="color: #c084fc;"></i> تحويل InstaPay: 01558186187</a></li>
                     </ul>
                 </div>
 
@@ -2052,7 +2273,7 @@
 
             let currentSectionId = '';
             sections.forEach(sec => {
-                const secTop = sec.offsetTop - 120;
+                const secTop = sec.offsetTop - 130;
                 const secHeight = sec.offsetHeight;
                 if (window.scrollY >= secTop && window.scrollY < secTop + secHeight) {
                     currentSectionId = sec.getAttribute('id');
@@ -2185,7 +2406,7 @@
             });
         }
 
-        document.querySelectorAll('.interactive-tilt-card').forEach(card => {
+        document.querySelectorAll('.interactive-tilt-card, .payment-lux-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -2195,9 +2416,9 @@
 
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -6;
-                const rotateY = ((x - centerX) / centerX) * 6;
-                card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+                const rotateX = ((y - centerY) / centerY) * -5;
+                const rotateY = ((x - centerX) / centerX) * 5;
+                card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
             });
 
             card.addEventListener('mouseleave', () => {
@@ -2237,11 +2458,8 @@
             revealObserver.observe(node);
         });
 
-        const copyBtn = document.getElementById('copyHandleBtn');
-        const handleEl = document.getElementById('instaHandle');
         const toast = document.getElementById('toastBox');
         const toastTxt = document.getElementById('toastMessageText');
-        const copyTxt = document.getElementById('copyBtnText');
 
         function triggerToast(msg) {
             toastTxt.textContent = msg;
@@ -2251,28 +2469,26 @@
             }, 3000);
         }
 
-        copyBtn.addEventListener('click', () => {
-            const textToCopy = handleEl.textContent.trim();
+        function copyToClipboard(text, btnElement, successLabel, toastMsg) {
+            const originalContent = btnElement.innerHTML;
+            const proceedSuccess = () => {
+                btnElement.innerHTML = `<i class="fas fa-check"></i> <span>${successLabel}</span>`;
+                triggerToast(toastMsg);
+                setTimeout(() => {
+                    btnElement.innerHTML = originalContent;
+                }, 2500);
+            };
+
             if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(textToCopy).then(() => {
-                    handleCopySuccess();
-                }).catch(() => {
-                    fallbackCopy(textToCopy);
+                navigator.clipboard.writeText(text).then(proceedSuccess).catch(() => {
+                    fallbackCopy(text, proceedSuccess);
                 });
             } else {
-                fallbackCopy(textToCopy);
+                fallbackCopy(text, proceedSuccess);
             }
-        });
-
-        function handleCopySuccess() {
-            copyTxt.textContent = 'تم النسخ!';
-            triggerToast('تم نسخ معرّف InstaPay بنجاح: ' + handleEl.textContent.trim());
-            setTimeout(() => {
-                copyTxt.textContent = 'نسخ';
-            }, 2500);
         }
 
-        function fallbackCopy(text) {
+        function fallbackCopy(text, callback) {
             const textArea = document.createElement('textarea');
             textArea.value = text;
             textArea.style.position = 'fixed';
@@ -2282,11 +2498,34 @@
             textArea.select();
             try {
                 document.execCommand('copy');
-                handleCopySuccess();
+                if (callback) callback();
             } catch (err) {
-                triggerToast('يرجى نسخ المعرف يدوياً');
+                triggerToast('يرجى نسخ النص يدوياً');
             }
             document.body.removeChild(textArea);
+        }
+
+        const copyVodaBtn = document.getElementById('copyVodaBtn');
+        if (copyVodaBtn) {
+            copyVodaBtn.addEventListener('click', () => {
+                copyToClipboard('01005664564', copyVodaBtn, 'تم النسخ!', 'تم نسخ رقم فودافون كاش: 01005664564');
+            });
+        }
+
+        const copyInstaPhoneBtn = document.getElementById('copyInstaPhoneBtn');
+        if (copyInstaPhoneBtn) {
+            copyInstaPhoneBtn.addEventListener('click', () => {
+                copyToClipboard('01558186187', copyInstaPhoneBtn, 'تم النسخ!', 'تم نسخ رقم إنستاباي: 01558186187');
+            });
+        }
+
+        const copyHandleBtn = document.getElementById('copyHandleBtn');
+        const instaHandle = document.getElementById('instaHandle');
+        if (copyHandleBtn && instaHandle) {
+            copyHandleBtn.addEventListener('click', () => {
+                const text = instaHandle.textContent.trim();
+                copyToClipboard(text, copyHandleBtn, 'تم النسخ!', 'تم نسخ معرّف InstaPay: ' + text);
+            });
         }
 
         const phrases = [

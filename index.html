@@ -915,7 +915,7 @@
         .payment-lux-card {
             background: var(--bg-panel);
             border-radius: var(--radius-lg);
-            padding: 40px 32px;
+            padding: 38px 30px;
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(25px);
@@ -959,37 +959,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 28px;
+            margin-bottom: 22px;
         }
 
         .pay-brand-meta {
             display: flex;
             align-items: center;
-            gap: 16px;
-        }
-
-        .pay-icon-circle {
-            width: 58px;
-            height: 58px;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            flex-shrink: 0;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .voda-icon-box {
-            background: linear-gradient(135deg, #e60000 0%, #b30000 100%);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .insta-icon-box {
-            background: linear-gradient(135deg, #9333ea 0%, #6b21a8 100%);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            gap: 14px;
         }
 
         .pay-title-group h3 {
@@ -1023,6 +999,89 @@
             background: rgba(147, 51, 234, 0.18);
             border: 1px solid rgba(147, 51, 234, 0.45);
             color: #d8b4fe;
+        }
+
+        .pay-showcase-frame {
+            height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-md);
+            padding: 14px 20px;
+            margin-bottom: 22px;
+            position: relative;
+            overflow: hidden;
+            background: rgba(4, 8, 18, 0.7);
+            border: 1px solid var(--border-glass);
+            cursor: pointer;
+            transition: all 0.35s var(--ease-fluid);
+        }
+
+        .pay-showcase-frame:hover {
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .pay-showcase-frame:active {
+            transform: scale(0.97);
+        }
+
+        .voda-frame {
+            border-color: rgba(230, 0, 0, 0.25);
+            background: radial-gradient(circle at center, rgba(230, 0, 0, 0.14) 0%, rgba(4, 8, 18, 0.85) 80%);
+        }
+
+        .voda-frame:hover {
+            border-color: rgba(230, 0, 0, 0.6);
+            box-shadow: 0 10px 30px rgba(230, 0, 0, 0.25);
+        }
+
+        .insta-frame {
+            border-color: rgba(147, 51, 234, 0.3);
+            background: radial-gradient(circle at center, rgba(147, 51, 234, 0.16) 0%, rgba(4, 8, 18, 0.85) 80%);
+        }
+
+        .insta-frame:hover {
+            border-color: rgba(147, 51, 234, 0.65);
+            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.25);
+        }
+
+        .pay-brand-img {
+            display: block;
+            object-fit: contain;
+            transition: transform 0.4s var(--ease-fluid), filter 0.4s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .voda-img {
+            max-height: 82px;
+            max-width: 140px;
+            filter: drop-shadow(0 4px 12px rgba(230, 0, 0, 0.4));
+        }
+
+        .insta-img {
+            max-height: 40px;
+            max-width: 210px;
+            filter: drop-shadow(0 4px 14px rgba(147, 51, 234, 0.45));
+        }
+
+        .pay-showcase-frame:hover .pay-brand-img {
+            transform: scale(1.08);
+            filter: drop-shadow(0 6px 18px rgba(255, 255, 255, 0.3));
+        }
+
+        .pay-showcase-shimmer {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(125deg, transparent 35%, rgba(255, 255, 255, 0.1) 48%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 52%, transparent 65%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 3;
+        }
+
+        .pay-showcase-frame:hover .pay-showcase-shimmer {
+            opacity: 1;
         }
 
         .pay-number-vault {
@@ -1991,15 +2050,17 @@
                     <div>
                         <div class="pay-header-row">
                             <div class="pay-brand-meta">
-                                <div class="pay-icon-circle voda-icon-box">
-                                    <i class="fas fa-wallet"></i>
-                                </div>
                                 <div class="pay-title-group">
                                     <h3>فودافون كاش</h3>
                                     <span>Vodafone Cash Wallet</span>
                                 </div>
                             </div>
                             <span class="pay-chip-badge chip-voda">محفظة إلكترونية</span>
+                        </div>
+
+                        <div class="pay-showcase-frame voda-frame" id="vodaShowcase" title="فودافون كاش - مخصص للتحويل المالي المباشر">
+                            <img src="assets/images/vodafone_cash.png" onerror="this.src='assets/images/658db8cef0868b08d4876e2a_Untitled-6-520x470-1.png'" alt="شعار فودافون كاش الرسمي" class="pay-brand-img voda-img">
+                            <div class="pay-showcase-shimmer"></div>
                         </div>
 
                         <div class="pay-number-vault">
@@ -2031,15 +2092,17 @@
                     <div>
                         <div class="pay-header-row">
                             <div class="pay-brand-meta">
-                                <div class="pay-icon-circle insta-icon-box">
-                                    <i class="fas fa-bolt"></i>
-                                </div>
                                 <div class="pay-title-group">
                                     <h3>إنستاباي</h3>
                                     <span>InstaPay Egypt (IPN)</span>
                                 </div>
                             </div>
                             <span class="pay-chip-badge chip-insta">دفع لحظي مباشر</span>
+                        </div>
+
+                        <div class="pay-showcase-frame insta-frame" id="instaShowcase" title="إنستاباي - شبكة المدفوعات اللحظية الرسمية">
+                            <img src="assets/images/instapay_logo.png" onerror="this.src='assets/images/Logo.png'" alt="شعار إنستاباي الرسمي" class="pay-brand-img insta-img">
+                            <div class="pay-showcase-shimmer"></div>
                         </div>
 
                         <div class="pay-number-vault">
@@ -2425,6 +2488,20 @@
                 card.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateY(0)';
             });
         });
+
+        const vodaShowcase = document.getElementById('vodaShowcase');
+        if (vodaShowcase) {
+            vodaShowcase.addEventListener('click', () => {
+                triggerToast('فودافون كاش: 01005664564 (مخصص للتحويل فقط)');
+            });
+        }
+
+        const instaShowcase = document.getElementById('instaShowcase');
+        if (instaShowcase) {
+            instaShowcase.addEventListener('click', () => {
+                triggerToast('إنستاباي: 01558186187 (مخصص للتحويل فقط)');
+            });
+        }
 
         const navToggle = document.getElementById('hamburgerBtn');
         const navMenu = document.getElementById('mobileNavMenu');

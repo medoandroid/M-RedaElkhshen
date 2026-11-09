@@ -337,13 +337,53 @@
             overflow: hidden;
         }
 
-        .hero-cinematic-backdrop {
+        /* Background Upper Watermark Backdrop */
+        .hero-bg-watermark-rig {
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 640px;
             pointer-events: none;
             z-index: 1;
             overflow: hidden;
             transition: opacity 0.4s ease-out;
+        }
+
+        .hero-watermark-portrait-wrap {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 960px;
+            height: 620px;
+            opacity: 0.17;
+            mix-blend-mode: luminosity;
+            filter: contrast(1.15) brightness(0.95);
+            -webkit-mask-image: 
+                radial-gradient(ellipse 75% 70% at 50% 25%, #000 25%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.2) 75%, transparent 100%),
+                linear-gradient(to bottom, #000 0%, #000 35%, rgba(0,0,0,0.4) 65%, transparent 95%);
+            -webkit-mask-composite: source-in;
+            mask-image: 
+                radial-gradient(ellipse 75% 70% at 50% 25%, #000 25%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,0.2) 75%, transparent 100%),
+                linear-gradient(to bottom, #000 0%, #000 35%, rgba(0,0,0,0.4) 65%, transparent 95%);
+            mask-composite: intersect;
+        }
+
+        .hero-watermark-portrait-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 12%;
+            display: block;
+        }
+
+        .hero-watermark-gradient-fade {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 20%, rgba(3, 7, 18, 0.65) 60%, var(--bg-deep) 100%);
+            pointer-events: none;
         }
 
         .cinematic-spotlight-beam {
@@ -351,7 +391,7 @@
             top: -15%;
             left: 20%;
             width: 700px;
-            height: 900px;
+            height: 850px;
             background: radial-gradient(ellipse 65% 55% at 50% 30%, rgba(37, 99, 235, 0.22) 0%, rgba(245, 196, 105, 0.1) 45%, transparent 75%);
             filter: blur(60px);
             pointer-events: none;
@@ -363,81 +403,6 @@
         @keyframes beamPulse {
             0% { transform: rotate(-15deg) scale(0.95); opacity: 0.7; }
             100% { transform: rotate(-12deg) scale(1.05); opacity: 0.95; }
-        }
-
-        .cinematic-smoke-field {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-        }
-
-        .smoke-wisp {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-            mix-blend-mode: screen;
-        }
-
-        .smoke-wisp-alpha {
-            top: 25%;
-            left: 5%;
-            width: 580px;
-            height: 480px;
-            background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.16) 0%, rgba(56, 189, 248, 0.08) 45%, transparent 70%);
-            filter: blur(50px);
-            animation: smokeDriftA 18s ease-in-out infinite alternate;
-        }
-
-        .smoke-wisp-beta {
-            top: 45%;
-            left: 18%;
-            width: 520px;
-            height: 440px;
-            background: radial-gradient(ellipse at center, rgba(245, 196, 105, 0.14) 0%, rgba(255, 255, 255, 0.04) 40%, transparent 68%);
-            filter: blur(55px);
-            animation: smokeDriftB 24s ease-in-out infinite alternate;
-        }
-
-        .smoke-wisp-gamma {
-            top: 30%;
-            left: 35%;
-            width: 480px;
-            height: 400px;
-            background: radial-gradient(ellipse at center, rgba(30, 58, 138, 0.2) 0%, rgba(37, 99, 235, 0.1) 45%, transparent 72%);
-            filter: blur(60px);
-            animation: smokeDriftC 20s ease-in-out infinite alternate;
-        }
-
-        .smoke-wisp-bottom {
-            bottom: -50px;
-            left: 0;
-            width: 100%;
-            height: 260px;
-            background: radial-gradient(ellipse 70% 140px at 50% 100%, rgba(37, 99, 235, 0.2) 0%, rgba(245, 196, 105, 0.08) 35%, transparent 80%);
-            filter: blur(40px);
-            animation: smokeRise 10s ease-in-out infinite alternate;
-        }
-
-        @keyframes smokeDriftA {
-            0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.6; }
-            50% { transform: translate3d(35px, -25px, 0) scale(1.08); opacity: 0.85; }
-            100% { transform: translate3d(-20px, 20px, 0) scale(0.96); opacity: 0.65; }
-        }
-
-        @keyframes smokeDriftB {
-            0% { transform: translate3d(0, 0, 0) scale(0.95); opacity: 0.55; }
-            50% { transform: translate3d(-30px, -20px, 0) scale(1.1); opacity: 0.8; }
-            100% { transform: translate3d(25px, 15px, 0) scale(1.02); opacity: 0.6; }
-        }
-
-        @keyframes smokeDriftC {
-            0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.5; }
-            100% { transform: translate3d(40px, -30px, 0) scale(1.12); opacity: 0.75; }
-        }
-
-        @keyframes smokeRise {
-            0% { transform: translateY(0); opacity: 0.6; }
-            100% { transform: translateY(-15px); opacity: 0.9; }
         }
 
         .hero-grid-2col {
@@ -654,97 +619,64 @@
         .portrait-chassis-stage {
             position: relative;
             width: 100%;
-            max-width: 440px;
-            display: flex;
-            justify-content: center;
+            max-width: 410px;
+            aspect-ratio: 1 / 1.15;
+            border-radius: var(--radius-lg);
+            padding: 8px;
+            background: linear-gradient(145deg, rgba(245, 196, 105, 0.45) 0%, rgba(37, 99, 235, 0.3) 50%, rgba(11, 18, 36, 0.95) 100%);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(245, 196, 105, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.06);
             transform-style: preserve-3d;
             transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
             z-index: 3;
         }
 
-        .portrait-fade-wrapper {
-            position: relative;
-            width: 100%;
-            max-width: 430px;
-            aspect-ratio: 1 / 1.15;
-            border-radius: 32px 32px 0 0;
-            overflow: visible;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
+        .portrait-corner-bracket {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-color: var(--gold-accent);
+            border-style: solid;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0.85;
         }
 
-        .portrait-hero-fused-img {
+        .bracket-tl { top: 14px; left: 14px; border-width: 3px 0 0 3px; border-top-left-radius: 6px; }
+        .bracket-tr { top: 14px; right: 14px; border-width: 3px 3px 0 0; border-top-right-radius: 6px; }
+        .bracket-bl { bottom: 14px; left: 14px; border-width: 0 0 3px 3px; border-bottom-left-radius: 6px; }
+        .bracket-br { bottom: 14px; right: 14px; border-width: 0 3px 3px 0; border-bottom-right-radius: 6px; }
+
+        .portrait-inner-glass {
+            width: 100%;
+            height: 100%;
+            border-radius: calc(var(--radius-lg) - 6px);
+            overflow: hidden;
+            position: relative;
+            background: #070c1a;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .portrait-hero-clear-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 10%;
+            object-position: center 12%;
             display: block;
-            border-radius: 32px 32px 0 0;
-            
-            -webkit-mask-image: 
-                linear-gradient(to bottom, 
-                    #000 0%, 
-                    #000 48%, 
-                    rgba(0, 0, 0, 0.88) 64%, 
-                    rgba(0, 0, 0, 0.45) 78%, 
-                    rgba(0, 0, 0, 0.12) 90%, 
-                    transparent 100%),
-                radial-gradient(ellipse 96% 96% at 50% 36%, 
-                    #000 66%, 
-                    rgba(0, 0, 0, 0.85) 82%, 
-                    transparent 100%);
-            -webkit-mask-composite: source-in;
-            mask-image: 
-                linear-gradient(to bottom, 
-                    #000 0%, 
-                    #000 48%, 
-                    rgba(0, 0, 0, 0.88) 64%, 
-                    rgba(0, 0, 0, 0.45) 78%, 
-                    rgba(0, 0, 0, 0.12) 90%, 
-                    transparent 100%),
-                radial-gradient(ellipse 96% 96% at 50% 36%, 
-                    #000 66%, 
-                    rgba(0, 0, 0, 0.85) 82%, 
-                    transparent 100%);
-            mask-composite: intersect;
-
-            filter: contrast(1.05) brightness(1.02) saturate(1.06);
-            transition: transform 0.6s var(--ease-fluid), filter 0.6s ease;
+            border-radius: calc(var(--radius-lg) - 6px);
+            filter: contrast(1.05) brightness(1.03) saturate(1.06);
+            transition: transform 0.6s var(--ease-fluid);
         }
 
-        .portrait-dissolve-mask {
+        .portrait-chassis-stage:hover .portrait-hero-clear-img {
+            transform: scale(1.04);
+        }
+
+        .portrait-ambient-sheen {
             position: absolute;
             inset: 0;
-            border-radius: 32px 32px 0 0;
-            background: linear-gradient(to top, 
-                #030712 0%, 
-                rgba(3, 7, 18, 0.95) 18%, 
-                rgba(3, 7, 18, 0.55) 36%, 
-                transparent 68%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 45%, rgba(245, 196, 105, 0.08) 100%);
             pointer-events: none;
-            z-index: 2;
-        }
-
-        .portrait-mist-overlay {
-            position: absolute;
-            bottom: -20px;
-            left: -15%;
-            width: 130%;
-            height: 180px;
-            background: radial-gradient(ellipse 80% 90px at 50% 90%, 
-                rgba(37, 99, 235, 0.22) 0%, 
-                rgba(245, 196, 105, 0.12) 40%, 
-                transparent 75%);
-            filter: blur(28px);
-            pointer-events: none;
-            z-index: 3;
-            animation: mistBreath 8s ease-in-out infinite alternate;
-        }
-
-        @keyframes mistBreath {
-            0% { transform: scale(0.96) translateY(0); opacity: 0.7; }
-            100% { transform: scale(1.04) translateY(-8px); opacity: 1; }
+            border-radius: calc(var(--radius-lg) - 6px);
         }
 
         .holo-chip {
@@ -1774,8 +1706,18 @@
                 justify-content: center;
             }
 
+            .hero-bg-watermark-rig {
+                height: 520px;
+            }
+
+            .hero-watermark-portrait-wrap {
+                max-width: 780px;
+                height: 500px;
+                opacity: 0.15;
+            }
+
             .portrait-chassis-stage {
-                max-width: 380px;
+                max-width: 370px;
             }
 
             .portrait-halo-ambient {
@@ -1851,13 +1793,18 @@
                 padding: 120px 0 50px;
             }
 
-            .portrait-chassis-stage {
-                max-width: 310px;
+            .hero-bg-watermark-rig {
+                height: 440px;
             }
 
-            .portrait-fade-wrapper {
-                aspect-ratio: 1 / 1.1;
-                max-width: 300px;
+            .hero-watermark-portrait-wrap {
+                max-width: 100%;
+                height: 420px;
+                opacity: 0.13;
+            }
+
+            .portrait-chassis-stage {
+                max-width: 320px;
             }
 
             .portrait-halo-ambient {
@@ -1999,14 +1946,15 @@
     <div class="site-shell">
 
         <section class="hero-stage" id="hero">
-            <div class="hero-cinematic-backdrop" id="heroCinematicBackdrop" aria-hidden="true">
-                <div class="cinematic-spotlight-beam" id="spotlightBeam"></div>
-                <div class="cinematic-smoke-field" id="smokeField">
-                    <div class="smoke-wisp smoke-wisp-alpha"></div>
-                    <div class="smoke-wisp smoke-wisp-beta"></div>
-                    <div class="smoke-wisp smoke-wisp-gamma"></div>
-                    <div class="smoke-wisp smoke-wisp-bottom"></div>
+            <div class="hero-bg-watermark-rig" id="heroWatermarkRig" aria-hidden="true">
+                <div class="hero-watermark-portrait-wrap">
+                    <img src="assets/images/reda_profile.jpg" 
+                         onerror="this.src='https://h.top4top.io/p_396318akg1.jpg'" 
+                         alt="" 
+                         class="hero-watermark-portrait-img">
+                    <div class="hero-watermark-gradient-fade"></div>
                 </div>
+                <div class="cinematic-spotlight-beam" id="spotlightBeam"></div>
             </div>
 
             <div class="hero-grid-2col">
@@ -2065,14 +2013,18 @@
                     <div class="portrait-rim-highlight"></div>
 
                     <div class="portrait-chassis-stage" id="portraitChassis">
-                        <div class="portrait-fade-wrapper">
+                        <div class="portrait-corner-bracket bracket-tl"></div>
+                        <div class="portrait-corner-bracket bracket-tr"></div>
+                        <div class="portrait-corner-bracket bracket-bl"></div>
+                        <div class="portrait-corner-bracket bracket-br"></div>
+
+                        <div class="portrait-inner-glass">
                             <img src="assets/images/reda_profile.jpg" 
                                  onerror="this.src='https://h.top4top.io/p_396318akg1.jpg'" 
                                  alt="الأستاذ رضا الخشن معلم خبير لغة فرنسية"
-                                 class="portrait-hero-fused-img"
+                                 class="portrait-hero-clear-img"
                                  id="portraitHeroImg">
-                            <div class="portrait-dissolve-mask"></div>
-                            <div class="portrait-mist-overlay"></div>
+                            <div class="portrait-ambient-sheen"></div>
                         </div>
 
                         <div class="holo-chip chip-years" id="chipYears">
@@ -2669,7 +2621,7 @@
         setTimeout(runTypewriter, 800);
 
         const chassis = document.getElementById('portraitChassis');
-        const heroBackdrop = document.getElementById('heroCinematicBackdrop');
+        const heroBackdrop = document.getElementById('heroWatermarkRig') || document.getElementById('heroCinematicBackdrop');
         const haloEl = document.getElementById('portraitHalo');
         const chipYears = document.getElementById('chipYears');
         const chipBac = document.getElementById('chipBac');

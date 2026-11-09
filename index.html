@@ -329,34 +329,141 @@
         }
 
         .hero-stage {
-            padding: 160px 0 90px;
-            min-height: 92vh;
+            padding: 160px 0 80px;
+            min-height: 94vh;
             display: flex;
             align-items: center;
             position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cinematic-backdrop {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+            transition: opacity 0.4s ease-out;
+        }
+
+        .cinematic-spotlight-beam {
+            position: absolute;
+            top: -15%;
+            left: 20%;
+            width: 700px;
+            height: 900px;
+            background: radial-gradient(ellipse 65% 55% at 50% 30%, rgba(37, 99, 235, 0.22) 0%, rgba(245, 196, 105, 0.1) 45%, transparent 75%);
+            filter: blur(60px);
+            pointer-events: none;
+            transform: rotate(-15deg);
+            opacity: 0.85;
+            animation: beamPulse 9s ease-in-out infinite alternate;
+        }
+
+        @keyframes beamPulse {
+            0% { transform: rotate(-15deg) scale(0.95); opacity: 0.7; }
+            100% { transform: rotate(-12deg) scale(1.05); opacity: 0.95; }
+        }
+
+        .cinematic-smoke-field {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .smoke-wisp {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: screen;
+        }
+
+        .smoke-wisp-alpha {
+            top: 25%;
+            left: 5%;
+            width: 580px;
+            height: 480px;
+            background: radial-gradient(ellipse at center, rgba(37, 99, 235, 0.16) 0%, rgba(56, 189, 248, 0.08) 45%, transparent 70%);
+            filter: blur(50px);
+            animation: smokeDriftA 18s ease-in-out infinite alternate;
+        }
+
+        .smoke-wisp-beta {
+            top: 45%;
+            left: 18%;
+            width: 520px;
+            height: 440px;
+            background: radial-gradient(ellipse at center, rgba(245, 196, 105, 0.14) 0%, rgba(255, 255, 255, 0.04) 40%, transparent 68%);
+            filter: blur(55px);
+            animation: smokeDriftB 24s ease-in-out infinite alternate;
+        }
+
+        .smoke-wisp-gamma {
+            top: 30%;
+            left: 35%;
+            width: 480px;
+            height: 400px;
+            background: radial-gradient(ellipse at center, rgba(30, 58, 138, 0.2) 0%, rgba(37, 99, 235, 0.1) 45%, transparent 72%);
+            filter: blur(60px);
+            animation: smokeDriftC 20s ease-in-out infinite alternate;
+        }
+
+        .smoke-wisp-bottom {
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            height: 260px;
+            background: radial-gradient(ellipse 70% 140px at 50% 100%, rgba(37, 99, 235, 0.2) 0%, rgba(245, 196, 105, 0.08) 35%, transparent 80%);
+            filter: blur(40px);
+            animation: smokeRise 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes smokeDriftA {
+            0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.6; }
+            50% { transform: translate3d(35px, -25px, 0) scale(1.08); opacity: 0.85; }
+            100% { transform: translate3d(-20px, 20px, 0) scale(0.96); opacity: 0.65; }
+        }
+
+        @keyframes smokeDriftB {
+            0% { transform: translate3d(0, 0, 0) scale(0.95); opacity: 0.55; }
+            50% { transform: translate3d(-30px, -20px, 0) scale(1.1); opacity: 0.8; }
+            100% { transform: translate3d(25px, 15px, 0) scale(1.02); opacity: 0.6; }
+        }
+
+        @keyframes smokeDriftC {
+            0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.5; }
+            100% { transform: translate3d(40px, -30px, 0) scale(1.12); opacity: 0.75; }
+        }
+
+        @keyframes smokeRise {
+            0% { transform: translateY(0); opacity: 0.6; }
+            100% { transform: translateY(-15px); opacity: 0.9; }
         }
 
         .hero-grid-2col {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 50px;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 40px;
             align-items: center;
             width: 100%;
+            position: relative;
+            z-index: 5;
         }
 
         .hero-live-pill {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 6px 18px;
+            padding: 7px 20px;
             border-radius: var(--radius-pill);
             background: rgba(245, 196, 105, 0.08);
             border: 1px solid var(--border-subtle);
             color: var(--gold-sheen);
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             font-weight: 700;
             margin-bottom: 24px;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(14px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
         }
 
         .hero-headline-main {
@@ -365,6 +472,7 @@
             line-height: 1.25;
             margin-bottom: 20px;
             color: #ffffff;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
         }
 
         .hero-headline-main span.gold-highlight {
@@ -382,6 +490,7 @@
             font-weight: 700;
             color: var(--blue-neon);
             margin-bottom: 24px;
+            text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
         }
 
         .typewriter-cursor {
@@ -403,7 +512,7 @@
             font-size: clamp(1.05rem, 1.5vw, 1.2rem);
             color: var(--text-lead);
             line-height: 1.9;
-            margin-bottom: 38px;
+            margin-bottom: 34px;
             max-width: 630px;
             font-weight: 400;
         }
@@ -413,7 +522,7 @@
             align-items: center;
             gap: 16px;
             flex-wrap: wrap;
-            margin-bottom: 45px;
+            margin-bottom: 30px;
         }
 
         .btn-action-primary {
@@ -427,7 +536,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             box-shadow: var(--shadow-blue);
             transition: var(--ease-fluid);
         }
@@ -435,7 +544,7 @@
         .btn-action-primary:hover {
             transform: translateY(-3px);
             background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            box-shadow: 0 16px 40px rgba(37, 99, 235, 0.6);
+            box-shadow: 0 16px 45px rgba(37, 99, 235, 0.65);
         }
 
         .btn-action-primary:active {
@@ -477,93 +586,165 @@
             100% { border-color: var(--blue-neon); box-shadow: 0 0 25px rgba(56, 189, 248, 0.5); }
         }
 
-        .hero-portrait-wrap {
+        .hero-micro-tags {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .micro-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 5px 14px;
+            border-radius: var(--radius-pill);
+        }
+
+        .micro-tag i {
+            color: var(--gold-accent);
+            font-size: 0.85rem;
+        }
+
+        /* Hero Portrait Master Stage */
+        .hero-portrait-stage {
             position: relative;
             perspective: 1200px;
             display: flex;
             justify-content: center;
+            align-items: center;
+            width: 100%;
         }
 
         .portrait-halo-ambient {
             position: absolute;
-            inset: -25px;
-            border-radius: 40px;
-            background: radial-gradient(circle, rgba(245, 196, 105, 0.22) 0%, rgba(37, 99, 235, 0.18) 45%, transparent 75%);
-            filter: blur(35px);
+            width: 440px;
+            height: 520px;
+            top: 0;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 35%, rgba(245, 196, 105, 0.24) 0%, rgba(37, 99, 235, 0.22) 45%, transparent 72%);
+            filter: blur(45px);
             z-index: 1;
             pointer-events: none;
-            animation: haloPulse 8s ease-in-out infinite alternate;
+            animation: haloPulse 7s ease-in-out infinite alternate;
+            transition: transform 0.25s ease-out;
         }
 
         @keyframes haloPulse {
-            0% { transform: scale(0.96); opacity: 0.7; }
-            100% { transform: scale(1.04); opacity: 1; }
+            0% { transform: scale(0.95); opacity: 0.7; }
+            100% { transform: scale(1.05); opacity: 1; }
         }
 
-        .portrait-3d-chassis {
-            position: relative;
-            width: 100%;
-            max-width: 410px;
-            aspect-ratio: 1 / 1;
-            border-radius: var(--radius-lg);
-            padding: 10px;
-            background: linear-gradient(145deg, rgba(245, 196, 105, 0.45) 0%, rgba(37, 99, 235, 0.25) 50%, rgba(11, 18, 36, 0.95) 100%);
-            box-shadow: var(--shadow-card), 0 0 40px rgba(245, 196, 105, 0.2);
-            transform-style: preserve-3d;
-            transition: transform 0.25s ease-out;
-            z-index: 2;
-        }
-
-        .portrait-corner-bracket {
+        .portrait-rim-highlight {
             position: absolute;
-            width: 22px;
-            height: 22px;
-            border-color: var(--gold-accent);
-            border-style: solid;
+            width: 380px;
+            height: 460px;
+            top: 2%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.25) 0%, rgba(37, 99, 235, 0.15) 50%, transparent 70%);
+            filter: blur(35px);
+            z-index: 1;
             pointer-events: none;
-            z-index: 20;
-            opacity: 0.85;
         }
 
-        .bracket-tl { top: 16px; left: 16px; border-width: 3px 0 0 3px; border-top-left-radius: 8px; }
-        .bracket-tr { top: 16px; right: 16px; border-width: 3px 3px 0 0; border-top-right-radius: 8px; }
-        .bracket-bl { bottom: 16px; left: 16px; border-width: 0 0 3px 3px; border-bottom-left-radius: 8px; }
-        .bracket-br { bottom: 16px; right: 16px; border-width: 0 3px 3px 0; border-bottom-right-radius: 8px; }
-
-        .portrait-inner-glass {
-            width: 100%;
-            height: 100%;
-            border-radius: calc(var(--radius-lg) - 8px);
-            overflow: hidden;
+        .portrait-chassis-stage {
             position: relative;
-            background: #070c1a;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            width: 100%;
+            max-width: 440px;
+            display: flex;
+            justify-content: center;
+            transform-style: preserve-3d;
+            transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+            z-index: 3;
         }
 
-        .portrait-inner-glass img {
+        .portrait-fade-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 430px;
+            aspect-ratio: 1 / 1.15;
+            border-radius: 32px 32px 0 0;
+            overflow: visible;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+        }
+
+        .portrait-hero-fused-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center 15%;
+            object-position: center 10%;
             display: block;
-            transition: transform 0.8s var(--ease-fluid);
+            border-radius: 32px 32px 0 0;
+            
+            -webkit-mask-image: 
+                linear-gradient(to bottom, 
+                    #000 0%, 
+                    #000 48%, 
+                    rgba(0, 0, 0, 0.88) 64%, 
+                    rgba(0, 0, 0, 0.45) 78%, 
+                    rgba(0, 0, 0, 0.12) 90%, 
+                    transparent 100%),
+                radial-gradient(ellipse 96% 96% at 50% 36%, 
+                    #000 66%, 
+                    rgba(0, 0, 0, 0.85) 82%, 
+                    transparent 100%);
+            -webkit-mask-composite: source-in;
+            mask-image: 
+                linear-gradient(to bottom, 
+                    #000 0%, 
+                    #000 48%, 
+                    rgba(0, 0, 0, 0.88) 64%, 
+                    rgba(0, 0, 0, 0.45) 78%, 
+                    rgba(0, 0, 0, 0.12) 90%, 
+                    transparent 100%),
+                radial-gradient(ellipse 96% 96% at 50% 36%, 
+                    #000 66%, 
+                    rgba(0, 0, 0, 0.85) 82%, 
+                    transparent 100%);
+            mask-composite: intersect;
+
+            filter: contrast(1.05) brightness(1.02) saturate(1.06);
+            transition: transform 0.6s var(--ease-fluid), filter 0.6s ease;
         }
 
-        .portrait-3d-chassis:hover .portrait-inner-glass img {
-            transform: scale(1.05);
-        }
-
-        .portrait-shimmer-sweep {
+        .portrait-dissolve-mask {
             position: absolute;
             inset: 0;
-            background: linear-gradient(125deg, transparent 30%, rgba(255, 255, 255, 0.12) 48%, rgba(255, 255, 255, 0.22) 50%, rgba(255, 255, 255, 0.12) 52%, transparent 70%);
+            border-radius: 32px 32px 0 0;
+            background: linear-gradient(to top, 
+                #030712 0%, 
+                rgba(3, 7, 18, 0.95) 18%, 
+                rgba(3, 7, 18, 0.55) 36%, 
+                transparent 68%);
             pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            z-index: 2;
         }
 
-        .portrait-3d-chassis:hover .portrait-shimmer-sweep {
-            opacity: 1;
+        .portrait-mist-overlay {
+            position: absolute;
+            bottom: -20px;
+            left: -15%;
+            width: 130%;
+            height: 180px;
+            background: radial-gradient(ellipse 80% 90px at 50% 90%, 
+                rgba(37, 99, 235, 0.22) 0%, 
+                rgba(245, 196, 105, 0.12) 40%, 
+                transparent 75%);
+            filter: blur(28px);
+            pointer-events: none;
+            z-index: 3;
+            animation: mistBreath 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes mistBreath {
+            0% { transform: scale(0.96) translateY(0); opacity: 0.7; }
+            100% { transform: scale(1.04) translateY(-8px); opacity: 1; }
         }
 
         .holo-chip {
@@ -581,17 +762,24 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
             animation: chipHover 6s infinite alternate ease-in-out;
             pointer-events: none;
+            transition: transform 0.3s ease-out;
         }
 
         .chip-years {
-            bottom: -20px;
-            right: -15px;
+            bottom: -15px;
+            right: -20px;
         }
 
         .chip-baccalaureate {
             top: 25px;
-            left: -20px;
+            left: -25px;
             animation-delay: -3s;
+        }
+
+        .chip-signature {
+            bottom: 35px;
+            left: -30px;
+            animation-delay: -1.5s;
         }
 
         @keyframes chipHover {
@@ -612,14 +800,14 @@
         }
 
         .chip-info h5 {
-            font-size: 1.05rem;
+            font-size: 1.02rem;
             font-weight: 800;
             color: #ffffff;
             line-height: 1.2;
         }
 
         .chip-info span {
-            font-size: 0.75rem;
+            font-size: 0.74rem;
             color: var(--gold-accent);
             font-weight: 600;
         }
@@ -1566,12 +1754,12 @@
         @media (max-width: 992px) {
             .hero-grid-2col {
                 grid-template-columns: 1fr;
-                gap: 50px;
+                gap: 40px;
                 text-align: center;
             }
 
             .hero-lead-text {
-                margin: 0 auto 38px;
+                margin: 0 auto 30px;
             }
 
             .typewriter-ribbon {
@@ -1582,8 +1770,22 @@
                 justify-content: center;
             }
 
-            .portrait-3d-chassis {
+            .hero-micro-tags {
+                justify-content: center;
+            }
+
+            .portrait-chassis-stage {
                 max-width: 380px;
+            }
+
+            .portrait-halo-ambient {
+                width: 360px;
+                height: 420px;
+            }
+
+            .chip-signature {
+                bottom: 15px;
+                left: -15px;
             }
 
             .methodology-editorial-container {
@@ -1646,7 +1848,40 @@
             }
 
             .hero-stage {
-                padding: 130px 0 60px;
+                padding: 120px 0 50px;
+            }
+
+            .portrait-chassis-stage {
+                max-width: 310px;
+            }
+
+            .portrait-fade-wrapper {
+                aspect-ratio: 1 / 1.1;
+                max-width: 300px;
+            }
+
+            .portrait-halo-ambient {
+                width: 300px;
+                height: 340px;
+            }
+
+            .holo-chip {
+                padding: 8px 12px;
+                gap: 8px;
+            }
+
+            .chip-icon-box {
+                width: 34px;
+                height: 34px;
+                font-size: 1rem;
+            }
+
+            .chip-info h5 {
+                font-size: 0.88rem;
+            }
+
+            .chip-info span {
+                font-size: 0.68rem;
             }
 
             .chip-baccalaureate {
@@ -1655,8 +1890,12 @@
             }
 
             .chip-years {
-                bottom: -15px;
+                bottom: -10px;
                 right: -10px;
+            }
+
+            .chip-signature {
+                display: none;
             }
 
             .credibility-glass-bar {
@@ -1760,12 +1999,22 @@
     <div class="site-shell">
 
         <section class="hero-stage" id="hero">
+            <div class="hero-cinematic-backdrop" id="heroCinematicBackdrop" aria-hidden="true">
+                <div class="cinematic-spotlight-beam" id="spotlightBeam"></div>
+                <div class="cinematic-smoke-field" id="smokeField">
+                    <div class="smoke-wisp smoke-wisp-alpha"></div>
+                    <div class="smoke-wisp smoke-wisp-beta"></div>
+                    <div class="smoke-wisp smoke-wisp-gamma"></div>
+                    <div class="smoke-wisp smoke-wisp-bottom"></div>
+                </div>
+            </div>
+
             <div class="hero-grid-2col">
                 
                 <div class="hero-copy-block reveal-node">
                     <div class="hero-live-pill">
                         <i class="fas fa-crown"></i>
-                        <span>الفرنساوي من غير تعقيد | Pédagogie d'Excellence</span>
+                        <span>الفرنساوي من غير تعقيد | Pédagogie d'Excellence 🇫🇷</span>
                     </div>
 
                     <h1 class="hero-headline-main">
@@ -1803,22 +2052,30 @@
                             <span>اسمع نطق فرنسي باريسي 🔊</span>
                         </button>
                     </div>
+
+                    <div class="hero-micro-tags">
+                        <span class="micro-tag"><i class="fas fa-check-circle"></i> شرح تفاعلي وتأسيس متين</span>
+                        <span class="micro-tag"><i class="fas fa-check-circle"></i> مذكرات ونماذج امتحانات حصرية</span>
+                        <span class="micro-tag"><i class="fas fa-check-circle"></i> متابعة فردية خطوة بخطوة</span>
+                    </div>
                 </div>
 
-                <div class="hero-portrait-wrap reveal-node">
-                    <div class="portrait-halo-ambient"></div>
-                    <div class="portrait-3d-chassis" id="portraitChassis">
-                        <div class="portrait-corner-bracket bracket-tl"></div>
-                        <div class="portrait-corner-bracket bracket-tr"></div>
-                        <div class="portrait-corner-bracket bracket-bl"></div>
-                        <div class="portrait-corner-bracket bracket-br"></div>
+                <div class="hero-portrait-stage reveal-node" id="heroPortraitStage">
+                    <div class="portrait-halo-ambient" id="portraitHalo"></div>
+                    <div class="portrait-rim-highlight"></div>
 
-                        <div class="portrait-inner-glass">
-                            <img src="assets/images/reda_profile.jpg" onerror="this.src='https://h.top4top.io/p_396318akg1.jpg'" alt="الأستاذ رضا الخشن معلم خبير لغة فرنسية">
-                            <div class="portrait-shimmer-sweep"></div>
+                    <div class="portrait-chassis-stage" id="portraitChassis">
+                        <div class="portrait-fade-wrapper">
+                            <img src="assets/images/reda_profile.jpg" 
+                                 onerror="this.src='https://h.top4top.io/p_396318akg1.jpg'" 
+                                 alt="الأستاذ رضا الخشن معلم خبير لغة فرنسية"
+                                 class="portrait-hero-fused-img"
+                                 id="portraitHeroImg">
+                            <div class="portrait-dissolve-mask"></div>
+                            <div class="portrait-mist-overlay"></div>
                         </div>
 
-                        <div class="holo-chip chip-years">
+                        <div class="holo-chip chip-years" id="chipYears">
                             <div class="chip-icon-box">
                                 <i class="fas fa-medal"></i>
                             </div>
@@ -1828,13 +2085,23 @@
                             </div>
                         </div>
 
-                        <div class="holo-chip chip-baccalaureate">
+                        <div class="holo-chip chip-baccalaureate" id="chipBac">
                             <div class="chip-icon-box" style="background: rgba(37, 99, 235, 0.18); color: #38bdf8;">
                                 <i class="fas fa-graduation-cap"></i>
                             </div>
                             <div class="chip-info">
                                 <h5>نظام البكالوريا</h5>
                                 <span>Baccalauréat Français</span>
+                            </div>
+                        </div>
+
+                        <div class="holo-chip chip-signature" id="chipSignature">
+                            <div class="chip-icon-box" style="background: rgba(245, 196, 105, 0.18); color: #f5c469;">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="chip-info">
+                                <h5>معلم خبير لغة فرنسية</h5>
+                                <span>نطق باريسي وتأسيس سليم</span>
                             </div>
                         </div>
                     </div>
@@ -2402,19 +2669,70 @@
         setTimeout(runTypewriter, 800);
 
         const chassis = document.getElementById('portraitChassis');
+        const heroBackdrop = document.getElementById('heroCinematicBackdrop');
+        const haloEl = document.getElementById('portraitHalo');
+        const chipYears = document.getElementById('chipYears');
+        const chipBac = document.getElementById('chipBac');
+        const chipSig = document.getElementById('chipSignature');
+
+        let heroMouseX = 0, heroMouseY = 0;
+        let heroTargetX = 0, heroTargetY = 0;
+        let isHeroParallaxActive = false;
+
         if (chassis && window.innerWidth > 992) {
             window.addEventListener('mousemove', (e) => {
-                const rect = chassis.getBoundingClientRect();
-                const cardX = rect.left + rect.width / 2;
-                const cardY = rect.top + rect.height / 2;
-                const deltaX = (e.clientX - cardX) / (window.innerWidth / 2);
-                const deltaY = (e.clientY - cardY) / (window.innerHeight / 2);
-                chassis.style.transform = `rotateY(${deltaX * 12}deg) rotateX(${-deltaY * 12}deg)`;
+                const normX = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+                const normY = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+                heroTargetX = normX;
+                heroTargetY = normY;
+                if (!isHeroParallaxActive) {
+                    isHeroParallaxActive = true;
+                    requestAnimationFrame(updateHeroParallax);
+                }
             }, { passive: true });
 
-            chassis.addEventListener('mouseleave', () => {
-                chassis.style.transform = 'rotateY(0deg) rotateX(0deg)';
-            });
+            function updateHeroParallax() {
+                heroMouseX += (heroTargetX - heroMouseX) * 0.08;
+                heroMouseY += (heroTargetY - heroMouseY) * 0.08;
+
+                if (chassis) {
+                    chassis.style.transform = `perspective(1000px) rotateY(${heroMouseX * 8}deg) rotateX(${-heroMouseY * 8}deg) translate3d(${heroMouseX * 8}px, ${heroMouseY * 8}px, 0)`;
+                }
+                if (haloEl) {
+                    haloEl.style.transform = `translate3d(${-heroMouseX * 18}px, ${-heroMouseY * 18}px, 0) scale(${1 + Math.abs(heroMouseX) * 0.04})`;
+                }
+                if (heroBackdrop) {
+                    heroBackdrop.style.transform = `translate3d(${-heroMouseX * 14}px, ${-heroMouseY * 10}px, 0)`;
+                }
+                if (chipYears) {
+                    chipYears.style.transform = `translate3d(${heroMouseX * 14}px, ${heroMouseY * 14}px, 25px)`;
+                }
+                if (chipBac) {
+                    chipBac.style.transform = `translate3d(${-heroMouseX * 12}px, ${-heroMouseY * 12}px, 20px)`;
+                }
+                if (chipSig) {
+                    chipSig.style.transform = `translate3d(${heroMouseX * 16}px, ${heroMouseY * 10}px, 30px)`;
+                }
+
+                if (Math.abs(heroTargetX - heroMouseX) > 0.001 || Math.abs(heroTargetY - heroMouseY) > 0.001) {
+                    requestAnimationFrame(updateHeroParallax);
+                } else {
+                    isHeroParallaxActive = false;
+                }
+            }
+
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                if (scrollY < 900) {
+                    const opacityFade = Math.max(0, 1 - scrollY / 750);
+                    if (heroBackdrop) {
+                        heroBackdrop.style.opacity = opacityFade;
+                    }
+                    if (chassis) {
+                        chassis.style.opacity = Math.max(0.25, 1 - scrollY / 900);
+                    }
+                }
+            }, { passive: true });
         }
 
         document.querySelectorAll('.interactive-tilt-card, .payment-smart-card').forEach(card => {

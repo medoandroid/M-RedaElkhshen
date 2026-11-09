@@ -19,7 +19,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;600;700;800;900&family=Cairo:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600;1,800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
@@ -70,11 +70,21 @@
         body {
             background-color: var(--bg-void);
             color: var(--text-pure);
-            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            font-family: 'Cairo', sans-serif;
             overflow-x: hidden;
             line-height: 1.8;
             min-height: 100vh;
             position: relative;
+        }
+
+        h1, h2, h3, h4, h5, h6, 
+        .hero-headline-main, 
+        .headline-section-h2, 
+        .channel-name-h3,
+        .badge-pill-accent,
+        .dock-btn span {
+            font-family: 'Alexandria', 'Cairo', sans-serif;
+            letter-spacing: -0.2px;
         }
 
         ::selection {
@@ -1721,9 +1731,31 @@
             gap: 16px;
         }
 
+        .devmedo-watermark {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .devmedo-brand-link {
+            text-decoration: none;
+            color: inherit;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--ease-fluid);
+        }
+
         .devmedo-watermark strong {
             color: var(--gold-accent);
             letter-spacing: 0.5px;
+            font-weight: 800;
+            transition: all 0.3s ease;
+        }
+
+        .devmedo-brand-link:hover strong {
+            color: #ffffff;
+            text-shadow: 0 0 14px rgba(245, 196, 105, 0.8), 0 0 25px rgba(37, 99, 235, 0.6);
+            transform: translateY(-1px);
         }
 
         .toast-bubble {
@@ -2684,7 +2716,7 @@
                     جميع الحقوق محفوظة © 2026 M : Reda Elkhshen
                 </div>
                 <div class="devmedo-watermark">
-                    Architected & Crafted by <strong>DevMeDoAnDrOiD</strong>
+                    Architected & Crafted by <a href="https://medoandroid.github.io/DevMeDoAnDrOiD/" target="_blank" rel="noopener noreferrer" class="devmedo-brand-link"><strong>DevMeDoAnDrOiD</strong></a>
                 </div>
             </div>
         </div>

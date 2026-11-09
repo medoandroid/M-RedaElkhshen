@@ -909,13 +909,13 @@
         .payment-methods-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            gap: 24px;
         }
 
-        .payment-lux-card {
+        .payment-smart-card {
             background: var(--bg-panel);
-            border-radius: var(--radius-lg);
-            padding: 38px 30px;
+            border-radius: var(--radius-md);
+            padding: 24px;
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(25px);
@@ -923,321 +923,282 @@
             transition: all 0.35s var(--ease-fluid);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            gap: 16px;
         }
 
-        .payment-lux-card:hover {
-            transform: translateY(-8px);
+        .payment-smart-card:hover {
+            transform: translateY(-5px);
             box-shadow: var(--shadow-card);
         }
 
-        .payment-lux-card:active {
-            transform: scale(0.985);
+        .payment-smart-card:active {
+            transform: scale(0.99);
         }
 
-        .card-voda-theme {
-            background: linear-gradient(160deg, rgba(230, 0, 0, 0.08) 0%, rgba(11, 18, 36, 0.88) 100%);
+        .smart-voda-theme {
+            background: linear-gradient(145deg, rgba(230, 0, 0, 0.09) 0%, rgba(11, 18, 36, 0.92) 100%);
             border-color: rgba(230, 0, 0, 0.3);
         }
 
-        .card-voda-theme:hover {
+        .smart-voda-theme:hover {
             border-color: rgba(230, 0, 0, 0.65);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(230, 0, 0, 0.25);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(230, 0, 0, 0.2);
         }
 
-        .card-insta-theme {
-            background: linear-gradient(160deg, rgba(147, 51, 234, 0.12) 0%, rgba(11, 18, 36, 0.88) 100%);
+        .smart-insta-theme {
+            background: linear-gradient(145deg, rgba(147, 51, 234, 0.12) 0%, rgba(11, 18, 36, 0.92) 100%);
             border-color: rgba(147, 51, 234, 0.35);
         }
 
-        .card-insta-theme:hover {
+        .smart-insta-theme:hover {
             border-color: rgba(147, 51, 234, 0.7);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(147, 51, 234, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(147, 51, 234, 0.25);
         }
 
-        .pay-header-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 22px;
-        }
-
-        .pay-brand-meta {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .pay-title-group h3 {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: #ffffff;
-            line-height: 1.2;
-            margin-bottom: 4px;
-        }
-
-        .pay-title-group span {
-            font-size: 0.82rem;
-            color: var(--text-dim);
-            font-weight: 500;
-        }
-
-        .pay-chip-badge {
-            padding: 5px 12px;
-            border-radius: var(--radius-pill);
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-
-        .chip-voda {
-            background: rgba(230, 0, 0, 0.18);
-            border: 1px solid rgba(230, 0, 0, 0.4);
-            color: #ff6666;
-        }
-
-        .chip-insta {
-            background: rgba(147, 51, 234, 0.18);
-            border: 1px solid rgba(147, 51, 234, 0.45);
-            color: #d8b4fe;
-        }
-
-        .pay-showcase-frame {
-            height: 110px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: var(--radius-md);
-            padding: 14px 20px;
-            margin-bottom: 22px;
-            position: relative;
-            overflow: hidden;
-            background: rgba(4, 8, 18, 0.7);
-            border: 1px solid var(--border-glass);
-            cursor: pointer;
-            transition: all 0.35s var(--ease-fluid);
-        }
-
-        .pay-showcase-frame:hover {
-            transform: translateY(-3px) scale(1.02);
-        }
-
-        .pay-showcase-frame:active {
-            transform: scale(0.97);
-        }
-
-        .voda-frame {
-            border-color: rgba(230, 0, 0, 0.25);
-            background: radial-gradient(circle at center, rgba(230, 0, 0, 0.14) 0%, rgba(4, 8, 18, 0.85) 80%);
-        }
-
-        .voda-frame:hover {
-            border-color: rgba(230, 0, 0, 0.6);
-            box-shadow: 0 10px 30px rgba(230, 0, 0, 0.25);
-        }
-
-        .insta-frame {
-            border-color: rgba(147, 51, 234, 0.3);
-            background: radial-gradient(circle at center, rgba(147, 51, 234, 0.16) 0%, rgba(4, 8, 18, 0.85) 80%);
-        }
-
-        .insta-frame:hover {
-            border-color: rgba(147, 51, 234, 0.65);
-            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.25);
-        }
-
-        .pay-brand-img {
-            display: block;
-            object-fit: contain;
-            transition: transform 0.4s var(--ease-fluid), filter 0.4s ease;
-            position: relative;
-            z-index: 2;
-        }
-
-        .voda-img {
-            max-height: 82px;
-            max-width: 140px;
-            filter: drop-shadow(0 4px 12px rgba(230, 0, 0, 0.4));
-        }
-
-        .insta-img {
-            max-height: 40px;
-            max-width: 210px;
-            filter: drop-shadow(0 4px 14px rgba(147, 51, 234, 0.45));
-        }
-
-        .pay-showcase-frame:hover .pay-brand-img {
-            transform: scale(1.08);
-            filter: drop-shadow(0 6px 18px rgba(255, 255, 255, 0.3));
-        }
-
-        .pay-showcase-shimmer {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(125deg, transparent 35%, rgba(255, 255, 255, 0.1) 48%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.1) 52%, transparent 65%);
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 3;
-        }
-
-        .pay-showcase-frame:hover .pay-showcase-shimmer {
-            opacity: 1;
-        }
-
-        .pay-number-vault {
-            background: rgba(4, 8, 18, 0.8);
-            border: 1px solid var(--border-glass);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            margin-bottom: 22px;
-            position: relative;
-        }
-
-        .pay-label-lead {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        .pay-digits-row {
+        .smart-header-flex {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 12px;
         }
 
-        .pay-digits-string {
-            font-family: 'Plus Jakarta Sans', monospace;
-            font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+        .smart-brand-combo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .smart-logo-container {
+            width: 58px;
+            height: 58px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            background: rgba(4, 8, 18, 0.85);
+            border: 1px solid var(--border-glass);
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s var(--ease-fluid);
+        }
+
+        .voda-container {
+            border-color: rgba(230, 0, 0, 0.35);
+            box-shadow: 0 4px 15px rgba(230, 0, 0, 0.2);
+        }
+
+        .insta-container {
+            border-color: rgba(147, 51, 234, 0.4);
+            box-shadow: 0 4px 15px rgba(147, 51, 234, 0.25);
+        }
+
+        .payment-smart-card:hover .smart-logo-container {
+            transform: scale(1.06);
+        }
+
+        .smart-logo-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .voda-logo-img {
+            max-height: 42px;
+            max-width: 44px;
+            filter: drop-shadow(0 2px 8px rgba(230, 0, 0, 0.5));
+        }
+
+        .insta-logo-img {
+            max-height: 18px;
+            max-width: 50px;
+            filter: drop-shadow(0 2px 8px rgba(147, 51, 234, 0.5));
+        }
+
+        .smart-title-text h3 {
+            font-size: 1.18rem;
             font-weight: 800;
             color: #ffffff;
-            letter-spacing: 2px;
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+
+        .smart-meta-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: var(--radius-pill);
+        }
+
+        .badge-voda-soft {
+            background: rgba(230, 0, 0, 0.16);
+            color: #ff6666;
+            border: 1px solid rgba(230, 0, 0, 0.3);
+        }
+
+        .badge-insta-soft {
+            background: rgba(147, 51, 234, 0.16);
+            color: #d8b4fe;
+            border: 1px solid rgba(147, 51, 234, 0.35);
+        }
+
+        .btn-smart-quick {
+            padding: 8px 16px;
+            border-radius: var(--radius-pill);
+            font-size: 0.82rem;
+            font-weight: 800;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--ease-fluid);
+            flex-shrink: 0;
+        }
+
+        .voda-quick {
+            background: rgba(230, 0, 0, 0.16);
+            border: 1px solid rgba(230, 0, 0, 0.4);
+            color: #ffffff;
+        }
+
+        .voda-quick:hover {
+            background: #e60000;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(230, 0, 0, 0.4);
+        }
+
+        .insta-quick {
+            background: linear-gradient(135deg, #9333ea, #6b21a8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(147, 51, 234, 0.35);
+        }
+
+        .insta-quick:hover {
+            background: linear-gradient(135deg, #a855f7, #7e22ce);
+            box-shadow: 0 6px 20px rgba(147, 51, 234, 0.55);
+        }
+
+        .smart-vault-row {
+            background: rgba(4, 8, 18, 0.8);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius-sm);
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            position: relative;
+        }
+
+        .smart-digits-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .smart-vault-label {
+            font-size: 0.74rem;
+            color: var(--text-dim);
+            font-weight: 600;
+        }
+
+        .smart-digits-val {
+            font-family: 'Plus Jakarta Sans', monospace;
+            font-size: clamp(1.25rem, 1.9vw, 1.55rem);
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 1.5px;
             direction: ltr !important;
             unicode-bidi: isolate;
         }
 
-        .btn-copy-interactive {
+        .btn-copy-smart {
             background: var(--gold-metallic);
             color: #030611;
             border: none;
             border-radius: var(--radius-pill);
-            padding: 10px 18px;
-            font-size: 0.85rem;
+            padding: 8px 16px;
+            font-size: 0.82rem;
             font-weight: 800;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            transition: all 0.25s var(--ease-fluid);
+            gap: 6px;
+            transition: all 0.2s var(--ease-fluid);
             flex-shrink: 0;
             font-family: inherit;
-            box-shadow: 0 4px 14px rgba(245, 196, 105, 0.35);
+            box-shadow: 0 3px 10px rgba(245, 196, 105, 0.35);
         }
 
-        .btn-copy-interactive:hover {
+        .btn-copy-smart:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(245, 196, 105, 0.6);
+            box-shadow: 0 5px 16px rgba(245, 196, 105, 0.55);
         }
 
-        .btn-copy-interactive:active {
-            transform: scale(0.94);
+        .btn-copy-smart:active {
+            transform: scale(0.95);
         }
 
-        .pay-secondary-handle-box {
+        .smart-handle-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 12px 16px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px dashed rgba(147, 51, 234, 0.4);
-            border-radius: var(--radius-sm);
-            margin-bottom: 20px;
-            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed rgba(147, 51, 234, 0.35);
+            border-radius: 8px;
+            padding: 8px 14px;
+            font-size: 0.84rem;
         }
 
-        .handle-text-val {
+        .smart-handle-tag {
+            color: var(--text-dim);
+            font-size: 0.74rem;
+        }
+
+        .smart-handle-val {
             font-family: 'Plus Jakarta Sans', monospace;
             font-weight: 700;
             color: #d8b4fe;
             direction: ltr;
         }
 
-        .btn-copy-sub-ghost {
+        .btn-smart-copy-sub {
             background: none;
             border: none;
             color: var(--gold-accent);
             cursor: pointer;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: 700;
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             font-family: inherit;
             transition: color 0.2s ease;
         }
 
-        .btn-copy-sub-ghost:hover {
+        .btn-smart-copy-sub:hover {
             color: #ffffff;
         }
 
-        .pay-exclusive-notice {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: var(--radius-sm);
-            padding: 12px 14px;
-            font-size: 0.84rem;
-            color: var(--text-lead);
-            line-height: 1.6;
-            margin-bottom: 22px;
-            border-right: 3px solid var(--gold-accent);
+        .smart-notice-strip {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .pay-actions-strip {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .btn-pay-action-link {
-            flex: 1;
-            padding: 12px 18px;
-            border-radius: var(--radius-md);
-            font-weight: 800;
-            font-size: 0.9rem;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             gap: 8px;
-            transition: var(--ease-fluid);
+            font-size: 0.78rem;
+            color: var(--text-lead);
+            line-height: 1.5;
+            padding-top: 4px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
 
-        .btn-pay-voda {
-            background: rgba(230, 0, 0, 0.15);
-            border: 1px solid rgba(230, 0, 0, 0.4);
-            color: #ffffff;
-        }
-
-        .btn-pay-voda:hover {
-            background: #e60000;
-            color: #ffffff;
-            box-shadow: 0 10px 25px rgba(230, 0, 0, 0.4);
-        }
-
-        .btn-pay-insta {
-            background: linear-gradient(135deg, #9333ea, #6b21a8);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            box-shadow: 0 10px 25px rgba(147, 51, 234, 0.4);
-        }
-
-        .btn-pay-insta:hover {
-            background: linear-gradient(135deg, #a855f7, #7e22ce);
-            box-shadow: 0 12px 30px rgba(147, 51, 234, 0.6);
+        .smart-notice-strip i {
+            font-size: 0.9rem;
+            flex-shrink: 0;
         }
 
         .contact-channels-trio {
@@ -1631,7 +1592,7 @@
 
             .payment-methods-grid {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 20px;
             }
 
             .contact-channels-trio {
@@ -1711,12 +1672,17 @@
                 padding: 30px 20px;
             }
 
-            .payment-lux-card {
-                padding: 28px 20px;
+            .payment-smart-card {
+                padding: 20px 16px;
+                gap: 14px;
             }
 
-            .pay-digits-string {
-                font-size: 1.4rem;
+            .smart-vault-row {
+                padding: 10px 14px;
+            }
+
+            .smart-digits-val {
+                font-size: 1.25rem;
             }
 
             .scroll-top-btn {
@@ -2046,98 +2012,80 @@
 
             <div class="payment-methods-grid">
                 
-                <div class="payment-lux-card card-voda-theme reveal-node">
-                    <div>
-                        <div class="pay-header-row">
-                            <div class="pay-brand-meta">
-                                <div class="pay-title-group">
-                                    <h3>فودافون كاش</h3>
-                                    <span>Vodafone Cash Wallet</span>
-                                </div>
+                <div class="payment-smart-card smart-voda-theme reveal-node">
+                    <div class="smart-header-flex">
+                        <div class="smart-brand-combo">
+                            <div class="smart-logo-container voda-container" id="vodaShowcase" title="فودافون كاش">
+                                <img src="assets/images/vodafone_cash.png" onerror="this.src='assets/images/658db8cef0868b08d4876e2a_Untitled-6-520x470-1.png'" alt="شعار فودافون كاش الرسمي" class="smart-logo-img voda-logo-img">
                             </div>
-                            <span class="pay-chip-badge chip-voda">محفظة إلكترونية</span>
-                        </div>
-
-                        <div class="pay-showcase-frame voda-frame" id="vodaShowcase" title="فودافون كاش - مخصص للتحويل المالي المباشر">
-                            <img src="assets/images/vodafone_cash.png" onerror="this.src='assets/images/658db8cef0868b08d4876e2a_Untitled-6-520x470-1.png'" alt="شعار فودافون كاش الرسمي" class="pay-brand-img voda-img">
-                            <div class="pay-showcase-shimmer"></div>
-                        </div>
-
-                        <div class="pay-number-vault">
-                            <span class="pay-label-lead">رقم المحفظة المخصص للتحويل المالي:</span>
-                            <div class="pay-digits-row">
-                                <span class="pay-digits-string" id="vodaNumber">01005664564</span>
-                                <button class="btn-copy-interactive" id="copyVodaBtn" aria-label="نسخ رقم فودافون كاش">
-                                    <i class="fas fa-copy"></i>
-                                    <span>نسخ الرقم</span>
-                                </button>
+                            <div class="smart-title-text">
+                                <h3>فودافون كاش</h3>
+                                <span class="smart-meta-badge badge-voda-soft">محفظة إلكترونية</span>
                             </div>
                         </div>
-
-                        <div class="pay-exclusive-notice">
-                            <i class="fas fa-shield-halved" style="color: #ff6666; font-size: 1.1rem; flex-shrink: 0;"></i>
-                            <span><strong>معلومة مهمة:</strong> الرقم ده مخصص حصرياً للتحويل المالي المباشر عبر فودافون كاش، ومش مخصص لحجز الدروس أو الاستفسار.</span>
-                        </div>
+                        <a href="tel:01005664564" class="btn-smart-quick voda-quick" title="اتصال مباشر بالرقم">
+                            <i class="fas fa-phone"></i>
+                            <span>اتصال</span>
+                        </a>
                     </div>
 
-                    <div class="pay-actions-strip">
-                        <a href="tel:01005664564" class="btn-pay-action-link btn-pay-voda">
-                            <i class="fas fa-phone"></i>
-                            <span>اتصال فوري بالرقم</span>
-                        </a>
+                    <div class="smart-vault-row">
+                        <div class="smart-digits-group">
+                            <span class="smart-vault-label">رقم المحفظة المخصص للتحويل:</span>
+                            <span class="smart-digits-val" id="vodaNumber">01005664564</span>
+                        </div>
+                        <button class="btn-copy-smart" id="copyVodaBtn" aria-label="نسخ رقم فودافون كاش">
+                            <i class="fas fa-copy"></i>
+                            <span>نسخ الرقم</span>
+                        </button>
+                    </div>
+
+                    <div class="smart-notice-strip">
+                        <i class="fas fa-shield-halved" style="color: #ff6666;"></i>
+                        <span>الرقم مخصص حصرياً للتحويل المالي المباشر (وليس وسيلة لحجز الدروس أو الاستفسار).</span>
                     </div>
                 </div>
 
-                <div class="payment-lux-card card-insta-theme reveal-node">
-                    <div>
-                        <div class="pay-header-row">
-                            <div class="pay-brand-meta">
-                                <div class="pay-title-group">
-                                    <h3>إنستاباي</h3>
-                                    <span>InstaPay Egypt (IPN)</span>
-                                </div>
+                <div class="payment-smart-card smart-insta-theme reveal-node">
+                    <div class="smart-header-flex">
+                        <div class="smart-brand-combo">
+                            <div class="smart-logo-container insta-container" id="instaShowcase" title="إنستاباي">
+                                <img src="assets/images/instapay_logo.png" onerror="this.src='assets/images/Logo.png'" alt="شعار إنستاباي الرسمي" class="smart-logo-img insta-logo-img">
                             </div>
-                            <span class="pay-chip-badge chip-insta">دفع لحظي مباشر</span>
-                        </div>
-
-                        <div class="pay-showcase-frame insta-frame" id="instaShowcase" title="إنستاباي - شبكة المدفوعات اللحظية الرسمية">
-                            <img src="assets/images/instapay_logo.png" onerror="this.src='assets/images/Logo.png'" alt="شعار إنستاباي الرسمي" class="pay-brand-img insta-img">
-                            <div class="pay-showcase-shimmer"></div>
-                        </div>
-
-                        <div class="pay-number-vault">
-                            <span class="pay-label-lead">رقم الهاتف المرتبط بالتحويل اللحظي:</span>
-                            <div class="pay-digits-row">
-                                <span class="pay-digits-string" id="instaNumber">01558186187</span>
-                                <button class="btn-copy-interactive" id="copyInstaPhoneBtn" aria-label="نسخ رقم إنستاباي">
-                                    <i class="fas fa-copy"></i>
-                                    <span>نسخ الرقم</span>
-                                </button>
+                            <div class="smart-title-text">
+                                <h3>إنستاباي</h3>
+                                <span class="smart-meta-badge badge-insta-soft">دفع لحظي رسمي (IPN)</span>
                             </div>
                         </div>
-
-                        <div class="pay-secondary-handle-box">
-                            <div>
-                                <span style="display: block; font-size: 0.72rem; color: var(--text-dim); margin-bottom: 2px;">عنوان الدفع اللحظي (IPA Handle)</span>
-                                <span class="handle-text-val" id="instaHandle">redaelkhshen@instapay</span>
-                            </div>
-                            <button class="btn-copy-sub-ghost" id="copyHandleBtn" title="نسخ المعرف">
-                                <i class="fas fa-copy"></i>
-                                <span id="copyBtnText">نسخ المعرف</span>
-                            </button>
-                        </div>
-
-                        <div class="pay-exclusive-notice" style="border-right-color: #c084fc;">
-                            <i class="fas fa-shield-halved" style="color: #c084fc; font-size: 1.1rem; flex-shrink: 0;"></i>
-                            <span><strong>معلومة مهمة:</strong> المعرف والرقم دول مخصصين حصرياً للتحويل المالي اللحظي، ومش وسيلة لحجز المجموعات أو الاستفسار.</span>
-                        </div>
+                        <a href="https://ipn.eg/S/redaelkhshen/instapay/6Jcs4X" target="_blank" rel="noopener noreferrer" class="btn-smart-quick insta-quick" title="فتح تطبيق إنستاباي للتحويل">
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                            <span>فتح التطبيق</span>
+                        </a>
                     </div>
 
-                    <div class="pay-actions-strip">
-                        <a href="https://ipn.eg/S/redaelkhshen/instapay/6Jcs4X" target="_blank" rel="noopener noreferrer" class="btn-pay-action-link btn-pay-insta">
-                            <i class="fas fa-arrow-up-right-from-square"></i>
-                            <span>فتح تطبيق InstaPay للتحويل</span>
-                        </a>
+                    <div class="smart-vault-row">
+                        <div class="smart-digits-group">
+                            <span class="smart-vault-label">رقم الهاتف المرتبط بالتحويل:</span>
+                            <span class="smart-digits-val" id="instaNumber">01558186187</span>
+                        </div>
+                        <button class="btn-copy-smart" id="copyInstaPhoneBtn" aria-label="نسخ رقم إنستاباي">
+                            <i class="fas fa-copy"></i>
+                            <span>نسخ الرقم</span>
+                        </button>
+                    </div>
+
+                    <div class="smart-handle-row">
+                        <span class="smart-handle-tag">معرف الدفع (IPA):</span>
+                        <span class="smart-handle-val" id="instaHandle">redaelkhshen@instapay</span>
+                        <button class="btn-smart-copy-sub" id="copyHandleBtn" title="نسخ المعرف">
+                            <i class="fas fa-copy"></i>
+                            <span id="copyBtnText">نسخ المعرف</span>
+                        </button>
+                    </div>
+
+                    <div class="smart-notice-strip">
+                        <i class="fas fa-shield-halved" style="color: #c084fc;"></i>
+                        <span>المعرف والرقم مخصصان حصرياً للتحويل اللحظي (وليس وسيلة لحجز الدروس أو الاستفسار).</span>
                     </div>
                 </div>
 
@@ -2469,7 +2417,7 @@
             });
         }
 
-        document.querySelectorAll('.interactive-tilt-card, .payment-lux-card').forEach(card => {
+        document.querySelectorAll('.interactive-tilt-card, .payment-smart-card').forEach(card => {
             card.addEventListener('mousemove', (e) => {
                 const rect = card.getBoundingClientRect();
                 const x = e.clientX - rect.left;
@@ -2481,7 +2429,7 @@
                 const centerY = rect.height / 2;
                 const rotateX = ((y - centerY) / centerY) * -5;
                 const rotateY = ((x - centerX) / centerX) * 5;
-                card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+                card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
             });
 
             card.addEventListener('mouseleave', () => {
